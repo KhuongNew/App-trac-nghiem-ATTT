@@ -105,6 +105,20 @@
     }
     .explain.show { display: block; }
     .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .card-actions { display: grid; gap: 8px; margin-top: auto; }
+    .review-list { display: grid; gap: 12px; margin-top: 18px; }
+    .review-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 16px;
+      line-height: 1.55;
+    }
+    .review-question { font-weight: 750; margin-bottom: 10px; }
+    .review-options { display: grid; gap: 6px; margin: 10px 0; padding: 0; list-style: none; }
+    .review-options li { padding: 8px 10px; border-radius: 8px; background: #f8fafc; border: 1px solid #edf2f7; }
+    .review-options li.correct { background: var(--ok-bg); border-color: #86efac; color: #14532d; font-weight: 750; }
+    .review-explain { margin-top: 10px; color: #7c2d12; background: var(--warn-bg); border: 1px solid #fed7aa; border-radius: 8px; padding: 10px; }
     .empty {
       background: var(--panel);
       border: 1px dashed var(--line);
@@ -4336,7 +4350,10 @@ function renderMenu() {
     <article class="card">
       <h2>${chapter}</h2>
       <div class="count">${questions.length} câu hỏi</div>
-      <button type="button" class="chapter-btn" data-chapter-index="${index}">Bắt đầu ôn tập</button>
+      <div class="card-actions">
+        <button type="button" class="chapter-btn" data-chapter-index="${index}">Bắt đầu ôn tập</button>
+        <button type="button" class="ghost view-btn" data-chapter-index="${index}">Xem tất cả</button>
+      </div>
     </article>
   `).join("");
   menu.innerHTML = `
@@ -4354,6 +4371,12 @@ function renderMenu() {
     button.addEventListener("click", () => {
       const chapter = Object.keys(examData)[Number(button.dataset.chapterIndex)];
       startChapter(chapter);
+    });
+  });
+  menu.querySelectorAll(".view-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const chapter = Object.keys(examData)[Number(button.dataset.chapterIndex)];
+      renderChapterReview(chapter);
     });
   });
 }
@@ -4385,6 +4408,38 @@ function clearWrong() {
     setWrongIds([]);
     renderMenu();
   }
+}
+
+function renderChapterReview(chapter) {
+  const menu = document.getElementById("menu");
+  const quiz = document.getElementById("quiz");
+  menu.classList.add("hidden");
+  quiz.classList.remove("hidden");
+  const questions = examData[chapter];
+  quiz.innerHTML = `
+    <div class="quiz-head">
+      <div>
+        <h2>${escapeHtml(chapter)}</h2>
+        <div class="progress">Xem toàn bộ đáp án và giải thích · ${questions.length} câu</div>
+      </div>
+      <button class="ghost" onclick="renderMenu()">Về menu</button>
+    </div>
+    <div class="review-list">
+      ${questions.map((q, idx) => `
+        <article class="review-item">
+          <div class="review-question">Câu ${idx + 1}. ${escapeHtml(q.question)}</div>
+          <ul class="review-options">
+            ${q.options.map((opt, optionIndex) => `
+              <li class="${optionIndex === q.answer ? "correct" : ""}">
+                <strong>${letters[optionIndex]}.</strong> ${escapeHtml(opt)}
+              </li>
+            `).join("")}
+          </ul>
+          <div class="review-explain"><strong>Đáp án đúng: ${letters[q.answer]}.</strong> ${escapeHtml(q.explanation)}</div>
+        </article>
+      `).join("")}
+    </div>
+  `;
 }
 
 function renderQuestion() {
@@ -4419,6 +4474,7 @@ function renderQuestion() {
     </div>
     <div id="explain" class="explain"><strong>💡 Giải thích:</strong> <span>${escapeHtml(q.explanation)}</span></div>
     <div class="actions">
+      <button id="unknownBtn" class="ghost" onclick="markUnknown()">Không biết</button>
       <button id="nextBtn" onclick="nextQuestion()" disabled>Câu tiếp theo</button>
     </div>
   `;
@@ -4439,6 +4495,20 @@ function selectAnswer(index) {
   }
   document.getElementById("explain").classList.add("show");
   document.getElementById("nextBtn").disabled = false;
+  document.getElementById("unknownBtn").disabled = true;
+}
+
+function markUnknown() {
+  if (answered) return;
+  answered = true;
+  const q = currentList[currentIndex];
+  const buttons = [...document.querySelectorAll(".option")];
+  buttons.forEach(btn => btn.disabled = true);
+  buttons[q.answer].classList.add("correct");
+  setWrongIds([...getWrongIds(), q.id]);
+  document.getElementById("explain").classList.add("show");
+  document.getElementById("nextBtn").disabled = false;
+  document.getElementById("unknownBtn").disabled = true;
 }
 
 function nextQuestion() {

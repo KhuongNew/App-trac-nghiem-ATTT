@@ -1,0 +1,651 @@
+--- PAGE 1 ---
+Chaper 1. Overview of Information Systems Security
+--- PAGE 2 ---
+Chaper 1. Overview of Information System Safety and Security
+Information systems security encompasses the protection of digital assets, data, and infrastructure from unauthorized access, use, disclosure,
+disruption, modification, or destruction. In today's interconnected digital landscape, where organizations rely heavily on technology for operations,
+communication, and data management, security has evolved from a technical concern to a fundamental business imperative.
+This course examines the comprehensive framework of information security, exploring core security requirements that form the foundation of
+protective measures, identifying diverse threats targeting IT infrastructure, and analyzing security assurance models that organizations deploy to
+maintain robust defensive postures in an increasingly hostile cyber environment.
+--- PAGE 3 ---
+Agenda
+Chapter 1: Overview of Information System Security
+Information Security Seven IT Infrastructure Domains and Threats
+What is Information Security? The Seven IT Infrastructure Domains
+The Importance of Information Security Threats and Risks
+Components of Information Security
+Information Systems Security Model for Ensuring Information Systems Security
+Components of an Information System Introduction
+What is Information Systems Security? Some Information Systems Security Models
+Security Requirements for Information Systems Review Questions
+Confidentiality End-of-chapter review and self-assessment questions
+Integrity
+Availability
+--- PAGE 4 ---
+What is Information Security?
+--- PAGE 5 ---
+What is Information Security?
+Information Security is the practice of protecting information from unauthorized access, use, disclosure, modification, or destruction.
+"Information security protects the confidentiality, integrity, and availability attributes of information assets during storage, processing, and transmission."
+— Principles of Information Security
+Two Key Definitions
+SANS Institute Definition Academic Definition
+Information Security is the protection against unauthorized: Information Security safeguards three core attributes of information assets:
+Access to information systems Confidentiality — Preventing unauthorized disclosure
+Use of sensitive data Integrity — Ensuring accuracy and completeness
+Disclosure of confidential information Availability — Maintaining reliable access
+Modification of critical data
+These attributes must be protected throughout the information lifecycle:
+Destruction of information assets during storage, processing, and transmission.
+Both definitions emphasize that information security is a comprehensive practice requiring protection across multiple dimensions—from preventing unauthorized
+actions to maintaining the fundamental CIA Triad properties.
+--- PAGE 6 ---
+The CIA Triad
+Foundation of Information Security
+The CIA Triad represents the three fundamental principles that guide information security practices and decision-making across all organizational
+levels. These principles serve as evaluation criteria for security measures and help organizations prioritize security investments based on their
+specific needs and risk profiles.
+Integrity
+Guarantees that information remains
+accurate, complete, and unaltered except by
+Confidentiality authorized parties. Maintains data
+trustworthiness through checksums, digital
+Ensures that information is accessible only
+signatures, and version control
+to authorized individuals, systems, or
+mechanisms.
+processes. Protects sensitive data from
+unauthorized disclosure through Availability
+encryption, access controls, and
+Ensures that information and systems are
+classification schemes.
+accessible to authorized users when
+needed. Maintains operational continuity
+through redundancy, backup systems, and
+disaster recovery planning.
+--- PAGE 7 ---
+The CIA Triad: Core Security Objectives
+Confidentiality Integrity Availability
+Preventing unauthorized disclosure of Preventing unauthorized modification of Preventing denial of service attacks that
+sensitive information. Data should only be data and system state. Changes must be disrupt legitimate system operations and
+readable by authorized subjects. controlled and auditable. resource access.
+These three objectives form the foundation of security goals. Operating systems must support all three dimensions simultaneously because
+resources are shared across multiple users and processes. Weakness in any area compromises overall system security.
+--- PAGE 8 ---
+Confidentiality in Practice
+Real-World Examples
+File System Protection: Personal documents should only be accessible to their owner. Operating system file permissions enforce read restrictions
+based on user identity.
+Process Isolation: Applications cannot peek into memory spaces of other processes. Address space separation and hardware memory
+management prevent unauthorized reads.
+Defense Layers: Encryption provides data-at-rest protection, while permission systems control access. These complementary mechanisms create
+robust confidentiality protection.
+--- PAGE 9 ---
+Integrity in Practice
+Preventing Unauthorized Changes
+System Configuration: Only authorized processes with elevated privileges can modify critical system settings. Tampering with boot parameters or
+service configurations requires explicit permission.
+Data Protection: Audit logs must resist tampering to maintain their evidentiary value. Financial transaction records require write protection to
+prevent fraud. System binaries need integrity checks to detect malware injection.
+Integrity controls require both write access restrictions and validation mechanisms. The OS must verify that modifications come from legitimate
+sources and meet defined constraints.
+--- PAGE 10 ---
+Availability in Practice
+Resource Limitation DoS Prevention Management Tools
+Imposing CPU quotas, memory limits, and Operating systems must defend against Scheduling algorithms, resource quotas,
+I/O throttling prevents single processes fork bombs, file descriptor exhaustion, and process limits (ulimit, cgroups)
+from monopolizing system resources and and disk space attacks that aim to make ensure fair resource allocation and
+degrading performance for others. the system unresponsive. system responsiveness under load.
+Availability means the system remains functional and responsive. Without proper resource management, malicious or buggy processes can render
+the entire system unusable.
+--- PAGE 11 ---
+Information Security
+IS = Information Technology Security + Information Assurance
+IT Security Information Assurance
+IT Security focuses on the protection of systems, networks, and data Information Assurance takes a broader perspective, ensuring that
+from attacks, damage, or unauthorized access. It emphasizes information remains available, maintains integrity, and can be
+preventive measures, detection capabilities, and immediate response recovered following disruptions. It encompasses business continuity
+to threats. planning, disaster recovery, and long-term strategic security
+management.
+Key activities include implementing firewalls, antivirus software,
+intrusion detection systems, access controls, and security patches. Example: Implementing offsite backup systems exemplifies
+The primary goal is to prevent security breaches and minimize information assurance—even if primary systems are compromised,
+vulnerabilities in technical infrastructure. organizational operations can continue and data can be restored,
+ensuring business resilience beyond immediate security controls.
+--- PAGE 12 ---
+Key Concepts in Information Security (3A)
+Access Asset Attack
+The ability and means to communicate Any resource of value to an organization Any attempt to destroy, expose, alter,
+with or interact with a system, resource, or that requires protection. Assets include disable, steal, or gain unauthorized access
+data. Access can be physical (entering a hardware, software, data, intellectual to information or systems. Attacks can be
+server room) or logical (logging into a property, reputation, and personnel. Proper malicious or accidental, external or
+database). Controlling access is asset identification and classification internal, and vary widely in sophistication
+fundamental to all security models. drive security prioritization decisions. and impact.
+--- PAGE 13 ---
+Types of Security Attacks
+Security attacks are categorized along multiple dimensions that help security professionals understand threat patterns, develop appropriate
+countermeasures, and allocate defensive resources effectively. Understanding these classifications enables organizations to design targeted
+security architectures.
+Attack Type Characteristics Examples
+Active Attack Modifies data or disrupts systems; detectable Malware injection, denial-of-service, data
+but difficult to prevent modification
+Passive Attack Monitors or records data without modification; Eavesdropping, traffic analysis, password
+difficult to detect sniffing
+Direct Attack Targets systems immediately without Brute-force login attempts, SQL injection
+intermediaries
+Indirect Attack Uses intermediary systems or social Phishing, supply chain compromise, watering
+engineering hole attacks
+--- PAGE 14 ---
+Real-World Security Incidents
+Insider Threat Unauthorized Access Data Breach
+A trusted employee with legitimate access External attackers exploit unpatched Misconfigured cloud storage buckets
+credentials exfiltrates proprietary customer vulnerabilities in web applications to gain expose millions of customer records,
+data to sell to competitors. These incidents administrative access to corporate including personally identifiable
+are particularly damaging because insiders databases. This common scenario information and financial data. Such
+bypass perimeter defenses and possess highlights the importance of timely patch incidents demonstrate that security
+knowledge of security weaknesses, management and continuous vulnerability failures often stem from human error and
+making detection challenging and impact assessment in maintaining security configuration mistakes rather than
+severe. posture. sophisticated attacks.
+--- PAGE 15 ---
+Why Information Security is Critical?
+--- PAGE 16 ---
+Explosive Growth of Connected Devices
+In recent years, alongside the rapid development of mobile devices and especially IoT devices, the number of Internet users and devices connected to the Internet has grown dramatically. According
+to statistics and forecasts from Statista, the number of Internet-connected devices was approximately 15 billion in 2015, increased to over 26 billion in 2019, and is projected to surge to over 75
+billion by 2025.
+2019: >26B
+Smartphones drive a
+significant increase in
+connectivity.
+2025: >75B
+2015: ~15B
+The Internet of Things
+Connected devices
+(IoT) leads to
+like tablets begin to
+explosive growth.
+proliferate.
+Smart IoT connected devices form the foundation for developing many critical applications across various sectors of society, including:
+Smart cities
+Smart communities
+Smart homes
+Health monitoring and care applications
+--- PAGE 17 ---
+. Thống kê và d ự báo số l ượ ng các thiết b ị IoT kết nối Internet t ừ 2015 đến 2025 (theo Statista)
+--- PAGE 18 ---
+Security Incidents: The Dark Side of Connectivity
+Alongside the tremendous benefits that Internet-connected devices bring, security incidents affecting computer systems, smartphones, IoT devices,
+and users have also surged dramatically.
+According to Statista statistics, the number of security incidents reported by U.S. federal government agencies during the 2006-2015 period
+increased sharply, from 5,503 incidents in 2006 to 77,183 incidents in 2015.
+However, during 2016-2018, the number of security incidents decreased significantly to only 31,107 incidents in 2018.
+Key Insights:
+14x increase in incidents from 2006 to 2015
+Peak of 77,183 incidents in 2015
+Significant decline to 31,107 by 2018
+Reflects both improved detection and evolving threat landscape
+--- PAGE 19 ---
+Hình 1.3. Số lượng sự cố mất ATTT báo cáo bởi các cơ quan chính phủ Hoa Kỳ giai đoạn 2006-2018 [3]
+--- PAGE 20 ---
+Cybersecurity Losses in Vietnam
+Escalating Financial Impact
+According to the Vietnam Cybersecurity Summary 2019 report by Bkav, the estimated damage from cybersecurity incidents in Vietnam reached 20,892 billion VND (approximately 902 million USD) in
+2019, representing a sharp increase from 14,900 billion VND in 2018.
+Key Statistics:
+2018 Losses: 14,900 billion VND
+2019 Losses: 20,892 billion VND (~902 million USD)
+Year-over-year increase: 40.3%
+This dramatic escalation demonstrates that cyber threats are growing rapidly in both frequency and financial impact, affecting businesses, individuals, and national security.
+$24,000.00
+$16,000.00
+$8,000.00
+$0.00
+2018 2019
+Financial losses due to cybersecurity incidents in Vietnam from 2018 to 2019
+--- PAGE 21 ---
+Why Information Security is Critical
+Information security has become critical due to several converging factors that create an increasingly complex threat landscape:
+Explosive Device Growth Increasingly Sophisticated Malware
+The proliferation of Internet-connected devices—smartphones, tablets, IoT sensors, Modern cyber threats have evolved far beyond simple viruses:
+wearables, and smart appliances—creates an exponentially expanding attack surface that
+APT (Advanced Persistent Threat) attacks - targeted, long-term intrusions
+organizations must defend.
+Fileless malware - attacks that operate in memory without leaving traces
+Ransomware - encryption-based extortion
+Botnets - coordinated networks of compromised devices
+Cryptocurrency mining malware - resource hijacking
+Impact Scope
+Affects individuals and their personal data Threatens business operations and competitiveness Compromises national security infrastructure
+The Security Triangle
+Effective security requires a delicate balance between these three competing factors to achieve optimal protection without hindering legitimate use or exceeding budget constraints.
+Security Level - strength of protective measures System Usability - ease of use for legitimate users Investment Cost - financial resources required
+--- PAGE 22 ---
+Component of Information Security
+--- PAGE 23 ---
+Three Components of Information Security
+Information security can be divided into three main components that work
+together to protect organizational assets. These components are
+interconnected and overlap, with security policy serving as the common
+foundation that unifies all three areas.
+An toàn máy tính và dữ liệu (Computer & data security)
+An ninh mạng (Network security)
+Quản lý an toàn thông tin (Management of information security)
+These three components have close relationships and intersect with each
+other, with the common element being information security policy that
+serves as the foundation for all security efforts.
+--- PAGE 24 ---
+Computer and Data Security
+Computer and Data Security refers to protecting computer hardware, software, and stored data to ensure systems operate securely and meet user requirements.
+Objectives
+Protect system resources from unauthorized access
+Ensure reliable and secure system operation
+Safeguard sensitive and critical data
+Operating System Security Access Control Encryption
+Hardening OS configurations, disabling unnecessary Implementing authentication mechanisms, Protecting data at rest and data in transit using
+services, implementing security patches promptly, authorization policies, and the principle of least cryptographic algorithms to render information
+and configuring system-level access controls privilege to ensure users access only necessary unreadable to unauthorized parties
+resources
+Malware Protection Backup and Recovery
+Deploying antivirus software, endpoint detection and Implementing regular backup procedures, testing
+response systems, and application whitelisting to restoration processes, and maintaining offline copies
+prevent and detect malicious code to ensure data availability following incidents
+--- PAGE 25 ---
+Network Security
+Network Security ensures the protection of network infrastructure and data transmitted across networks against attacks and unauthorized access
+Perimeter Controls
+Firewalls, Proxy: Filter network traffic based on security rules, Detection and Response
+blocking unauthorized access attempts
+Intrusion Detection Systems (IDS): Monitor network traffic for
+Virtual Private Networks (VPN): Create encrypted tunnels for
+suspicious patterns and known attack signatures
+secure remote access
+Intrusion Prevention Systems (IPS): Actively block detected
+SSL/TLS: Encrypt web communications to protect data in transit
+threats in real-time
+Network Monitoring: Continuous analysis of traffic patterns to
+identify anomalies
+--- PAGE 26 ---
+Information Security Management
+Information security management involves overseeing and supervising the implementation of security measures to enhance their effectiveness. It
+provides the organizational framework necessary to maintain a robust security posture across all domains.
+Risk Management Security Standards Security Policies Training & Awareness
+The core foundation of Establishing and maintaining Developing comprehensive Educating users and raising
+security management, compliance with industry security policies that define security awareness
+focusing on identifying, standards and frameworks security requirements, throughout the organization to
+assessing, and mitigating (ISO 27001, NIST, etc.) that acceptable use, incident create a security-conscious
+information security risks. guide security practices and response procedures, and culture and reduce human-
+Risk assessment plays a ensure consistent governance structures across related vulnerabilities.
+pivotal role in determining implementation. the organization.
+security priorities.
+Effective information security management integrates these elements into a cohesive program that continuously monitors, evaluates, and improves
+security measures to address evolving threats and business requirements.
+--- PAGE 27 ---
+Continuous Management Cycle
+Information security management must be implemented through a continuous, iterative cycle that adapts to changing internal and external
+conditions over time. This cyclical approach ensures security measures remain effective and relevant.
+Plan Implement
+Develop security Deploy security controls,
+strategies, policies, and technologies, and
+implementation roadmaps processes according to the
+based on risk assessment established plan
+and organizational
+requirements
+Control Monitor
+Review results, adjust Continuously track security
+controls, and refine metrics, incidents, and
+strategies based on control effectiveness to
+monitoring insights to identify gaps and
+improve security posture emerging threats
+--- PAGE 28 ---
+Information Security Management Cycle
+--- PAGE 29 ---
+Three Layers of Information Security Policy
+Information security policy consists of rules and regulations established by an organization to ensure security measures are implemented and enforced. These policies form a comprehensive framework that
+addresses security at multiple levels.
+Organizational Security Policy
+1
+Administrative controls, governance structures, roles and responsibilities, compliance requirements, and procedural frameworks
+Physical Security Policy
+2
+Controls protecting physical facilities, hardware, and infrastructure (access control systems, surveillance,
+environmental controls, secure disposal)
+Logical Security Policy
+3
+Technical controls for data and system access (authentication, authorization, encryption, network
+security, application security)
+Policy Example: Strong Authentication
+Example: To enhance information system security, organizations can implement strong authentication policies using biometric characteristics instead of traditional passwords. For example:
+Fingerprint authentication for data center access control systems
+Biometric login for computer systems and applications
+Multi-factor authentication combining biometrics with other credentials
+This approach significantly strengthens security by replacing easily compromised passwords with unique biological identifiers that cannot be easily stolen or replicated.
+--- PAGE 30 ---
+Information Systems Security
+--- PAGE 31 ---
+Components of an Information System
+What is an Information Systems?
+An information system is an integrated system of components designed to collect, store, process, and deliver information, knowledge, and digital products. In the digital economy, information
+systems play a critical role in the operations of organizations, agencies, and enterprises.
+The Information System Model
+Every information system consists of three main components that work together in a continuous cycle:
+01 02 03
+Input Processing Output
+Collects and captures information from various sources Transforms and analyzes the collected data to generate Delivers processed information to stakeholders in usable
+(customers, suppliers, government agencies, shareholders, meaningful insights formats
+competitors)
+Feedback mechanisms ensure continuous improvement and system refinement
+Common Information System Examples
+Enterprise Resource Planning (ERP) systems — Integrate business processes across departments
+Search engines — Enable information discovery and retrieval
+Geographic Information Systems (GIS) — Manage and analyze spatial data
+Customer Relationship Management (CRM) — Track customer interactions and sales
+Information systems enable organizations to interact effectively with customers, suppliers, government agencies, shareholders, and competitors, forming the backbone of modern business
+operations.
+--- PAGE 32 ---
+Information System Model of an Organization
+--- PAGE 33 ---
+Computer-Based Information System Components
+Modern information systems integrate multiple technological and organizational elements that work together to support business processes. Each
+component presents unique security challenges and requires specific protective measures.
+Hardware Software Database Network
+Physical computing devices Operating systems, applications, Organized data repositories Communication infrastructure
+including servers, workstations, and utilities that must be requiring access controls, enabling data transmission that
+network equipment, and storage patched, configured securely, encryption, backup procedures, needs firewalls, encryption, and
+systems that require physical and protected from malicious and integrity verification intrusion detection
+security and maintenance code
+Procedures
+Documented processes and policies guiding system operation, incident response, and user behavior
+--- PAGE 34 ---
+What is Information Systems Security?
+Information Systems Security is the practice of ensuring the security properties of an information system, including confidentiality, integrity, and availability.
+The CIA triad provides the fundamental framework for defining security requirements across all information systems. Every security control, policy, and architectural decision should directly support one or more
+of these core principles. Organizations prioritize these requirements differently based on their specific missions, risk tolerances, and regulatory obligations.
+Different systems emphasize different aspects of CIA. Financial systems prioritize integrity and availability, healthcare systems balance all three equally, and military systems often emphasize confidentiality
+above other concerns.
+Confidentiality Requirements
+Ensuring sensitive information remains private and accessible only to authorized entities through
+encryption, access controls, and data classification
+Integrity Requirements
+Maintaining accuracy and trustworthiness of information throughout its lifecycle via validation checks,
+audit trails, and change management
+Availability Requirements
+Guaranteeing reliable access to information and systems when needed through redundancy, backup
+systems, and business continuity planning
+Components of an Information System and Information Systems Security
+--- PAGE 35 ---
+Security Requirements for Information Systems
+--- PAGE 36 ---
+Confidentiality
+Confidentiality ensures that sensitive information is accessible only to authorized individuals or systems, protecting against unauthorized
+disclosure whether intentional or accidental. This principle becomes increasingly critical as organizations collect vast amounts of personal,
+financial, and proprietary data subject to regulatory requirements and competitive pressures.
+Technical Controls Administrative Controls
+Encryption: Transforms data into unreadable format using Data Classification: Categorize information by sensitivity level to
+cryptographic algorithms (AES, RSA) guide protection requirements
+Access Control Lists (ACLs): Specify which users can access Need-to-Know Principle: Limit access to only information required
+specific resources for job functions
+Virtual Private Networks (VPN): Create secure tunnels for data Non-Disclosure Agreements: Legal contracts binding parties to
+transmission over untrusted networks maintain confidentiality
+Data Loss Prevention (DLP): Monitors and blocks unauthorized Security Clearances: Formal authorization processes for accessing
+data transfers classified information
+--- PAGE 37 ---
+Ensuring confidentiality through a VPN tunnel or encryption
+A document marked <Confidential=
+--- PAGE 38 ---
+Integrity: Ensuring Data Trustworthiness
+Integrity guarantees that information remains accurate, complete, and unaltered except through authorized processes. This principle is fundamental
+to maintaining trust in information systems—if users cannot rely on data accuracy, the system loses its value regardless of confidentiality or
+availability.
+1 2
+Hash Functions Digital Signatures
+Generate unique digital fingerprints for files, enabling detection of Provide authentication and non-repudiation by cryptographically
+unauthorized modifications. Any change to the file produces a binding documents to their creators. Recipients can verify both the
+completely different hash value, making tampering evident. sender's identity and that content hasn't been altered.
+3 4
+Version Control Input Validation
+Track all changes to documents and code, maintaining complete Verify that data entering systems meets expected formats and
+audit trails showing who modified what and when, enabling rollback ranges, preventing injection attacks and ensuring only valid
+to previous versions if needed. information is processed.
+--- PAGE 39 ---
+Availability Architecture Comparison
+Single Point of Failure vs Redundant Design
+System architecture profoundly impacts availability. Single Redundancy can be implemented at multiple levels: hardware redundancy (RAID arrays, redundant
+power supplies), network redundancy (multiple internet connections, load balancers), geographic
+points of failure create vulnerability where one component
+redundancy (data centers in different regions), and data redundancy (real-time replication). Each level
+failure brings down the entire system, while redundant
+adds cost but improves resilience against different failure types.
+architectures distribute functions across multiple
+components that can compensate for failures.
+--- PAGE 40 ---
+Measuring System Availability
+Availability is quantified using precise metrics that inform service level agreements and guide infrastructure investments. Understanding these
+measurements helps organizations set realistic expectations and prioritize improvement efforts.
+Availability Formula MTBF MTTR
+Uptime Mean Time Between Failures: Average Mean Time To Repair: Average time required
+A = × 100%
+operational time between system failures. to restore system functionality after failure.
+Uptime + Downtime
+Higher MTBF indicates more reliable systems Lower MTTR minimizes downtime impact on
+Expressed as percentage, with 99.9% ("three requiring less frequent repairs. operations.
+nines") representing approximately 8.7 hours
+downtime annually
+Availability Level Downtime/Year Downtime/Month Typical Use Case
+99% (Two nines) 3.65 days 7.2 hours Internal tools
+99.9% (Three nines) 8.7 hours 43.2 minutes Business applications
+99.99% (Four nines) 52.6 minutes 4.3 minutes Critical systems
+99.999% (Five nines) 5.3 minutes 26 seconds Mission-critical infrastructure
+--- PAGE 41 ---
+Availability: Maintaining Service Continuity
+Availability ensures that information systems and data remain accessible to authorized users whenever needed. In today's always-on business
+environment, system downtime directly translates to lost revenue, damaged reputation, and regulatory penalties. Organizations increasingly
+recognize availability as a competitive differentiator.
+Threats to availability range from hardware failures and software bugs to deliberate denial-of-service attacks and natural disasters. Protecting
+availability requires redundant systems, proactive maintenance, monitoring, and comprehensive disaster recovery planning that addresses diverse
+failure scenarios.
+Organizations must balance availability requirements against costs—achieving higher availability demands exponentially greater investment. The
+appropriate availability level depends on business criticality, customer expectations, and regulatory requirements specific to each system.
+--- PAGE 42 ---
+IT Infrastructure
+--- PAGE 43 ---
+The Seven IT Infrastructure Domains
+The seven-domain IT infrastructure model provides a structured approach to understanding organizational technology environments and identifying domain-specific security requirements. Each
+domain presents unique vulnerabilities and requires tailored security controls.
+Understanding these seven domains helps organizations systematically identify vulnerabilities, implement appropriate controls, and ensure comprehensive security coverage across the entire IT
+infrastructure.
+User Domain Workstation Domain LAN Domain
+Includes all users (employees, customers, visitors) who Comprises desktop computers, laptops, and workstations The local area network connecting workstations and servers
+access the organization's systems. Encompasses user where users perform daily tasks. Security focuses on within organizational facilities. Includes switches, access
+accounts, access credentials, and human behavior patterns. endpoint protection, configuration management, and local points, and internal network infrastructure.
+data security.
+LAN-to-WAN Domain WAN Domain Remote Access Domain
+The critical boundary connecting the internal LAN to Wide area networks including the Internet and cloud Infrastructure supporting remote workers connecting to
+external wide area networks. Includes firewalls, routers, and services that connect geographically distributed locations organizational resources from external locations via VPN,
+perimeter security controls. and enable external communications. remote desktop, or cloud applications.
+System/Application Domain
+Servers, databases, web applications, email systems, DNS, and other critical services that provide business functionality and store organizational data.
+--- PAGE 44 ---
+Seven Domains in IT Infrastructure Based on Network Connectivity Levels
+--- PAGE 45 ---
+1. User Domain Threats
+The User Domain, encompassing all individuals with system access, consistently represents the most vulnerable element in IT infrastructure.
+Human behavior is inherently unpredictable and difficult to control through technical measures alone, making this domain particularly challenging to
+secure.
+Insider Threats Social Engineering
+Malicious employees or contractors with legitimate access Attackers manipulate users into divulging sensitive information or
+credentials intentionally compromise data, steal intellectual performing actions that compromise security. Phishing emails,
+property, or sabotage systems. These threats are particularly pretexting phone calls, and physical tailgating exploit human
+dangerous because insiders understand security measures and psychology rather than technical vulnerabilities.
+possess authorized access.
+Human Error Policy Violations
+Accidental misconfigurations, clicking malicious links, using weak Users circumventing security policies for convenience—sharing
+passwords, or improperly handling sensitive data create passwords, disabling security software, using unauthorized
+unintentional security breaches. Studies show human error applications—undermine technical controls and create exploitable
+contributes to the majority of security incidents. vulnerabilities.
+--- PAGE 46 ---
+2. Workstation Domain Threats
+Workstations serve as the primary interface between users and organizational systems, making them frequent attack targets. These endpoints
+often contain sensitive data and provide pathways into broader networks, requiring comprehensive protection strategies.
+Common Threats Protection Measures
+Malware Infections: Viruses, trojans, ransomware, and spyware Endpoint Protection: Antivirus, EDR systems, and application
+that compromise workstation integrity and steal data whitelisting
+Unauthorized Software: Users installing unapproved applications Patch Management: Regular OS and application updates to
+that may contain vulnerabilities or malicious code address known vulnerabilities
+Physical Theft: Lost or stolen devices exposing organizational Full Disk Encryption: Protecting data if devices are lost or stolen
+data if not properly encrypted
+Configuration Management: Standardized, hardened system
+configurations
+--- PAGE 47 ---
+3. LAN and 4. LAN-to-WAN Domain Threats
+Local Area Networks (LANs) connect workstations and servers within organizational facilities, while LAN-to-WAN connections form the critical
+boundary between internal networks and the internet. Both domains present significant security challenges requiring layered defenses.
+Network Intrusions Packet Sniffing
+Unauthorized access to network resources through exploitation of Interception of unencrypted network traffic allowing attackers to capture
+vulnerabilities in network protocols, services, or devices. Attackers who passwords, sensitive data, and confidential communications transmitted
+penetrate the network perimeter gain access to internal systems and across the network without proper encryption.
+data.
+Router and Switch Vulnerabilities Firewall Misconfigurations
+Network infrastructure devices often run outdated firmware with known Improperly configured firewalls may allow unauthorized traffic or block
+security flaws. Compromised network equipment enables traffic legitimate communications. Regular firewall rule reviews and change
+manipulation, denial of service, and pivot points for attacking other management processes are essential for maintaining proper network
+systems. segmentation.
+--- PAGE 48 ---
+5. WAN, 6. Remote Access, and 7. System/Application Domain
+Threats
+Wide Area Networks, remote access infrastructure, and system/application domains face sophisticated threats from internet-connected
+adversaries. These domains require robust security architectures that balance accessibility with protection against external threats.
+Denial of Service Attacks Brute-Force Attacks
+Distributed Denial of Service (DDoS) attacks overwhelm systems Automated attempts to guess passwords through systematic trial
+with traffic from multiple sources, rendering services unavailable. of possible combinations. Remote access services are particularly
+Modern DDoS attacks can generate hundreds of gigabits per vulnerable, necessitating multi-factor authentication and account
+second, requiring specialized mitigation services. lockout policies.
+Cloud Vulnerabilities Application Exploits
+Misconfigured cloud storage, inadequate access controls, and Web applications and databases contain vulnerabilities like SQL
+shared responsibility confusion create exposures in cloud injection, cross-site scripting, and authentication bypass that
+environments. Organizations must understand their security attackers exploit to gain unauthorized access or execute malicious
+obligations versus cloud provider responsibilities. code.
+--- PAGE 49 ---
+Defence in Depth Strategy
+--- PAGE 50 ---
+Defence in Depth Strategy
+The Defence in Depth model is a comprehensive security approach that creates multiple layers of protection, ensuring that if one layer fails, others remain to defend the system. This strategy
+recognizes that no single security control is perfect, so layered defenses provide resilience against sophisticated attacks.
+According to this model, organizations should establish multiple protective layers with varying capabilities and characteristics. The strength of Defence in Depth lies in its diversity—different layers
+protect against different threats, and attackers must overcome multiple obstacles rather than a single barrier.
+Usability Cost-Effectiveness Security
+Design security layers that protect without creating Balance security investments across layers to achieve Implement varied security controls across different layers
+excessive friction for legitimate users, maintaining optimal protection within budget constraints, prioritizing (technical, administrative, physical) so that a vulnerability in
+productivity while ensuring safety controls based on risk assessment. one does not compromise the entire system.
+Key Considerations
+A critical aspect of implementing Defence in Depth is remembering the triangle of Security-Cost-Usability
+Increasing security strength often increases costs and reduces usability
+Improving usability may reduce security or increase implementation costs
+Reducing costs typically requires compromises in security strength or user experience
+Organizations must carefully balance these factors based on their risk tolerance, regulatory requirements, and business objectives. The goal is not maximum security at any cost, but rather
+appropriate security that enables business operations while managing risks to acceptable levels.
+--- PAGE 51 ---
+Security-Cost-Usability Balance
+Effective security requires balancing three competing factors: security strength, implementation costs, and system usability. Organizations cannot
+maximize all three simultaneously—improving security often reduces usability or increases costs, while cost reduction may weaken security or
+frustrate users.
+High Security Low Cost High Usability
+Multi-factor authentication, biometric Simple password authentication minimizes Seamless, frictionless access maximizes user
+scanning, and strict access controls provide expenses and maintains usability but satisfaction but may sacrifice security rigor
+strong protection but increase costs and provides weaker security vulnerable to and require expensive convenience-security
+reduce convenience for legitimate users. compromise. technologies.
+--- PAGE 52 ---
+Model for Ensuring Information Systems Security
+--- PAGE 53 ---
+Seven-Layer Security Model
+The seven-layer security model provides a structured approach to implementing Defence in Depth, ensuring comprehensive coverage across all aspects of information security from organizational governance to individual data
+elements.
+Policies, Procedures, Awareness
+Foundational governance establishing security objectives, acceptable use standards, and compliance requirements
+Physical
+Securing facilities, hardware, and physical access through guards, locks, badges, and surveillance systems
+Perimeter
+Boundary defenses including firewalls, intrusion detection, and DMZ networks protecting against external threats
+Internal
+Network segmentation, access control lists, and monitoring protecting communications between internal systems
+Host
+Operating system hardening, endpoint protection, and patch management securing individual devices
+Application
+Secure coding practices, input validation, authentication mechanisms protecting software functionality
+Data
+Encryption, access controls, and data loss prevention protecting information assets at rest and in transit
+--- PAGE 54 ---
+Seven-Layer Information Security Model
+--- PAGE 55 ---
+Three-Layer Security Model
+The three-layer model provides a simplified yet comprehensive framework for security architecture, grouping controls into organizational, network, and system
+categories. This model facilitates security planning and resource allocation across organizational units.
+Three-Layer Information Security Model
+--- PAGE 56 ---
+Security Layer Sub-Layer Description / Function
+Plant Security (Organizational Security) Physical Security Controls physical access to system and network
+equipment.
+Policies & Procedures Includes information security management
+processes, operational guidelines, business
+continuity management, and incident recovery
+procedures.
+Network Security Security Cells and DMZ Provides protection mechanisms for segmented
+network zones.
+Firewalls and VPN Acts as a controlled gateway and single entry point
+to network segments.
+System Integrity System Hardening Ensures secure installation and configuration of
+system components according to security
+requirements.
+User Account Management Implements access control based on user roles and
+privileges.
+Patch Management Regularly installs security patches and system
+updates.
+Malware Detection and Prevention Protects systems against viruses and other
+malicious software.
+--- PAGE 57 ---
+Key Takeaways
+Essential Concepts in Information Systems Security
+As we conclude this comprehensive overview of information systems security, several critical concepts emerge as foundational to understanding
+and implementing effective security programs in modern organizations.
+CIA Triad Foundation Multi-Layer Defense
+Confidentiality, Integrity, and Availability form the bedrock of all Defence in Depth recognizes that no single security control is
+security decisions. Every security control, security policy, and sufficient. Layered security provides redundant protection, ensures
+architecture must support these principles to effectively protect attackers must breach multiple barriers, and enables detection at
+organizational assets. multiple points.
+Domain-Specific Risks Balanced Security
+Each IT infrastructure domain presents unique vulnerabilities Effective security requires balancing protection strength,
+requiring tailored protection strategies. Comprehensive security implementation costs, and system usability. Organizations must
+addresses all domains systematically rather than focusing narrowly make informed trade-offs based on risk tolerance and business
+on single areas. requirements.
+--- PAGE 58 ---
+The Role of Security Professionals
+Diverse Career Paths in Information Security
+The information security field offers diverse career opportunities requiring different skill sets, from highly technical roles to strategic management
+positions. As cyber threats continue evolving and regulatory requirements expand, demand for qualified security professionals significantly exceeds
+supply.
+Security Analyst Penetration Tester
+Monitors systems, investigates incidents, analyzes threats, and Simulates attacks to identify vulnerabilities before malicious actors
+recommends protective measures based on current threat exploit them, testing defenses and recommending improvements
+landscapes
+Security Architect Compliance Officer
+Designs comprehensive security frameworks, selects technologies, Ensures organizational adherence to regulatory requirements,
+and ensures technical implementations align with security industry standards, and internal policies through audits and
+requirements assessments
+Incident Responder Security Manager
+Leads incident response to security breaches, coordinates Oversees security programs, manages teams, allocates resources,
+containment efforts, conducts forensic analysis, and restores and communicates security posture to executive leadership
+normal operations
+--- PAGE 59 ---
+Review Questions
+1. What is Information Security?
+2. Why is it necessary to ensure information security?
+3. What are the fundamental components of Information Security?
+4. How is Information Assurance typically implemented?
+5. What is Information Systems Security?
+6. What are the key security requirements for information and information systems?
+7. What are the threats and risks in the User Domain and Workstation Domain within IT infrastructure? Why is the User Domain considered the
+most vulnerable and high-risk domain?
+8. What are the threats and risks in the LAN Domain, LAN-to-WAN Domain, and WAN Domain within IT infrastructure? Why is the WAN Domain
+highly exposed to destructive attacks?
+9. What is the general model for ensuring Information Systems Security?
+10.Describe a general model for ensuring Information Systems Security.

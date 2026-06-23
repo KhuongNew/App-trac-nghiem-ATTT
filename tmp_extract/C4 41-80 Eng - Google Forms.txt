@@ -1,0 +1,364 @@
+--- PAGE 1 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+Thông tin sinh viên
+* Indicates required question
+1. Email *
+2. 1.Mã sinh viên (In hoa, ví dụ: N23DCAT015). *
+Chú ý ghi đúng mã sinh viên để tính điểm, ghi sai sẽ không có điểm
+3. 2. Họ và tên (Ví dụ: Nguyễn Văn A) *
+4. 3. Lớp (Ví dụ: D23DCAT01-N) *
+QUIZ
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 1/22
+--- PAGE 2 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+5. What information does a Stateless Firewall rely on to decide whether to block or allow a packet? *
+Mark only one oval.
+The content of executable HTML code and database return messages inside the Payload.
+The source/destination IP address and transport protocol port (Layer 3 & 4) recorded on the Header.
+Changes in the Entropy level of signal streams according to the intrusion detection model.
+The validity of the SSL certificate and public key encryption algorithm on the web.
+6. How does a Stateful Firewall overcome the weakness of a stateless firewall? *
+Mark only one oval.
+By automatically encrypting all internal access streams to protect file safety.
+By tracking the TCP handshake process to dynamically open ports for valid response packets.
+By scanning and killing viruses directly within text attachments in email services.
+By preventing employees from copying company source code to portable hard drives.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 2/22
+--- PAGE 3 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+7. Which characteristic allows an Application-Level Gateway to block SQL Injection attacks? *
+Mark only one oval.
+Monitoring source IPs belonging to blacklists of international cybercrime organizations.
+Operating at OSI Layer 7, capable of reading and understanding SQL commands deep inside the packet.
+Integrating broadband routing hardware to neutralize denial of service attacks.
+Automatically changing DNS ports to mislead vulnerability scanning applications.
+8. How does a Circuit-Level Gateway primarily determine a valid connection session? *
+Mark only one oval.
+By inspecting the connection establishment handshake process (e.g., TCP Three-way handshake).
+By filtering unusual keywords appearing in HTTP headers or webpage content.
+By requiring administrators to use biometric fingerprints to authorize each data packet.
+By analyzing WiFi signal strength to exclude unauthorized remote access devices.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 3/22
+--- PAGE 4 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+9. Why do Internet Service Providers (ISPs) prefer using Stateless Firewalls in the core zone instead of more secure *
+Application Firewalls?
+Mark only one oval.
+Because packet filtering firewalls have complex algorithms that completely block phishing email campaigns.
+Because processing the application layer consumes too many resources, causing severe network latency for massive traffic.
+Because international organizations do not sell Application Firewall licenses for telecom systems.
+Because packet filtering firewalls have interfaces allowing customers to change transmission parameters unassisted.
+10. If a rule on a Stateless Firewall is set to allow LAN computers to access the Internet via port 443, what else must an *
+engineer do to enable web browsing?
+Mark only one oval.
+Enable advanced anti-malware features to scan images downloaded from the internal network.
+Write an Outbound rule forcing the web server to encrypt documents with public digital certificates.
+Open an additional Inbound rule allowing response data streams from the Internet to enter the LAN's dynamic ports.
+Lock DNS routing streams to restrict spyware from tracking web browsing history.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 4/22
+--- PAGE 5 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+11. The UDP protocol has no connection handshake process. How does a Stateful Firewall manage UDP streams from *
+inside to outside?
+Mark only one oval.
+Permanently blocks all UDP requests, evaluating it as an insecure protocol standard.
+Saves the source/destination IP and Port in a temporary memory; if a returning UDP packet matches the parameters, the
+firewall lets it pass.
+Requires the destination server to send an RSA encryption certificate to prove the packet's origin before passing.
+Forces the application to switch from UDP to TCP before being granted Internet access.
+12. A Web Application Firewall (WAF) is an advanced version of which type of firewall? *
+Mark only one oval.
+Circuit-Level Gateway.
+Packet-Filtering Router.
+Application-Level Gateway analyzing detailed Payload data.
+Host-based IDS platform collecting server login logs.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 5/22
+--- PAGE 6 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+13. An accountant accidentally clicks a link downloading malware via HTTPS. Even though the Stateful Firewall is configured *
+to block all Inbound traffic, the malware still gets through. Why?
+Mark only one oval.
+The malware uses MAC address spoofing techniques causing the firewall to misidentify internal network devices.
+This file download process is the response data stream of an HTTPS connection proactively initiated by the internal
+computer.
+A stateful firewall defaults to ignoring and not inspecting any packets running on the UDP protocol.
+The administrator forgot to update the intrusion detection signature into the central router's memory.
+14. The Slowloris attack trickles HTTP Headers to hang Web servers. Why is a Stateful Firewall ineffective against this attack *
+type?
+Mark only one oval.
+The firewall defaults to blocking all connections with data sending speeds lower than hardware specifications.
+Because the TCP handshake is entirely valid, the firewall considers this a normal connection and keeps the port open.
+HTTP is a highly secure application so the firewall is not permitted to inspect packet parameters.
+The attacker hijacked DNS and modified the routing table of the internal incident monitoring system.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 6/22
+--- PAGE 7 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+15. A hacker fragments an exploit code into ultra-small IP Fragments and sends them out of order. What is the weakness of *
+a Stateless Firewall against this attack method?
+Mark only one oval.
+It immediately suspends all Internet-originating connections upon detecting non-standard fragmentation.
+A static firewall evaluates each packet individually, lacking a buffer to reassemble the fragments and review the entire
+content.
+A static firewall automatically converts fragments into images to conduct biometric analysis for integrity.
+It requires employees to enter a confirmation code before authorizing the redistribution of data fragments to the server.
+16. A hacker uses Nmap for port scanning and receives a "Filtered" result instead of "Open" or "Closed". How did the stateful *
+firewall process this probe packet?
+Mark only one oval.
+It returned malware directly targeting the scanning computer to destroy its database.
+It directly dropped the probe packet silently, without returning an ICMP error response, to hide server information.
+It let the packet pass but redirected the traffic to a wide-area intrusion log analysis center.
+It replaced TCP with UDP to neutralize Nmap's bandwidth probing algorithm due to misconfiguration.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 7/22
+--- PAGE 8 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+17. A firewall has a rule: "Block all .exe files". An attacker renames the malware file to `trojan.jpg`. Why does an Application- *
+Level Gateway still detect and block it?
+Mark only one oval.
+It uses file surface analysis technology cross-referenced with network user surveillance camera profiles.
+It looks beyond the fake extension (.jpg) and analyzes deep structures (Magic bytes) to identify the true format.
+It establishes a direct query line with security agencies to determine the IP distributing the image file.
+It features a memory of users who sent fake files in the past and automatically blocks based on prediction.
+18. A firewall only allows HTTPS (port 443) and forbids FTP (port 21). What control technique is this? *
+Mark only one oval.
+Direction Control technique.
+Service Control technique.
+User Control technique.
+Behavior Control technique.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 8/22
+--- PAGE 9 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+19. A firewall blocks Internet connections directed into the internal network, but allows all computers in the internal network to *
+connect out to the Internet. Which technique is being used?
+Mark only one oval.
+Service control by closing malicious web applications.
+Behavior control by analyzing network programming languages.
+User control via facial recognition systems.
+Direction control by managing the connection stream's initiation direction.
+20. The company network is congested due to employees downloading Torrent files. To solve this using the "Behavior *
+Control" technique on the Firewall, what should the administrator do?
+Mark only one oval.
+Block all outgoing transmission connections from the enterprise network during business hours.
+Use P2P Torrent protocol signature recognition algorithms to block or throttle this bandwidth range.
+Force employees to scan fingerprints whenever they want to download any file from the network.
+Close all Web server ports (80, 443) to prevent users from browsing the web to download files.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 9/22
+--- PAGE 10 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+21. Requiring remote employees to log into a VPN with an account and OTP code before accessing data is an example of *
+which firewall technique?
+Mark only one oval.
+Content filtering technique for email attachments.
+Transmission speed limiting technique for social media platforms.
+User Control technique to grant resource access rights.
+Technique redirecting suspicious traffic into Honeypots.
+22. To defend against IP Spoofing where an Internet hacker fakes a source IP from the LAN range (e.g., 192.168.1.x) to *
+bypass the firewall, what rule must be set?
+Mark only one oval.
+Allow all packets with source IP 192.168.1.x originating from the Internet port to enter the network.
+Immediately deny any data packet entering the firewall from the Internet port but carrying a LAN source IP address.
+Install a smartcard authentication system for all packets carrying a LAN IP accessed from the outside.
+Forward web application ports to the DMZ so the database server automatically identifies intruders.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 10/22
+--- PAGE 11 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+23. Firewall Rules: Rule 1: Allow TCP LAN to Any:443; Rule 2: Deny Any to Any. How will a UDP packet sent from the *
+internal network to an international DNS server over port 53 be processed?
+Mark only one oval.
+Permitted because the DNS protocol has firewall bypass capabilities.
+Blocked by Rule 2 because it does not meet Rule 1's TCP and port 443 conditions.
+Permitted because Rule 1 implicitly allows all outbound connections from the LAN.
+Suspended pending administrator verification for malicious content.
+24. If setting up a firewall to control access by Domain Name instead of IP address, what risk is the system prone to? *
+Mark only one oval.
+Firewall overload due to storing high-quality domain name images in temporary memory.
+Hackers launching a DNS cache poisoning attack, tricking the firewall into allowing access to malicious servers.
+DAC authorization automatically changing top-secret data labels upon receiving a domain request.
+Continuous decryption of the SSL protocol causing financial data leaks externally that IDS cannot control.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 11/22
+--- PAGE 12 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+25. What is the risk of setting the firewall rule "Allow all Inbound and Outbound connections for the CEO's computer IP *
+address"?
+Mark only one oval.
+If the CEO's computer gets infected with malware, the malware will exploit this privilege to easily spread directly into the core
+network zone.
+Firewall performance drops sharply due to using all CPU power encrypting packets sent from the server to this computer.
+Setting priority for one computer makes the system unable to create any other access control lists.
+The CEO's computer gets disconnected constantly when the firewall downloads malware signature updates from the
+Internet.
+26. Among the following security risks, which behavior falls outside the prevention capabilities of a Perimeter Firewall? *
+Mark only one oval.
+Hackers sending millions of packets to overload the domain name resolution port.
+An internal employee using a USB to copy the entire database and take it home.
+An attacker scanning open and responding web service ports.
+Requests to update software downloaded from Internet app stores.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 12/22
+--- PAGE 13 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+27. Why does a standard packet-filtering firewall often fail to detect malware hidden inside HTTPS or SSL/TLS connections? *
+Mark only one oval.
+The firewall lacks a GUI displaying warnings to SOC administrators.
+The packet-filtering firewall cannot decrypt the content, hence cannot read the actual Payload data.
+The SSL certificate provider server blocks the routing access process of the packet inspection device.
+The firewall defaults to allowing secure protocol ports open without controlling connection directions.
+28. How does Network Segmentation overcome the weakness of a "single perimeter firewall" architecture? *
+Mark only one oval.
+Groups network devices into a single inspection loop for easier internal malware tracking.
+Divides the large LAN into multiple isolated zones with individual internal firewalls, limiting the lateral spread path of
+malware.
+Encrypts all server data into static files, eliminating decompression capabilities via firewall devices.
+Replaces user management with biometrics integrated with OTP to reduce routing buffer loads.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 13/22
+--- PAGE 14 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+29. The "SSL Inspection" application decrypts, virus-scans, and re-encrypts HTTPS packets right at the firewall. What is the *
+biggest challenge when deploying this technology?
+Mark only one oval.
+Requires replacing the entire old network cable system with the newest satellite transmission lines.
+Alters user hard drive formats, causing data loss when the OS automatically updates.
+Consumes massive amounts of the firewall's CPU resources and raises legal risks regarding privacy violations.
+False digital certificate warnings will jam the system, rejecting all company internal app accesses.
+30. When moving infrastructure to the virtualized cloud, servers communicate internally on an "East-West" axis. Why can't a *
+perimeter firewall protect this stream?
+Mark only one oval.
+East-West traffic flows directly between internal virtual machines, not passing through the firewall placed at the network
+perimeter.
+Perimeter firewalls are specifically designed to block mobile digital certificates, not protect cloud VM transmissions.
+Cloud routing automatically rejects packets lacking physical MAC address verification from workstation processors.
+Virtualized space uses biometric verification, making physical firewalls incompatible with the sensors.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 14/22
+--- PAGE 15 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+31. In Zero Trust architecture, how does the "Verify every request" principle change the access control process compared to *
+traditional firewalls?
+Mark only one oval.
+Identity verification and authorization are performed per application session, no longer defaulting to trusting devices inside
+the internal LAN.
+NIDS systems switch to network anomaly analysis to retrieve cloud server signature samples across regions.
+Firewalls must block international IPs and disable all admin rights because devices are app-locked.
+All multimedia file sharing actions must be pre-approved by administrators to eliminate malware in images.
+32. Hackers exploit the DNS service port (UDP 53) legitimately opened on the firewall to secretly transmit command and *
+control payloads. What reason makes the defense system completely bypassed?
+Mark only one oval.
+The firewall does not block port 53; meanwhile, the MAC model cannot prevent external routing streams from hijacking
+internal servers.
+The firewall auto-redirects port 53 connections to web 443; the DAC model accidentally sends fake digital certificates to
+admin emails.
+The stateful firewall drops the connection tracking table, cutting off IPS's information source for analyzing bandwidth
+violation logs.
+The firewall perfectly encrypts exploit packets, helping them slip past biometric scanners and alter cloud storage hashes.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 15/22
+--- PAGE 16 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+33. What is the most optimal solution to overcome the perimeter firewall's weakness of "not detecting Advanced Persistent *
+Threats (APT)"?
+Mark only one oval.
+Force employees to change passwords weekly and use USB-blocking software against data copying.
+Upgrade to the WPA3 wireless standard for the entire branch office network.
+Use a Security Information and Event Management (SIEM) system combined with IDS to analyze and link prolonged minor
+behaviors into an attack chain.
+Build a web application firewall (WAF) filter to eliminate computer malware infections via fake images.
+34. A company uses WAF and HIDS to protect a web application server. A hacker detects the SSH admin port (Port 22) open *
+because the admin forgot to block it on the perimeter firewall. What is the consequence of this error?
+Mark only one oval.
+WAF only protects web applications (HTTP/HTTPS); leaving SSH (Layer 4) open helps hackers bypass the WAF barrier and
+access the OS.
+The server's digital signature has been altered by hackers, making the workstation config connection port invisible to
+scanners.
+The perimeter firewall automatically disconnects traffic when public key encryption conflicts occur, exposing accountant
+account data.
+The HIDS platform on the server is not granted permission to scan for storage structure changes related to virtual
+telecommunications software.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 16/22
+--- PAGE 17 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+35. What is the primary functional difference making an Intrusion Prevention System (IPS) distinct from an Intrusion *
+Detection System (IDS)?
+Mark only one oval.
+The ability to save detailed computer logs to serve in-depth security investigation processes.
+The ability to analyze and automatically take immediate action to block malicious packets in real time.
+The ability to passively monitor multidimensional data streams between core and office networks using mirror ports.
+The ability to use massive signature databases to scan for ransomware formats attached to cloud emails.
+36. How do IDS sensors typically collect out-of-band traffic data? *
+Mark only one oval.
+By directly splicing into the main fiber optic backbone located between the router and the DMZ firewall.
+By installing tracking apps on every workstation and phone to analyze app integrity.
+By configuring Port Mirroring/SPAN features on Switches to send a copy of network traffic to the IDS.
+By setting the sensor as the sole routing point to verify the validity of all incoming and outgoing Internet connections.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 17/22
+--- PAGE 18 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+37. Deploying an IPS to block data streams directly (Inline mode) creates what major system risk? *
+Mark only one oval.
+IPS completely loses the ability to detect sophisticated malware due to hardware-limited routing capacity.
+If the IPS is overloaded or its hardware hangs, it becomes a Single Point of Failure (SPOF) paralyzing all network
+connectivity.
+Internal databases are accidentally pushed out to the Internet zone due to secure comms data stream branching
+configuration.
+The firewall encryption inspection feature gets manually turned off to avoid rule conflicts between admin systems and
+workstations.
+38. A company configures IPS with excessively high sensitivity. Consequently, the IPS automatically severs thousands of *
+valid customer transaction sessions. What is this scenario called?
+Mark only one oval.
+Buffer Overflow attack causing slow server responses and misdirected queries.
+False Positive causing mistakenly blocked legitimate traffic, disrupting business processes.
+False Negative allowing targeted attacks to slip into the core server zone.
+Routing software bandwidth overload causing the firewall to shuffle permission tables into censorship lists.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 18/22
+--- PAGE 19 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+39. For a telecom core network with thousands of Gigabits/second traffic requiring low latency, why use passive IDS instead *
+of inline IPS?
+Mark only one oval.
+Passive IDS only processes on data copies, causing no bandwidth hindrance or network drop risks to the original transaction
+stream.
+IDS devices automatically identify and immediately apply OS patches via distributed secure protocol channels.
+IDS algorithms possess the power to stop direct denial of service attacks against web server clusters without consuming
+CPU.
+IDS proactively fully decrypts all data streams through the standard digital certificate system encryption structure.
+40. When an IDS sensor detects a packet containing a critical vulnerability exploit signature, what does it automatically do? *
+Mark only one oval.
+Sends a recovery encryption file to the compromised victim computer for urgent patching.
+Logs the violating packet into security logs and immediately alerts the central SOC administrator.
+Cuts power breakers supplying perimeter routers connected directly to the spoofed address.
+Purges the malicious code stream from the cache of the app server OS currently suffering the attack.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 19/22
+--- PAGE 20 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+41. An administrator switches an analysis device from auto-blocking packets to a mode that only identifies and issues on- *
+screen alerts to avoid internal workflow disruption. This action is equivalent to what?
+Mark only one oval.
+Downgrading from a secure Virtual Local Area Network to a low-level fragmented routing model.
+Downgrading from an active Web Application Firewall back to a static packet filter.
+Downgrading from an inline anti-malware system to a DMZ honeypot decoy system.
+Downgrading from an Intrusion Prevention System (IPS) back to a passive Intrusion Detection System (IDS).
+42. What is an analytical platform installed directly onto a server's operating system to monitor file changes and system login *
+logs called?
+Mark only one oval.
+Stateless packet filtering firewall system operating based on network port connection routing.
+Network Intrusion Detection System (NIDS) analyzing electronic info streams on fiber optics.
+Integrated security stream distribution system preventing background connections at internal network addresses.
+Host-based Intrusion Detection System (HIDS) protecting the operational structure of a specific device.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 20/22
+--- PAGE 21 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+43. NIDS encounters difficulties ("blind spots") in an enterprise Switch environment if administrators do not implement which *
+configuration?
+Mark only one oval.
+Updating the SSL digital certificate encryption license from a multinational web-protection CA.
+Setting up Port Mirroring/SPAN so NIDS receives traffic copies between workstations plugged into the same Switch.
+Turning off the Windows Defender firewall feature on workstations so NIDS can scan for OS behavior anomalies.
+Changing the operating system's open-source programming language to a licensed Windows server.
+44. A hacker uses a USB to insert malware directly infecting the accounting server (bypassing the LAN). The perimeter *
+firewall and NIDS are both neutralized. Which tool detects this incident?
+Mark only one oval.
+Host-based Intrusion Detection System (HIDS) monitoring abnormal changes in the file system on the machine.
+Distributed Intrusion Prevention System automatically patching routing database software.
+Circuit-level gateway established on the accounting server's virtual port.
+Stateful firewall system capable of analyzing cache signatures of HTTPS protocol data streams.
+This content is neither created nor endorsed by Google.
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 21/22
+--- PAGE 22 ---
+5/16/26, 1:38 PM Thông tin sinh viên
+Forms
+https://docs.google.com/forms/d/1adEG1HB4HpD4oiWmTt_5CCZHnMDdym2WBm68Tk8aB7Y/edit 22/22

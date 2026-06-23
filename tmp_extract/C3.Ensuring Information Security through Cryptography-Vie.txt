@@ -1,0 +1,1875 @@
+--- PAGE 1 ---
+Chương 3: Đảm bảo An toàn Thông tin thông qua Mật mã học
+Cryptography (M ậ t mã h ọ c) đóng vai trò là nề n t ả ng cố t lõi c ủ a Information Security (An toàn thông tin), cho phép chúng ta b ả o v ệ data (d ữ li ệ u)
+trong c ả quá trình storage (l ư u tr ữ ) và transmission (truyề n t ả i). Ch ươ ng này khám phá các kỹ thu ậ t, thu ậ t toán và giao th ứ c giúp hi ệ n th ự c hóa vi ệ c
+truyề n thông kỹ thu ậ t số an toàn.
+Confidentiality Integrity
+ả ậ ẹ
+Tính b o m t Tính toàn v n
+Authentication Non-repudiation
+Xác th ự c Chố ng chố i b ỏ
+--- PAGE 2 ---
+Agenda
+1. T ổ ng quan về Mã hóa Thông tin và các Ứ ng d ụ ng 4. Ch ữ ký số , Ch ứ ng ch ỉ số và PKI
+Các khái ni ệ m chính Ch ữ ký số
+Các thành phầ n c ủ a m ộ t h ệ thố ng mã hóa Ch ứ ng ch ỉ số
+ị ử ủ ậ ọ
+L ch s c a m t mã h c PKI (Public Key Infrastructure)
+Mã hóa dòng và Mã hóa khố i
+ứ ụ ủ ậ ọ
+Các ng d ng c a m t mã h c
+2. Các ph ươ ng pháp mã hóa 5. Qu ả n lý khóa và Phân phố i khóa
+Ph ươ ng pháp thay thế Gi ớ i thi ệ u
+Ph ươ ng pháp hoán v ị Phân phố i khóa bí m ậ t
+Ph ươ ng pháp XOR Phân phố i khóa công khai
+ươ
+Ph ng pháp Vernam
+ươ ạ
+Ph ng pháp mã hóa theo sách / Khóa ch y
+ươ
+Ph ng pháp hàm băm
+3. Các thu ậ t toán m ậ t mã 6. M ộ t số giao th ứ c an toàn thông tin d ự a trên m ậ t mã h ọ c
+Các thu ậ t toán mã hóa khóa đố i x ứ ng SSL/TLS
+Các thu ậ t toán mã hóa khóa bấ t đố i x ứ ng SET (Secure Electronic Transaction)
+Các hàm băm PGP (Pretty Good Privacy)
+ỏ ậ
+7. Câu h i ôn t p
+--- PAGE 3 ---
+Mục tiêu chương
+ươ ạ ể ự ị ướ ả ệ ụ
+́ ́ ́
+Đên cuôi ch ng này, b n sẽ có th t tin đ nh h ng trong bôi c nh các khái ni m cryptographic và áp d ng
+ả ậ ự
+́ ́
+chúng vào các tình huông b o m t th c tê.
+ị ệ ươ
+́
+Đ nh ngh̃ıa các khái ni m côt lõi So sánh các ph ng pháp
+ể ệ ơ ả ệ ươ
+̀
+Hi u các khái ni m và terminology c b n vê Phân bi t các ph ng pháp symmetric, asymmetric
+cryptography và hash
+ả ậ ể ơ ở ạ ậ
+̀ ̀
+Gi i thích các thu t toán chính Hi u vê c s h tâng tin c y
+ả ả
+̀
+Mô t DES, 3DES, AES, RSA, MD5 và SHA1 Gi i thích vê digital signatures, certificates và PKI
+ả ứ ả ậ
+Qu n lý khóa Giao th c b o m t
+ờ ươ ả ứ ư
+Tóm tắ t vòng đ i key management và các ph ng Mô t các giao th c nh SSL/TLS, SET và PGP
+ự
+́ ́
+pháp th c hành tôt nhât
+--- PAGE 4 ---
+Các Đặc Tính Bảo Mật Của Mật Mã Học
+Mật mã học cung câ ́ p các đặc tính bảo mật thiê ́ t yê ́ u giúp bảo vệ hệ thô ́ ng thông tin tr ước những mô ́ i đe dọa
+cụ thể.
+Security Property Definition Crypto Tool Threat Addressed
+Confidentiality Chô ́ ng tiê ́ t lộ trái phép Encryption Eavesdropping
+Integrity Chô ́ ng thay đổi trái Hash / MAC Tampering
+phép
+Authentication Xác thực danh tính Certificates Impersonation
+Non-repudiation Chô ́ ng phủ nhận gửi Digital Signature Repudiation
+--- PAGE 5 ---
+Cryptography vs Cryptanalysis
+Cryptography (m ậ t mã h ọ c) và cryptanalysis (thám mã) là hai m ặ t c ủ a cùng m ộ t đồ ng xu — chúng cùng tiế n hóa trong cu ộ c
+ữ ủ ể ả ể ự ệ ả ậ ạ
+chiế n không hồ i kế t gi a tấ n công và phòng th . Hi u rõ c hai là điề u cầ n thiế t đ xây d ng các h thố ng b o m t m nh mẽ .
+ạ
+Khía c nh Cryptography Cryptanalysis
+Đ ị nh ngh̃ıa "Viế t các ký t ự bí m ậ t" — mã hóa d ữ li ệ u đ ể ch ỉ Phá v ỡ ciphertext (b ả n mã) mà không biế t
+ữ ụ ể ớ ể ả ậ ặ
+nh ng cá nhân c th m i có th gi i mã thu t toán ho c key (khóa)
+ụ ả ệ ụ ẩ
+M c tiêu B o v thông tin Khôi ph c thông tin n giấ u
+Đầ u vào Plaintext (b ả n rõ) + Key Ciphertext (có th ể kèm thông tin m ộ t phầ n)
+Đầ u ra Ciphertext Plaintext ho ặ c Key
+ụ
+Ví d AES, RSA Phân tích tầ n suấ t, brute force (tấ n công vét
+ạ
+c n)
+--- PAGE 6 ---
+Các thuật ngữ chính: Plaintext, Ciphertext, Encryption, Decryption
+ướ ậ ữ ậ ữ ả ạ ừ ự ọ ộ ả ậ
+Tr c khi đi sâu vào các thu t toán, hãy nắ m v ng bố n thu t ng nề n t ng t o nên t v ng cho m i cu c th o lu n về
+cryptography.
+1 2
+Plaintext Ciphertext
+ể ọ ượ ư ượ ộ ả
+Thông tin có th đ c đ c / ch a đ c mã hóa — thông Thông tin đã xáo tr n / đã mã hóa — kế t qu sau khi biế n
+ệ ướ ự ệ ổ ổ ẻ ể ể ượ
+đi p gố c tr c khi th c hi n bấ t kỳ phép biế n đ i nào đ i, trông có v không th hi u đ c
+3 4
+Encryption Decryption
+ộ ử ụ ộ ả ở ạ ử
+Xáo tr n plaintext thành ciphertext bằ ng cách s d ng m t Gi i mã ciphertext tr l i thành plaintext bằ ng cách s
+ậ ụ ộ ậ
+khóa và thu t toán d ng m t khóa và thu t toán
+ả ậ ụ ộ ệ ữ ậ ả ượ
+Tính b o m t ph thu c vào vi c gi bí m t các key — ngay c khi algorithm đ c công khai.
+--- PAGE 7 ---
+Thuật toán, Mật mã, Khóa, Không gian khóa
+ậ ữ ạ ữ ự ủ ọ ệ ậ ể ớ
+́ ́ ́
+Bôn thu t ng này t o thành nh ng khôi xây d ng c a m i h thông m t mã. Hi u cách chúng liên quan v i nhau
+ọ ể ộ ạ ự ủ ươ
+́ ̃ ́
+là rât quan tr ng đ đánh giá đ m nh và tính th c tiên c a bât kỳ ph ng pháp mã hóa nào.
+ậ ậ
+Thu t toán M t mã
+ọ ệ ặ ả ộ ặ ậ ả ạ ộ
+Quy trình toán h c cho vi c mã hóa ho c gi i M t c p thu t toán mã hóa/gi i mã ho t đ ng
+ộ ậ ợ ướ ượ ư ộ ệ ỉ
+́
+mã — m t t p h p các b c tính toán đ c cùng nhau nh m t h thông hoàn ch nh
+ị
+đ nh ngh̃ıa rõ ràng
+Khóa Không gian khóa
+ộ ậ ượ ậ ử ụ ể ổ ể ụ ộ
+̃ ́
+M t chuôi bí m t đ c m t mã s d ng đ T ng sô các khóa có th có — ví d : m t khóa
+ể ổ ạ ả
+́
+ki m soát quá trình biên đ i 64-bit t o ra 2^64 kh năng. Không gian khóa
+ớ
+́
+càng l n = tân công brute force càng khó
+--- PAGE 8 ---
+Ba nhóm mật mã học
+ộ ậ ọ ệ ạ ượ ụ ụ ộ ụ ệ ệ
+Toàn b m t mã h c hi n đ i đ c chia thành ba nhóm chính. Mỗ i nhóm ph c v m t m c đích riêng bi t, và các h
+ự ườ ợ ả ể ạ ượ ả ậ ệ
+thố ng th c tế th ng kế t h p c ba đ đ t đ c b o m t toàn di n.
+ụ ụ ể
+Nhóm Khóa M c đích chính Ví d tiêu bi u
+ộ ữ ệ ượ
+́
+Symmetric-key M t shared secret Mã hóa d li u sô l ng DES, 3DES, AES
+ớ ộ
+l n tố c đ cao
+ặ ổ ữ
+́
+Asymmetric-key C p khóa công Trao đ i khóa, ch ký sô RSA, DSA
+ậ
+khai/bí m t
+ặ ẹ ị
+Hash function Không (ho c có Tính toàn v n / đ nh MD5, SHA1
+khóa) danh
+ậ ư ụ ự ộ ụ ạ ự ụ
+Hãy xem m t mã symmetric nh công c đắ c l c về tố c đ , asymmetric là công c t o d ng niề m tin, và hash là công c
+ự ẹ
+xác th c tính toàn v n.
+--- PAGE 9 ---
+Mật mã khóa đối xứng
+Trong m ậ t mã khóa đố i x ứ ng (còn đ ượ c g ọ i là m ậ t mã khóa bí m ậ t), c ả ng ườ i g ử i và ng ườ i nh ậ n đề u s ử d ụ ng chung m ộ t khóa bí
+m ậ t cho c ả quá trình mã hóa và gi ả i mã. Đây là h ọ m ậ t mã nhanh nhấ t, khiế n nó tr ở nên lý t ưở ng cho vi ệ c mã hóa d ữ li ệ u số
+ượ ớ
+l ng l n.
+Ư ể ✅ ượ ể ❌
+u đi m Nh c đi m
+Tố c đ ộ — rấ t nhanh Phân phố i khóa rấ t
+khó khăn
+ệ ả ữ ệ ả ở ộ
+Hi u qu cho d li u Kh năng m r ng
+ớ ườ
+l n kém (n ng i dùng
+Mã hóa Giải mã
+cầ n n(n-1)/2 khóa)
+ể ơ ả
+Tri n khai đ n gi n Không có tính năng
+ứ
+Quy trình mã khóa đô ́ i x ng chố ng chố i b ỏ (non-
+repudiation) vố n có
+--- PAGE 10 ---
+Mật mã khóa bất đối xứng
+ậ ứ ườ ở ữ ộ ẻ
+Trong m t mã khóa bâ ́ t đô ́ i x ng (asymmetric-key cryptography), mỗ i ng i dùng s h u m t public key (chia s công
+ộ ữ ậ ỉ ả ữ ư ự ủ ả ượ ả
+khai) và m t private key (gi bí m t). Ch có private key là ph i gi kín, nh ng tính xác th c c a public key ph i đ c đ m
+ả
+b o.
+Cách thức hoạt động
+ượ ể
+Public key đ c dùng đ mã hóa (encryption)
+ượ ể ả
+Private key đ c dùng đ gi i mã (decryption)
+ơ
+Cho phép phân phô ́ i khóa (key distribution) dễ dàng h n
+Khi nào sử dụng
+ổ ữ
+Trao đ i khóa (key exchange) gi a các bên
+ữ
+́
+Ch ký sô (digital signatures)
+ượ ữ ệ ỏ
+Mã hóa các l ng d li u nh
+--- PAGE 11 ---
+Hàm băm (Hash Functions)
+M ộ t hàm băm (hash function) ánh x ạ đầ u vào có đ ộ dài biế n đ ổ i thành đầ u ra có đ ộ dài cố đ ị nh đ ượ c g ọ i là digest. Về m ặ t cố t lõi, đây là m ộ t quá trình m ộ t chiề u (one-way): dễ dàng tính
+toán giá tr ị băm, nh ư ng không th ể đ ả o ng ượ c về m ặ t tính toán.
+Thông điệp có độ dài Digest có độ dài cố
+Hàm băm
+biến đổi định
+T ừ đầ u vào có đ ộ dài biế n đ ổ i sang Digest có đ ộ dài cố đ ị nh
+Hàm băm là nề n t ả ng cho vi ệ c ki ể m tra tính toàn v ẹ n (integrity), đ ị nh danh (identification), và là khố i xây d ự ng cho ch ữ ký số (digital signatures). Ngay c ả m ộ t thay đ ổ i nh ỏ trong đầ u
+ạ ộ ệ ệ ượ ượ ọ ệ ứ ổ
+vào cũ ng t o ra m t digest hoàn toàn khác bi t — hi n t ng này đ c g i là hi u ng thác đ (avalanche effect).
+Demo chố ng gi ả m ạ o: Thông đi ệ p A → Digest a3f2... so v ớ i Thông đi ệ p A' (thay đ ổ i m ộ t bit) → Digest 7b91.... Hoàn toàn khác bi ệ t!
+--- PAGE 12 ---
+Các thành phần của hệ mật mã
+ộ ệ ậ ể ậ ậ ể ị ụ ả ậ
+M t h m t mã (cryptosystem) tri n khai các kỹ thu t m t mã đ cung cấ p các d ch v b o m t. Nó bao gồ m nhiề u thành
+ươ ệ ể ả ệ ộ
+phầ n t ng tác làm vi c cùng nhau đ b o v thông tin truyề n qua m t kênh không an toàn.
+Plaintext Encryption Ciphertext Decryption
+Algorithm Algorithm
+ệ ượ ộ
+Thông đi p gố c Đầ u ra đã đ c xáo tr n
+ổ ụ ạ
+Biế n đ i đầ u vào Khôi ph c l i Plaintext
+Keys + Keyspace
+ể
+Các tham số điề u khi n
+ộ ớ ơ ớ ả ậ ơ ẻ ả ả ơ ộ
+M t keyspace l n h n đồ ng ngh̃ıa v i b o m t cao h n, vì k tấ n công ph i tìm kiế m qua nhiề u kh năng h n trong m t
+ộ
+cu c tấ n công brute-force.
+--- PAGE 13 ---
+Lịch sử Mật mã học
+M ậ t mã h ọ c có l ị ch s ử phong phú kéo dài hàng ngàn năm — t ừ các nề n văn minh c ổ đ ạ i đế n th ờ i đ ạ i kỹ thu ậ t số . Mỗ i c ộ t mố c đ ạ i di ệ n cho m ộ t b ướ c nh ả y v ọ t
+ả ệ
+trong cách chúng ta b o v thông tin.
+~2000 TCN 1
+Ai C ậ p c ổ đ ạ i — vi ệ c s ử d ụ ng s ớ m nhấ t đ ượ c biế t đế n c ủ a các kỹ
+ậ ậ ơ ượ ử ụ ở
+thu t m t mã (cách đây h n 4000 năm); cũ ng đ c s d ng Hy
+ạ ́ ộ
+L p và Ân Đ
+2 Thế kỷ 19
+ụ ọ ứ ươ
+Các công c toán h c đã chính th c hóa các ph ng pháp và phân
+ậ
+tích m t mã
+1976–1977 3
+DES đ ượ c chu ẩ n hóa; trao đ ổ i khóa Diffie-Hellman đ ượ c công bố ;
+ượ
+RSA đ c phát minh
+4 1991
+PGP đ ượ c phát hành — mang m ậ t mã khóa công khai đế n v ớ i ng ườ i
+ổ
+dùng ph thông
+2000–2001 5
+ượ ọ ẩ ẩ ệ ạ ượ ử
+AES đ c ch n và chu n hóa — chu n mã hóa hi n đ i đ c s
+ụ ộ
+d ng r ng rãi
+--- PAGE 14 ---
+Cipher luồng so với Cipher khối
+Trong m ậ t mã h ọ c đố i x ứ ng, có hai ph ươ ng pháp kiế n trúc c ơ b ả n: stream cipher (cipher luồ ng) x ử lý d ữ li ệ u liên t ụ c và block cipher
+(cipher khố i) x ử lý d ữ li ệ u theo các khố i có kích th ướ c cố đ ị nh.
+ặ ể
+Đ c đi m Stream Cipher Block Cipher
+Đ ơ n v ị Mã hóa t ừ ng bit/byte m ộ t Mã hóa các khố i kích th ướ c cố đ ị nh (ví d ụ : 64-
+bit, 128-bit)
+C ơ chế khóa Trình t ạ o keystream t ạ o ra các bit khóa liên Cùng m ộ t khóa đ ượ c áp d ụ ng cho mỗ i khố i qua
+ụ ặ
+t c các vòng l p
+Tố c đ ộ Nhanh, đ ộ trễ thấ p Ch ậ m h ơ n m ộ t chút trên mỗ i đ ơ n v ị nh ư ng có
+ể ử
+th x lý song song
+S ử d ụ ng đi ể n hình Truyề n thông th ờ i gian th ự c, không dây Mã hóa t ệ p tin, giao th ứ c
+ụ
+Ví d A5, RC4 DES, 3DES, AES
+Stream: Pi + Ki → Ci (t ừ ng bit m ộ t) | Block: P1,P2,P3 → C1,C2,C3 (t ừ ng khố i m ộ t)
+--- PAGE 15 ---
+Các ứng dụng của mật mã học
+M ậ t mã h ọ c là nề n t ả ng cho hầ u hế t m ọ i h ệ thố ng kỹ thu ậ t số an toàn đang đ ượ c s ử d ụ ng hi ệ n nay. T ừ ngân hàng đế n blockchain, các
+công c ụ này chuy ể n đ ổ i các tính chấ t b ả o m ậ t thành các bi ệ n pháp b ả o v ệ th ự c tế .
+Ứ ng d ụ ng B ả o v ệ n ộ i dung gì Tính chấ t
+ườ ự
+Kerberos / SSO / RADIUS Xác minh danh tính ng i dùng Xác th c
+PKI / Certificates Tính xác th ự c c ủ a khóa công khai Xác th ự c, Chố ng chố i b ỏ
+SSL/TLS / SSH D ữ li ệ u đang truyề n t ả i Tính b ả o m ậ t, Tính toàn v ẹ n
+ữ ệ ả ậ ự
+PGP / SET D li u email và thanh toán Tính b o m t, Xác th c
+IPSec / VPN D ữ li ệ u đ ườ ng truyề n m ạ ng Tính b ả o m ậ t, Tính toàn v ẹ n
+Blockchain / Bitcoin Hồ s ơ giao d ị ch Tính toàn v ẹ n, Chố ng chố i b ỏ
+🎯 Ho ạ t đ ộ ng nh ỏ : Ghép các c ặ p sau: SSL/TLS → Tính b ả o m ậ t | Digital Signature → Chố ng chố i b ỏ | Kerberos → Xác th ự c
+--- PAGE 16 ---
+ƯƠ
+PH NG PHÁP
+Tổng quan về các phương pháp mã hóa
+Các ph ươ ng pháp mã hóa c ổ đi ể n minh h ọ a nh ữ ng ý t ưở ng cố t lõi vẫ n đang v ậ n hành các thu ậ t toán m ậ t mã hi ệ n đ ạ i. Hi ể u đ ượ c các khố i xây d ự ng này giúp
+vi ệ c nắ m bắ t các h ệ thố ng ph ứ c t ạ p tr ở nên dễ dàng h ơ n nhiề u.
+ươ ạ Ư ể ượ ể ể ử ụ ệ ạ
+Ph ng pháp Lo i khóa Thao tác chính u đi m Nh c đi m đi n hình S d ng hi n đ i
+Substitution (Thay B ả n đồ b ả ng ch ữ Thay thế ký hi ệ u Tính đ ơ n gi ả n Frequency analysis S-boxes trong AES
+thế ) cái
+Permutation (Hoán Mẫ u sắ p xế p l ạ i Sắ p xế p l ạ i v ị trí Diffusion L ộ mẫ u v ớ i khóa ngắ n P-boxes trong DES
+ị
+v )
+XOR Khóa nh ị phân Bitwise XOR Kh ả ngh ị ch Yế u nế u tái s ử d ụ ng Cố t lõi c ủ a hầ u hế t
+ậ
+khóa các m t mã
+Vernam (OTP) One-time pad C ộ ng mod 26 B ả o m ậ t hoàn h ả o Đ ộ dài pad ph ả i bằ ng Lý thuyế t lý t ưở ng
+ộ ệ
+đ dài thông đi p
+Book cipher (M ậ t Sách dùng chung Tra c ứ u trang/dòng/t ừ Khó phát hi ệ n R ủ i ro về v ậ n hành Kỹ thu ậ t m ậ t v ụ
+mã sách)
+Hash (Hàm băm) Không có / có Nén thành digest M ộ t chiề u Có th ể x ả y ra xung đ ộ t MD5, h ọ SHA
+khóa
+--- PAGE 17 ---
+Mật mã thay thế + Ví dụ về mật mã Caesar
+M ậ t mã thay thế (substitution cipher) thay thế t ừ ng ký hi ệ u ho ặ c bit bằ ng m ộ t ký hi ệ u khác theo quy tắ c ánh x ạ . M ậ t mã Caesar là d ạ ng
+đ ơ n gi ả n nhấ t — m ộ t phép d ị ch chuy ể n cố đ ị nh 3 v ị trí trong b ả ng ch ữ cái.
+→
+Ví dụ minh họa: "LOVE" "ORYH"
+Plaintext (Văn b ả n gố c) D ị ch +3 Ciphertext (Văn b ả n mã hóa) V ị trí
+→ → → →
+L L M N O O 12 15
+→ → → →
+O O P Q R R 15 18
+→ → → →
+V V W X Y Y 22 25
+→ → → →
+E E F G H H 5 8
+🎯 ạ ộ ỏ ừ ử ụ ị ể ạ ậ ượ
+Ho t đ ng nh : Hãy mã hóa t "BYTE" s d ng phép d ch chuy n Caesar là 3. B n nh n đ c ciphertext nào?
+--- PAGE 18 ---
+Thay thế mạnh hơn: Nhiều bảng mã thay thế
+M ộ t b ả ng mã thay thế đ ơ n l ẻ rấ t dễ b ị t ổ n th ươ ng tr ướ c frequency analysis. Đ ể khắ c ph ụ c điề u này, chúng ta có th ể s ử d ụ ng nhiề u b ả ng
+mã thay thế — cùng m ộ t ch ữ cái văn b ả n gố c sẽ đ ượ c ánh x ạ thành các ch ữ cái văn b ả n mã hóa khác nhau tùy thu ộ c vào v ị trí c ủ a nó.
+Cách thức hoạt động
+Hãy t ưở ng t ượ ng 4 b ả ng mã thay thế đ ượ c s ử d ụ ng theo chu kỳ d ự a trên v ị trí:
+ị ả ượ ử ụ
+V trí B ng mã đ c s d ng
+ả
+1, 5, 9… B ng mã 1
+ả
+2, 6, 10… B ng mã 2
+ả
+3, 7, 11… B ng mã 3
+ả
+4, 8, 12… B ng mã 4
+Điề u này có ngh̃ıa là ch ữ cái 'A' có th ể tr ở thành 'D', 'G', 'L', ho ặ c 'R' tùy thu ộ c vào v ị trí xuấ t hi ệ n c ủ a nó — hoàn toàn gây khó khăn cho vi ệ c
+frequency analysis.
+--- PAGE 19 ---
+Hoán vị (Transposition)
+ư ị ị ạ ộ
+Không giô ́ ng nh thay thê ́ , hoán v (hay transposition) không thay thê ́ các giá tr — nó sắ p xê ́ p l i chúng trong m t
+ướ ị ệ ự ữ ỉ ị ủ ổ ộ
+́ ́ ́ ̃
+khôi có kích th c cô đ nh. Các ký hi u th c tê vân gi nguyên; ch có v trí c a chúng thay đ i theo m t khóa.
+Hoán vị bit (Bit Permutation) Hoán vị ký tự (Character Permutation)
+ạ ị ộ ụ ạ ự ộ ả ụ
+Sắ p xê ́ p l i các v trí bit trong m t khô ́ i 8-bit. Ví d : Sắ p xê ́ p l i các ký t trong m t khô ́ i văn b n. Ví d :
+ị → → → ả ượ
+v trí 1 5, 2 3, 3 1, v.v. B n thân các bit không "SACKGAULSPARENOONE" đ c chia thành các
+ổ ỉ ự ủ ổ ự ượ ệ
+thay đ i — ch có s sắ p xê ́ p c a chúng thay đ i. khô ́ i 8 ký t . Khô ́ i cuô ́ i cùng "NE" đ c đ m bằ ng
+ể ạ ượ ướ ủ
+́ ́ ̀
+dâu cách đ đ t đ c kích th c khôi đây đ là 8.
+ị ả ưở ủ ả ả
+Hoán v cung câ ́ p khuê ́ ch tán (diffusion) — lan truyê ̀ n nh h ng c a văn b n gô ́ c (plaintext) khắ p văn b n mã hóa
+ậ ệ ạ ư ớ ị ạ ộ ớ
+(ciphertext). Trong các thu t toán mã hóa hi n đ i nh DES và AES, các l p hoán v ho t đ ng song song v i thay
+ể ạ ượ ứ ộ ả ậ
+́ ́
+thê đ đ t đ c m c đ b o m t tôi đa.
+--- PAGE 20 ---
+Phương pháp XOR
+Mã hóa XOR có nguyên lý vô cùng đơn giản: mỗ i bit văn bản mã hóa bằ ng bit văn bản thuầ n XOR bit khóa. Vì XOR là phép toán có thể đảo ngược, việc giải mã
+sử dụng chính xác cùng một thao tác: văn bản mã hóa XOR khóa = văn bản thuầ n.
+Bảng chân trị XOR
+A B A XOR B
+0 0 0
+0 1 1
+1 0 1
+1 1 0
+Ví dụ minh họa: Văn bản thuầ n "CAT", Khóa "VVV"
+Ký tự ASCII Nhị phân (P) Nhị phân (K) P XOR K
+C 67 01000011 01010110 (V) 00010101
+A 65 01000001 01010110 (V) 00010111
+T 84 01010100 01010110 (V) 00000010
+--- PAGE 21 ---
+Mật mã Vernam (One-Time Pad)
+Mật mã Vernam sử dụng một one-time pad, trong đó mỗ i ký hiệu trên pad chỉ được sử dụng duy nhâ t một lâ n. Khi pad thực sự ngẫ u nhiên và không bao giờ bị tái
+sử dụng, phương pháp này đạt được perfect secrecy — vê mặt toán học là không thể phá giải.
+Ánh xạ Cộng
+Ánh xạ các chữ cái sang sô 1–26 (A=1, B=2, …Z=26) Cộng sô của plaintext + sô của pad
+Mod Chuyển đổi
+Nê u tổng > 26, trừ đi 26 (mod 26) Ánh xạ kê t quả trở lại thành chữ cái
+Ví dụ minh họa (6 ký tự đầu tiên)
+Plaintext: "SACKGAULSPARENOONE" | Pad: "FPQRNSBIEHTZLACDGJ"
+Chữ P Sô P Chữ Pad Sô Pad Tổng (mod 26) Mã hóa
+S 19 F 6 25 Y
+A 1 P 16 17 Q
+C 3 Q 17 20 T
+K 11 R 18 3 (29−26) C
+G 7 N 14 21 U
+A 1 S 19 20 T
+--- PAGE 22 ---
+ƯƠ
+CÁC PH NG PHÁP
+Book Cipher / Running Key
+ươ ự ệ ả ử ụ
+Book cipher (hay ph ng pháp running key) th c hi n mã hóa và gi i mã bằ ng cách s d ng các khóa có trong sách. Ngày nay,
+ươ ườ ượ ử ụ ộ ử ệ ẩ ủ
+ph ng pháp này th ng đ c s d ng trong các b phim về thám t /gián đi p do tính chấ t bí n c a nó.
+Các bước giải mã
+ừ
+Tham chiế u T
+ừ
+Trang 259, dòng 19, t 8 sack
+ừ
+Trang 22, dòng 3, t 8 island
+ừ
+Trang 375, dòng 7, t 4 sharp
+ừ
+Trang 394, dòng 17, t 2 path
+Kế t qu ả văn b ả n gố c (plaintext): "sack island sharp path"
+--- PAGE 23 ---
+Phương pháp Hash
+ạ ộ ộ ị ể ả ả ẹ ị
+́
+Hash t o ra m t digest có đ dài cô đ nh đ đ m b o tính toàn v n và đ nh danh:
+ạ
+Algorithm Digest Tr ng thái
+ạ ậ
+MD5 128-bit Đã l c h u
+ừ
+́
+SHA0/SHA1 160-bit Kê th a
+ệ ạ
+SHA2 256/384/512 Hi n t i
+ớ
+́
+SHA3 0–512-bit M i nhât
+ỉ ể
+CRC32 32-bit Ch ki m tra checksum
+--- PAGE 24 ---
+ƯƠ
+CÁC PH NG PHÁP
+Mật mã khóa đối xứng
+ậ ứ ặ ậ ậ ử ụ ộ ậ ả ả
+M t mã khóa đố i x ng (ho c m t mã khóa bí m t) s d ng m t khóa bí m t duy nhấ t cho c quá trình mã hóa và gi i mã.
+ượ ọ ẻ ả ượ ổ ộ ữ ướ
+Khóa này — còn đ c g i là khóa chia s — ph i đ c trao đ i m t cách an toàn gi a các bên tr c khi quá trình giao tiế p
+ể
+có th diễ n ra.
+Đặc điểm chính Ưu điểm Nhược điểm
+ướ ổ ả ậ ả
+Các kích th c khóa ph Tính b o m t cao Qu n lý và phân phố i khóa
+biế n: 64, 128, 192, 256 bits Tố c đ ộ th ự c thi nhanh khó khăn
+ị ườ ở
+Các khóa < 128 bits b coi là Trong các môi tr ng m
+ộ ả
+không an toàn do tố c đ tính (Internet): các bên ph i trao
+ệ ạ ổ ậ ộ
+toán hi n đ i đ i khóa bí m t m t cách an
+ướ ả
+Các h ệ thố ng b ả o m ậ t ngày toàn tr c khi mã hóa/gi i
+ử ụ ≥ mã tin nhắ n
+nay s d ng khóa 128 bits
+--- PAGE 25 ---
+So sánh các thuật toán đối xứng
+D ướ i đây là b ả ng so sánh các thu ậ t toán đố i x ứ ng quan tr ọ ng nhấ t. L ư u ý rằ ng các khóa ngắ n h ơ n 128-bit th ườ ng đ ượ c coi là
+ả ệ ạ ộ ạ ả
+không an toàn trong bố i c nh hi n đ i do các cu c tấ n công vét c n (brute-force) là hoàn toàn kh thi.
+Thu ậ t toán Kích th ướ c khố i Kích th ướ c khóa Tố c đ ộ Tr ạ ng thái b ả o m ậ t
+ệ ụ ❌ ị ẻ
+DES 64-bit 56-bit hi u d ng Nhanh B b khóa — không gian khóa
+ỏ
+quá nh
+ậ ⚠ ả ị ạ ỏ
+3DES 64-bit 112/168-bit Ch m (3x DES) Di s n — đang dầ n b lo i b
+AES 128-bit 128/192/256-bit Rấ t nhanh ✅ Chu ẩ n hi ệ n t ạ i
+ư ổ
+IDEA 64-bit 128-bit Trung bình An toàn nh ng ít ph biế n
+ượ ở
+Blowfish 64-bit 32–448-bit Nhanh Đã đ c thay thế b i Twofish
+Ứ
+Twofish 128-bit 128/192/256-bit Nhanh ng viên chung kế t AES — an toàn
+--- PAGE 26 ---
+DES: Data Encryption Standard
+DES có nguồ n gố c t ừ d ự án Lucifer c ủ a IBM vào đầ u nh ữ ng năm 1970 và tr ở thành tiêu chu ẩ n c ủ a Hoa Kỳ vào cuố i nh ữ ng năm 1970. M ặ c dù có ý
+ngh̃ıa l ị ch s ử quan tr ọ ng, nh ư ng keyspace (không gian khóa) nh ỏ khiế n nó dễ b ị t ổ n th ươ ng ở th ờ i đi ể m hi ệ n t ạ i.
+1 2 3
+Block Cipher Cấu trúc khóa Tại sao nó yếu
+ạ ộ ủ ả ớ ỉ ệ ụ ả ả
+Ho t đ ng trên các block 64-bit c a b n rõ Khóa 64-bit v i ch 56 bit hi u d ng + 8 bit Keyspace 56-bit = 2^56 kh năng — kh thi
+t ạ i m ộ t th ờ i đi ể m chẵ n l ẻ (parity bits) đ ể th ự c hi ệ n brute force v ớ i phầ n c ứ ng
+ệ ạ
+hi n đ i
+ả ủ
+Các khâu mã hóa và gi i mã c a DES
+--- PAGE 27 ---
+Tạo Subkey cho DES (Lịch trình khóa)
+Tr ướ c khi DES có th ể mã hóa, nó ph ả i t ạ o ra 16 subkeys — m ộ t cho mỗ i vòng trong hàm Feistel — t ừ khóa 56-bit ban đầ u. Quá trình này đ ượ c g ọ i là
+ị
+l ch trình khóa (key schedule).
+1 Phép hoán vị PC1
+Ch ọ n 56 bit t ừ khóa 64-bit (lo ạ i b ỏ 8 bit chẵ n l ẻ )
+2 Chia đôi
+ử
+Chia thành hai n a 28-bit (C₀ và D₀)
+3 Dịch trái
+Th ự c hi ệ n d ị ch trái (1 ho ặ c 2 v ị trí tùy thu ộ c vào số vòng)
+4 Phép hoán vị PC2
+Ch ọ n 48 bit t ừ các n ử a đã d ị ch đ ể t ạ o ra mỗ i subkey
+5 Lặp lại
+T ạ o tấ t c ả 16 subkeys (Subkey1 đế n Subkey16) cho 16 vòng
+--- PAGE 28 ---
+Quy trình tạo khóa phụ DES (Key Schedule)
+Thủ tục sinh các khóa phụ từ khóa chính của DES
+--- PAGE 29 ---
+Quy trình mã hóa DES
+ớ ự ệ ướ ử ể ổ ả ươ ứ
+̃ ́ ̀ ́ ́
+V i môi khôi đâu vào 64-bit, DES th c hi n 3 b c x lý đ biên đ i nó thành khôi b n mã 64-bit t ng ng.
+01 02 03
+Bước 1: Initial Permutation Bước 2: 16 Feistel Rounds Bước 3: Final Permutation
+(IP) (FP)
+ạ ộ
+̃
+Giai đo n xáo tr n chính. Môi vòng
+ạ ủ ả ử ụ ớ ị ả ủ
+Sắ p xê ́ p l i 64 bit c a khô ́ i b n rõ s d ng hàm Feistel (F) v i khóa Phép ngh ch đ o c a IP. Sắ p xê ́ p
+ả ị ị ướ ụ ạ ủ ợ ể
+́ ̃ ́ ̀ ́
+theo b ng hoán v cô đ nh tr c ph 48-bit. Sau môi vòng, các kêt l i các bit c a đâu ra đã kêt h p đ
+ả ượ ợ ạ ả
+khi bắ t đâ ̀ u mã hóa. qu trung gian đ c kê ́ t h p bằ ng t o ra khô ́ i b n mã 64-bit cuô ́ i
+ử ụ ⊕ ử
+cách s d ng XOR ( ), và hai n a cùng.
+ả ượ ổ
+32-bit trái/ph i đ c tráo đ i.
+--- PAGE 30 ---
+Hàm Feistel (F) trong DES
+ậ ủ ử ử ạ
+́ ̃ ́
+Hàm Feistel là côt lõi m t mã c a môi vòng DES, x lý n a khôi 32-bit thông qua 4 giai đo n chính.
+01 02
+⊕
+E: Mở rộng (Expansion) : XOR với Subkey
+ở ộ ể ộ ớ ả ượ ớ ủ
+̀ ̃ ́
+M r ng đâu vào 32-bit thành 48-bit đ tr n lân v i Kêt qu 48-bit đ c XOR v i subkey 48-bit (Ki) c a vòng
+subkey. đó.
+03 04
+S: Thay thế (S-Boxes) P: Hoán vị (Permutation)
+ử ụ ể ổ ể ạ ể ạ
+S d ng 8 S-box đ biê ́ n đ i phi tuyê ́ n tính, chuy n 48-bit Sắ p xê ́ p l i các bit bằ ng P-box đ t o đâ ̀ u ra 32-bit cuô ́ i
+thành 32-bit. cùng.
+--- PAGE 31 ---
+ướ ử ủ
+Các b c x lý c a hàm Feistel (F)
+--- PAGE 32 ---
+Quy trình giải mã DES
+ậ ể ượ ử ụ ả ả ả ướ
+Thu t toán DES có th đ c s d ng cho c mã hóa và gi i mã. Quy trình gi i mã tuân theo các b c
+ươ ự ư ượ ụ ứ ự ượ ạ
+t ng t nh mã hóa. Tuy nhiên, các subkey đ c áp d ng theo th t ng c l i: subkey 16, 15, …, 2, 1
+ượ ử ụ ươ ứ
+đ c s d ng cho các vòng 1, 2, …, 15, 16 t ng ng.
+01 02 03
+Cấu trúc 3 giai đoạn giống Thứ tự subkey đảo ngược Kết quả
+hệt
+ượ
+́
+Các subkey K16, K15, …, K2, K1 Khôi ciphertext 64-bit đ c
+→ → ượ ụ ể ổ ượ ạ
+IP 16 vòng Feistel FP, đ c áp d ng cho các vòng 1, 2, chuy n đ i ng c l i thành khô ́ i
+ệ ớ ươ ứ ượ ạ
+giô ́ ng h t v i quá trình mã hóa. …, 15, 16 t ng ng (ng c l i plaintext 64-bit ban đâ ̀ u.
+ớ ứ ự
+v i th t mã hóa).
+--- PAGE 33 ---
+3-DES (Triple Data Encryption Algorithm)
+--- PAGE 34 ---
+3DES: Triple DES
+ụ ậ ử ụ ộ ậ ượ ư ộ ả
+3DES áp d ng thu t toán DES 3 lâ ̀ n cho mỗ i khô ́ i 64-bit s d ng tố i đa ba khóa đ c l p. Nó đ c thiế t kế nh m t b n
+ự ủ ở
+nâng cấ p thay thế tr c tiế p khi khóa 56-bit c a DES tr nên quá yế u.
+Các tùy chọn khóa Luồng EDE
+→ →
+Mã hóa: E(K1) D(K2) E(K3)
+ọ ộ ạ ệ
+Tùy ch n Khóa Đ m nh hi u
+ụ ả → →
+d ng Gi i mã: D(K3) E(K2) D(K1)
+ổ ạ ơ ư ậ ơ ả
+ọ ộ ậ Đánh đ i: M nh h n DES nh ng ch m h n kho ng 3 lâ ̀ n
+Tùy ch n 1 3 khóa đ c l p 168-bit
+ạ
+— đó là lý do t i sao AES cuố i cùng đã thay thế nó.
+ọ
+Tùy ch n 2 K3 = K1 112-bit
+ọ ả
+Tùy ch n 3 Tấ t c giố ng 56-bit (= DES)
+nhau
+--- PAGE 35 ---
+ả ớ ả ậ
+Mã hóa và gi i mã v i gi i thu t 3-DES
+--- PAGE 36 ---
+AES: Tiêu chuẩn Mã hóa Nâng cao
+--- PAGE 37 ---
+AES: Advanced Encryption Standard
+AES là m ộ t tiêu chu ẩ n mã hóa khố i đ ượ c NIST công nh ậ n vào năm 2001, d ự a trên thu ậ t toán Rijndael do các nhà m ậ t mã h ọ c ng ườ i B ỉ
+Joan Daemen & Vincent Rijmen phát tri ể n năm 1998. Nó s ử d ụ ng M ạ ng thay thế -hoán v ị (Substitution-Permutation Network - SPN) và
+mang l ạ i hi ệ u suấ t cao trên c ả phầ n mề m lẫ n phầ n c ứ ng.
+Nguồn gốc Kích thước Khối & Khóa
+D ự a trên thu ậ t toán Rijndael (1998) b ở i Joan Daemen & Vincent Kích th ướ c khố i cố đ ị nh: 128 bit. Kích th ướ c khóa: 128, 192,
+Rijmen (B ỉ ). Đ ượ c NIST chu ẩ n hóa năm 2001 thành FIPS PUB ho ặ c 256 bit. Số vòng l ặ p tăng dầ n theo kích th ướ c khóa: lầ n
+ượ
+197. l t là 10 / 12 / 14 vòng.
+Kiến trúc Hiệu suất
+Đ ượ c xây d ự ng trên M ạ ng thay thế -hoán v ị (SPN). Ho ạ t đ ộ ng Hi ệ u qu ả cao trên c ả phầ n mề m và phầ n c ứ ng. Các b ộ x ử lý
+trên m ộ t ma tr ậ n tr ạ ng thái 4×4 byte thông qua nhiề u vòng biế n Intel bao gồ m t ậ p l ệ nh AES-NI đ ể tăng tố c phầ n c ứ ng cho quá
+ổ ả
+đ i. trình mã hóa và gi i mã AES.
+--- PAGE 38 ---
+Quy trình mã hóa AES
+ổ ữ ệ ả ộ ặ ặ ậ ạ
+AES biế n đ i d li u thành văn b n mã hóa thông qua m t chuỗ i các vòng l p cấ u trúc ch t chẽ trên ma tr n tr ng thái
+4x4.
+01 02
+Key Expansion Initial Round
+ạ ặ ừ ự ệ ⊕ ữ ạ ữ ệ
+T o các khóa vòng l p t khóa gố c. Th c hi n phép XOR ( ) gi a tr ng thái d li u và khóa
+ặ
+Số l ượ ng khóa ph ụ thu ộ c vào đ ộ dài khóa (11, 13 ho ặ c vòng l p đầ u tiên.
+15 khóa).
+03 04
+Main Rounds Final Round
+ụ ặ ạ ướ ự ệ ướ ư ư ỏ ướ
+Áp d ng l p l i 4 b c: SubBytes, ShiftRows, Th c hi n các b c nh vòng chính nh ng b qua b c
+MixColumns và AddRoundKey. MixColumns.
+--- PAGE 39 ---
+Các b ước xử lý mã hóa dữ liệu của AES
+--- PAGE 40 ---
+Mở rộng khóa AES: Rijndael Key Schedule
+ử ụ ể ạ ử
+́ ̀ ́ ̃
+Quy trình này s d ng khóa gôc đ t o ra các khóa vòng (khóa con) cân thiêt cho môi vòng x lý AES.
+01 02
+RotWord SubBytes
+ừ ủ ể ử ụ ả
+Xoay vòng trái 8-bit trên mô ̃ i t 32-bit c a khóa đ thay Thay thê ́ byte phi tuyê ́ n tính bằ ng cách s d ng b ng tra
+ổ ị ứ
+đ i v trí các byte. c u S-box.
+03 04
+Rcon ShiftRow
+ụ ể ả ự ệ ị ươ ự ư
+Áp d ng hằ ng sô ́ vòng duy nhâ ́ t cho mô ̃ i vòng đ đ m Th c hi n d ch hàng các byte t ng t nh trong quá
+ả ệ ủ
+b o tính khác bi t c a khóa. trình mã hóa chính.
+--- PAGE 41 ---
+Thủ tục sinh khóa Rijndael
+--- PAGE 42 ---
+Các hàm biến đổi cốt lõi của AES
+Mỗ i vòng AES áp d ụ ng bố n hàm biế n đ ổ i cho ma tr ậ n tr ạ ng thái 4×4 byte, cung cấ p c ả tính hỗ n lo ạ n (confusion) và tính khuế ch tán
+(diffusion).
+SubBytes ShiftRows
+Mỗ i byte trong ma tr ậ n tr ạ ng thái đ ượ c thay thế bằ ng m ộ t byte Các hàng c ủ a ma tr ậ n tr ạ ng thái đ ượ c d ị ch vòng sang trái:
+ươ ứ ừ ủ ộ ả
+t ng ng t S-box c a Rijndael: bij = S(aij). S-box là m t b ng ị
+Hàng 0: không d ch
+tra c ứ u phi tuyế n tính đ ượ c t ạ o bằ ng cách s ử d ụ ng ngh ị ch đ ả o
+ị
+Hàng 1: d ch 1 byte sang trái
+ườ ữ ạ
+nhân trong tr ng h u h n GF(2⁸). Trong quá trình mã hóa, S-
+ị
+ượ ử ụ ả ị ả Hàng 2: d ch 2 byte sang trái
+box đ c s d ng; trong quá trình gi i mã, S-box ngh ch đ o
+ượ ụ ị
+đ c áp d ng. Hàng 3: d ch 3 byte sang trái
+MixColumns AddRoundKey
+Mỗ i c ộ t c ủ a ma tr ậ n tr ạ ng thái đ ượ c nhân v ớ i m ộ t đa th ứ c cố Mỗ i byte c ủ a ma tr ậ n tr ạ ng thái đ ượ c kế t h ợ p v ớ i byte t ươ ng
+đ ị nh c(x) = 3x³ + x² + x + 2. Điề u này tr ộ n 4 byte trong mỗ i c ộ t, ứ ng c ủ a khóa vòng hi ệ n t ạ i bằ ng phép XOR ( ⊕ ). Điề u này kế t
+t ạ o ra s ự khuế ch tán trên toàn b ộ tr ạ ng thái. h ợ p v ậ t li ệ u khóa bí m ậ t vào tr ạ ng thái ở mỗ i vòng.
+--- PAGE 43 ---
+Các phép biến đổi AES B: MixColumns +
+AddRoundKey
+ổ ạ ộ ữ ệ ộ ợ ớ
+Hai phép biê ́ n đ i còn l i hoàn tâ ́ t mô ̃ i vòng bằ ng cách tr n d li u trong các c t và kê ́ t h p v i round key.
+MixColumns AddRoundKey
+ộ ộ ử ụ ộ ạ ớ ệ ạ
+Tr n các byte trong mô ̃ i c t bằ ng cách s d ng XOR toàn b tr ng thái v i round key hi n t i. Đây
+ứ ườ ớ ướ ậ ệ ậ ự ự
+phép nhân đa th c trên tr ng GF(2^8) v i đa là b c mà v t li u khóa bí m t th c s tham gia
+ứ ụ ổ ơ
+̃ ̀ ́
+th c c(x) = 3x³ + x² + x + 2. Môi byte đâu ra ph vào quá trình tính toán. Đây là phép biên đ i đ n
+ộ ả ộ ả ư ọ ớ
+́ ́ ̀ ́ ́
+thu c vào tât c bôn byte đâu vào trong c t — gi n nhât nh ng đóng vai trò quan tr ng đôi v i
+ạ ả ạ ả ử ả ậ ộ
+́
+mang l i kh năng diffusion m nh mẽ . Gi i mã s b o m t — nêu không có nó, AES sẽ là m t hoán
+ụ ị ị ụ ộ
+́
+d ng InvMixColumns. v cô đ nh, không ph thu c vào khóa.
+--- PAGE 44 ---
+Các phép biến đổi AES A: SubBytes + ShiftRows
+ổ ớ ệ ậ ạ
+Hai phép biế n đ i đầ u tiên trong mỗ i vòng AES gi i thi u confusion (SubBytes) và diffusion (ShiftRows) vào ma tr n tr ng
+thái.
+SubBytes ShiftRows
+ị ượ ụ
+Một phép thay thế S-box phi tuyế n tính được áp dụng Các phép d ch trái vòng đ c áp d ng theo hàng:
+cho mọi byte trong trạng thái một cách độc lập. Mỗ i byte
+ị ị ổ
+Hàng 0: d ch 0 v trí (không thay đ i)
+được ánh xạ tới một giá trị mới sử dụng một bảng tra
+ị ị
+Hàng 1: d ch 1 v trí sang trái
+cứu cố định.
+ị ị
+Hàng 2: d ch 2 v trí sang trái
+Đây là nguồ n chính của confusion trong AES — làm mờ
+ị ị
+Hàng 3: d ch 3 v trí sang trái
+mố i quan hệ giữa khóa và văn bản mã hóa.
+ủ
+Phép toán này phân tán các byte c a mỗ i hàng qua các
+Quá trình giải mã sử dụng InvSubBytes.
+ộ ả ử
+c t khác nhau, cung cấ p diffusion. Quá trình gi i mã s
+ụ
+d ng InvShiftRows.
+--- PAGE 45 ---
+Hàm SubBytes sử dụng Rijndael S-box
+Hàm ShiftRows
+Hàm MixColumns
+Hàm AddRoundKey
+--- PAGE 46 ---
+Tóm tắt mở rộng khóa và giải mã AES
+M ở r ộ ng khóa t ạ o ra tấ t c ả các round key t ừ khóa m ậ t mã gố c bằ ng cách s ử d ụ ng Rijndael key schedule. Gi ả i mã đ ơ n gi ả n là áp d ụ ng các
+biế n đ ổ i ngh ị ch đ ả o theo th ứ t ự ng ượ c l ạ i.
+Các bước mở rộng khóa Biến đổi mã hóa so với giải mã
+RotWord
+ả
+Mã hóa Gi i mã
+ộ ừ
+Xoay các byte trong m t t
+SubBytes InvSubBytes
+SubBytes
+ShiftRows InvShiftRows
+ụ ừ
+Áp d ng S-box cho t ng byte MixColumns InvMixColumns
+Rcon AddRoundKey AddRoundKey
+ớ
+XOR v i round constant Đầ u ra: RoundKey0 … RoundKeyN (trong đó N = 10, 12, ho ặ c 14)
+ShiftRow
+ướ ị ể ụ ể ị
+B c d ch chuy n c th trong l ch trình khóa
+--- PAGE 47 ---
+ả
+Quá trình mã hóa và gi i mã trong AES
+--- PAGE 48 ---
+Các thuật toán bất đối xứng
+--- PAGE 49 ---
+Thuật toán bất đối xứng: Tại sao chúng tồn tại
+ậ ọ ứ ượ ể ả ượ ể ủ ệ
+1. M t mã h c bâ ́ t đô ́ i x ng đ c phát minh đ gi i quyế t vâ ́ n đê ̀ phân phô ́ i khóa vố n là nh c đi m c a các h thố ng
+ứ ử ụ ặ ậ ể ờ ả
+đố i x ng. Bằ ng cách s d ng c p khóa công khai/bí m t, các bên có th giao tiế p an toàn mà không bao gi cầ n ph i
+ẻ ậ ướ
+chia s khóa bí m t tr c đó.
+ứ ứ
+́ ́ ́
+Tính năng Đôi x ng (Symmetric) Bât đôi x ng (Asymmetric)
+ộ ậ ặ ậ
+Khóa M t khóa bí m t dùng chung C p công khai + bí m t
+ộ ậ ậ ơ
+Tô ́ c đ Nhanh Ch m (ch m h n 100–1000 lầ n)
+ướ
+Kích th c khóa 128–256 bit Hàng nghìn bit
+Ứ ụ ữ ệ ổ ữ
+́
+ng d ng chính Mã hóa d li u khôi (bulk data) Trao đ i khóa, ch ký
+ự ệ ở ớ ơ ư ả ả ả
+Phân phô ́ i Khó th c hi n quy mô l n Dễ h n — nh ng ph i đ m b o khóa công
+ự
+khai xác th c
+--- PAGE 50 ---
+Tạo khóa RSA (Từng bước)
+Vi ệ c t ạ o m ộ t c ặ p khóa RSA bao gồ m vi ệ c ch ọ n các số nguyên tố và tính toán các giá tr ị liên quan. Mỗ i b ướ c đề u đ ượ c xây d ự ng d ự a trên b ướ c tr ướ c đó theo
+ộ ự ọ
+m t trình t toán h c chính xác.
+1 Chọn các số nguyên tố
+Ch ọ n hai số nguyên tố p và q l ớ n
+2 Tính n
+Tính n = p × q — đây là modulus
+3 Tính Φ (n)
+Φ
+Tính (n) = (p−1)(q−1) — hàm phi Euler
+4 Chọn e
+Ch ọ n e sao cho gcd(e, Φ (n)) = 1 — số mũ công khai
+5 Tính d
+Tìm d ≡ e ⁻ ¹ (mod Φ (n)) — số mũ bí m ậ t
+6 Cặp khóa
+ậ
+Khóa công khai: (n, e) | Khóa bí m t: (n, d)
+--- PAGE 51 ---
+Các công thức Mã hóa & Giải mã RSA
+ượ ạ ả ứ ọ
+Sau khi các khóa đ c t o, quá trình mã hóa và gi i mã RSA tuân theo các công th c toán h c thanh
+ị ớ ệ ả ả ượ
+́ ́ ́
+l ch. Đôi v i các thông đi p dài, văn b n gôc (plaintext) ph i đ c chia thành các khôi mi < n.
+Mã hóa Giải mã
+ể ổ ả ậ ả
+́ ́
+Chuy n đ i văn b n gôc thành sô m < n Nh n b n mã c
+c = m^e mod n m = c^d mod n
+ử ả ụ ả
+́
+G i b n mã c Khôi ph c văn b n gôc m
+ệ ọ ữ ả ả ệ ả ả ượ
+́ ̀
+Môi quan h toán h c gi a e và d đ m b o răng vi c gi i mã hoàn toàn đ o ng c quá trình mã hóa: m
+= (m^e)^d mod n.
+--- PAGE 52 ---
+Ví dụ minh họa RSA
+ộ ướ ử ụ ỏ ể ọ ừ ướ ừ ạ ả
+M t b c đi chi tiế t về RSA s d ng các số nguyên tố nh đ minh h a t ng b c — t t o khóa đế n mã hóa và gi i mã.
+Tạo khóa Mã hóa Giải mã
+p = 3, q = 11 (hai số nguyên tố ) Plaintext: m = 6 Ciphertext: c = 30
+n = p × q = 33 c = mᵉ mod n = 6⁷ mod 33 m = cᵈ mod n = 30³ mod 33
+φ
+(n) = (p−1)(q−1) = 20 = 279,936 mod 33 = 27,000 mod 33
+ớ ✓
+e = 7 (nguyên tố cùng nhau v i Ciphertext: c = 30 Plaintext: m = 6
+φ
+(n))
+d = 3 (vì d × 7 mod 20 = 1)
+Khóa công khai: (n=33, e=7)
+ậ
+Khóa bí m t: (n=33, d=3)
+--- PAGE 53 ---
+Các yêu cầu về an toàn khóa RSA
+ệ ự ọ ộ ẩ ể ủ ả ậ ủ ậ ướ
+Vi c l a ch n các tham số RSA m t cách bấ t c n có th phá h y hoàn toàn tính b o m t c a thu t toán. D i đây là các
+ộ ự ạ ả ể ữ ả ạ ộ
+ràng bu c th c tế b n ph i tuân theo đ gi cho RSA có kh năng chố ng l i các cu c tấ n công đã biế t.
+ự ọ ủ ả ể
+̀
+L a ch n tôi R i ro Cách gi m thi u
+≈ ệ ỏ ươ ử ủ ả ả ệ
+p q (chênh l ch quá nh ) Ph ng pháp phân tích nhân t c a Đ m b o p và q chênh l ch nhau vài
+ể ữ ộ
+Fermat có th nhanh chóng tìm ra p, q ch số về đ dài bit
+ặ ỏ ộ ử ặ ử ụ ớ ớ
+p ho c q nh Các cu c tấ n công th chia ho c S d ng các số nguyên tố rấ t l n v i
+ọ ộ ươ ươ
+sàng l c (sieve) thành công đ dài bit t ng đ ng
+ỏ ụ ộ ử ụ ệ
+e quá nh (ví d : e=3) Cu c tấ n công Coppersmith trên các S d ng đ m/tính ngâ ̃ u nhiên (OAEP)
+ệ ỏ ặ ớ ơ
+thông đi p nh ho c e l n h n
+ỏ ộ ủ ừ ả ả ủ ớ ớ
+d quá nh Cu c tấ n công c a Wiener suy ra d t Đ m b o d đ l n so v i n
+khóa công khai
+--- PAGE 54 ---
+Các hàm băm (Hash Functions)
+--- PAGE 55 ---
+Hàm băm: Thuộc tính + Mô hình Digest
+Hàm băm là m ộ t hàm toán h ọ c h v ớ i ít nhấ t 2 thu ộ c tính c ơ b ả n:
+Nén (Compression) Dễ dàng tính toán (Ease of Computation)
+h ánh x ạ m ộ t chuỗ i đầ u vào x v ớ i đ ộ dài bấ t kỳ sang m ộ t chuỗ i đầ u ra V ớ i hàm h và đầ u vào x, vi ệ c tính h(x) là đ ơ n gi ả n.
+h(x) v ớ i đ ộ dài cố đ ị nh n bit.
+Hình 3.26 minh h ọ a mô hình nén thông tin c ủ a m ộ t hàm băm, trong đó m ộ t Thông đi ệ p đầ u vào v ớ i đ ộ dài bấ t kỳ đi qua nhiề u vòng x ử lý c ủ a hàm băm đ ể t ạ o ra
+m ộ t đầ u ra có kích th ướ c cố đ ị nh g ọ i là Digest.
+Thông điệp đầu
+Vòng nén Digest
+vào
+ủ
+Mô hình Digest c a hàm băm
+--- PAGE 56 ---
+ủ
+Mô hình nén thông tin c a hàm băm
+--- PAGE 57 ---
+Phân loại hàm băm - Có khóa so với Không khóa
+ượ ạ ự ệ ử ụ ậ ự ệ ị
+Các hàm băm đ c chia thành hai lo i d a trên vi c có s d ng khóa bí m t hay không. S phân bi t này quyế t đ nh các
+ả ả ả ậ
+đ m b o b o m t mà chúng cung cấ p.
+ạ
+Khía c nh MDC (Không khóa) MAC (Có khóa)
+ứ ậ ậ
+Công th c h(x) — không có khóa bí m t h(x, K) — bao gồ m khóa bí m t
+ủ
+̀
+Tên đây đ Modification Detection Code Message Authentication Code
+ụ ợ ẹ ữ ệ ườ ợ ớ ẹ ự
+M c tiêu Hỗ tr toàn v n d li u (th ng kế t h p v i Toàn v n + Xác th c
+ữ
+ch ký)
+ạ ộ
+Các lo i con OWHF (m t chiề u) và CRHF (kháng va HMAC, CBC-MAC
+ạ
+ch m)
+ụ ử ụ ệ ữ ự
+Ví d s d ng Checksum t p, đầ u vào ch ký Xác th c API, TLS record
+--- PAGE 58 ---
+ạ ử ụ
+Phân lo i các hàm băm theo khóa s d ng
+--- PAGE 59 ---
+Phân loại hàm băm - MDC so với MAC
+ể ượ ụ ự ứ ủ
+Các hàm băm có th đ c chia thành 2 danh m c chính d a trên ch c năng c a chúng:
+MDC (Modification Detection Code) MAC (Message Authentication Code)
+ượ ử ụ ể ạ ộ ả ượ ạ ệ ượ ử ụ ể ả ả ẹ ủ
+MDC đ c s d ng đ t o ra m t b n tóm l c đ i di n MAC cũ ng đ c s d ng đ đ m b o tính toàn v n c a
+ệ ượ ợ ớ ậ ệ ậ ổ
+cho thông đi p và đ c kế t h p v i các kỹ thu t khác thông đi p mà không yêu cầ u bấ t kỳ kỹ thu t b sung nào.
+ẳ ạ ư ữ ể ả ả ẹ ủ ộ ậ ả ệ ộ
+(ch ng h n nh ch ký số ) đ đ m b o tính toàn v n c a MAC là m t hàm băm có khóa, nh n c thông đi p và m t
+ệ ộ ử ụ ậ
+thông đi p. MDC là m t hàm băm không s d ng khóa. khóa bí m t làm đầ u vào.
+ạ ụ
+Nó có hai lo i ph :
+ệ
+OWHF (One-Way Hash Functions): Vi c tính toán giá
+ị ư ệ ụ ệ ừ
+tr băm là dễ dàng, nh ng vi c khôi ph c thông đi p t
+ị ả ặ
+giá tr băm là không kh thi về m t tính toán.
+ệ
+CRHF (Collision Resistant Hash Functions): Vi c tìm
+ệ ạ ộ ị
+hai thông đi p khác nhau t o ra cùng m t giá tr băm
+ả ặ
+là không kh thi về m t tính toán.
+--- PAGE 60 ---
+Mô hình xử lý hàm băm
+ộ ử ộ ộ ặ ạ ể ạ ộ ị
+M t hàm băm x lý thông báo đầ u vào có đ dài tùy ý thông qua m t quá trình nén l p l i đ t o ra đầ u ra có đ dài cố đ nh. Đầ u
+ả ể ọ ả ạ ể ổ ị ạ ể ạ ị
+ra kế t qu có th tùy ch n tr i qua giai đo n chuy n đ i đ nh d ng đ t o ra giá tr băm cuố i cùng.
+Quy trình xử lý ba giai đoạn
+01 02 03
+Giai đoạn 1 — Tiền xử lý Giai đoạn 2 — Xử lý lặp lại Giai đoạn 3 — Chuyển đổi đầu ra
+ướ ượ ệ ượ ử ự ạ ượ ể ổ
+Thông báo đầ u vào x tr c tiên đ c đ m Mỗ i khố i xᵢ đ c x lý tuầ n t bằ ng cách Tr ng thái cuố i cùng Hₜ đ c chuy n đ i
+ổ ử ụ ậ ậ ọ ở ể ạ ị
+bằ ng cách thêm các bit b sung và mã s d ng hàm nén f. Hàm này c p nh t tùy ch n b i hàm g đ t o ra giá tr băm
+ộ ệ ạ ộ ộ ạ ướ ạ ể
+hóa đ dài thông báo. Thông báo đã đ m tr ng thái n i b t i mỗ i b c, t o ra các cuố i cùng h(x). Nế u không cầ n chuy n
+ượ ổ ượ ử ụ ự
+sau đó đ c chia thành các khố i kích đầ u ra trung gian H₁, H₂, …, Hₜ. Sau khi tấ t đ i, Hₜ đ c s d ng tr c tiế p làm đầ u ra.
+ướ ị ạ ộ ả ượ ử ạ ộ ộ
+th c cố đ nh, t o ra m t chuỗ i: x = x₁ x₂ c t khố i đ c x lý, tr ng thái n i b cuố i
+ượ
+… xₜ. t khố i này đóng vai trò là đầ u vào cho cùng Hₜ sẽ thu đ c.
+ạ ử ặ ạ
+giai đo n x lý l p l i.
+--- PAGE 61 ---
+Mô hình tổng quát xử lý dữ liệu của hàm băm
+Mô hình chi tiết xử lý dữ liệu của hàm băm
+--- PAGE 62 ---
+Các hàm băm mật mã phổ biến
+ượ ớ ệ ọ
+̀ ́ ̀
+Hâu hêt các hàm băm đ c gi i thi u trong phân này là các hàm băm không khóa. Các h hàm băm
+̀
+chính bao gôm:
+Họ MD (Message Họ SHA (Secure Hash Các cơ chế khác
+Digest) Algorithm)
+CRC (Cyclic Redundancy
+MD2 SHA-0 Check)
+MD4 SHA-1 Checksums
+ự
+MD5 SHA-2 Các hàm xác th c tính
+ẹ
+toàn v n liên quan
+MD6 SHA-3
+--- PAGE 63 ---
+Hàm băm MD5 — Giới thiệu
+MD5 (Message Digest 5) là m ộ t hàm băm m ậ t mã không khóa đ ượ c Ronald Rivest thiế t kế vào năm 1991 đ ể thay thế cho MD4. Nó t ạ o ra
+giá tr ị băm 128-bit (16-byte), th ườ ng đ ượ c bi ể u diễ n d ướ i d ạ ng 32 ký t ự th ậ p l ụ c phân.
+Ứng dụng Trạng thái bảo mật
+Xác minh tính toàn v ẹ n c ủ a thông đi ệ p MD5 không còn đ ượ c coi là an toàn do các đi ể m yế u m ậ t mã đã
+ể ẹ ủ ữ ệ biế t. M ộ t số cu ộ c tấ n công đã khai thác các đi ể m yế u này, bao
+Ki m tra Checksum và tính toàn v n c a d li u
+Băm m ậ t kh ẩ u trong các h ệ điề u hành và ứ ng d ụ ng gồ m cu ộ c tấ n công phầ n mề m đ ộ c h ạ i Flame vào năm 2012.
+ộ ị
+Thu c tính Giá tr
+ướ ự ậ ụ
+Kích th c Digest 128 bits (32 ký t th p l c phân)
+Kích th ướ c khố i 512 bits (16 × t ừ 32-bit)
+Số vòng 4 vòng × 16 phép toán = 64 t ổ ng c ộ ng
+Tr ạ ng thái ⚠ B ị b ẻ khóa — không khuyế n khích s ử d ụ ng cho m ụ c đích b ả o
+ậ
+m t
+--- PAGE 64 ---
+MD5 — Xử lý thông điệp
+MD5 x ử lý thông đi ệ p qua hai giai đo ạ n: tiề n x ử lý và x ử lý l ặ p.
+01 02
+Giai đoạn 1 — Tiền xử lý Giai đoạn 2 — Xử lý lặp
+Chia thông đi ệ p thành các khố i 512-bit. Kh ở i t ạ o tr ạ ng thái n ộ i b ộ 128-bit (A, B, C, D).
+Thêm bit đ ệ m nế u đ ộ dài không đ ủ b ộ i số 512. C ậ p nh ậ t tr ạ ng thái qua 4 vòng v ớ i 16 phép toán mỗ i vòng.
+S ử d ụ ng hàm phi tuyế n tính, c ộ ng modulo 2³² và xoay trái.
+Các hàm phi tuyến tính
+Vòng Hàm
+∧ ∨ ∧
+Vòng 1 F(B,C,D) = (B C) (¬B D)
+∧ ∨ ∧
+Vòng 2 G(B,C,D) = (B D) (C ¬D)
+⊕ ⊕
+Vòng 3 H(B,C,D) = B C D
+⊕ ∨
+Vòng 4 I(B,C,D) = C (B ¬D)
+--- PAGE 65 ---
+L ư u đồ x ử lý m ộ t thao tác c ủ a MD5
+--- PAGE 66 ---
+Hàm băm SHA-1 — Tổng quan
+SHA-1 (Secure Hash Algorithm 1) đ ượ c thiế t kế b ở i C ơ quan An ninh Quố c gia Hoa Kỳ (NSA) vào năm 1995 nh ư là phiên b ả n kế nhi ệ m c ủ a SHA-0.
+Nó t ạ o ra m ộ t giá tr ị băm 160-bit, th ườ ng đ ượ c bi ể u diễ n d ướ i d ạ ng 40 ký t ự th ậ p l ụ c phân.
+Ứng dụng Tình trạng bảo mật
+Ch ữ ký số và h ệ thố ng ch ứ ng ch ỉ SHA-1 không còn đ ượ c khuyế n ngh ị cho các ứ ng d ụ ng b ả o m ậ t do
+Toàn v ẹ n thông đi ệ p và xác th ự c nh ữ ng đi ể m yế u về m ậ t mã đã đ ượ c phát hi ệ n và các cu ộ c tấ n công va
+ứ ả ậ ạ ch ạ m th ự c tế đ ượ c các nhà nghiên c ứ u ch ứ ng minh.
+Các giao th c b o m t m ng (TLS, SSL, SSH)
+Xác minh tính toàn v ẹ n trong phân phố i phầ n mề m
+ộ ị
+Thu c tính Giá tr
+ướ ự
+Kích th c mã băm 160 bits (40 ký t hex)
+Kích th ướ c khố i 512 bits (16 × 32-bit words)
+ạ ộ ộ
+Tr ng thái n i b 5 × 32-bit words: A, B, C, D, E
+Số vòng 80 vòng mỗ i khố i
+Tình tr ạ ng ⚠ Đã ng ừ ng s ử d ụ ng — không khuyế n ngh ị s ử d ụ ng cho b ả o m ậ t
+--- PAGE 67 ---
+Xử lý thông điệp SHA-1
+SHA-1 x ử lý thông đi ệ p qua hai giai đo ạ n chính: tiề n x ử lý và x ử lý l ặ p.
+01 02
+Giai đoạn 1 — Tiền xử lý Giai đoạn 2 — Xử lý lặp
+Chia thông đi ệ p thành các khố i 512-bit. Chia tr ạ ng thái 160-bit thành năm t ừ 32-bit (A, B, C, D, E).
+Thêm bit đ ệ m đ ể đ ả m b ả o đ ộ dài đúng chu ẩ n. Th ự c hi ệ n 80 vòng x ử lý tuầ n t ự cho mỗ i khố i.
+Các hàm vòng
+Vòng Hàm F(B,C,D) Phép toán
+∧ ∨ ∧
+1–20 (B C) (¬B D) Choice
+⊕ ⊕
+21–40 B C D Parity
+∧ ∨ ∧ ∨ ∧
+41–60 (B C) (B D) (C D) Majority
+⊕ ⊕
+61–80 B C D Parity
+--- PAGE 68 ---
+
+--- PAGE 69 ---
+ư ộ ử ủ
+̀
+L u đô m t vòng x lý c a SHA-1
+--- PAGE 70 ---
+Chữ ký số
+--- PAGE 71 ---
+Ậ
+TIN C Y
+Chữ ký số: Các khái niệm cốt lõi
+ữ ữ ệ ọ ữ ệ ườ ử ả ả ẹ ỏ
+́ ́ ́ ́
+Ch ký sô là d li u liên kêt toán h c gi a thông đi p và ng i g i, đ m b o tính toàn v n và chông chôi b .
+ậ ữ
+Thu t ng Ý ngh̃ıa
+ữ ệ ứ ẹ ủ ệ
+̀ ́
+Digital Signature D li u ch ng minh nguôn gôc và tính toàn v n c a thông đi p.
+ậ ườ ử ụ ể ạ ữ
+Signature Generation Thu t toán ng i ký s d ng khóa cá nhân đ t o ch ký.
+ậ ườ ử ụ ể ể
+Signature Verification Thu t toán ng i xác minh s d ng khóa công khai đ ki m tra.
+ệ ợ ả ậ ạ ữ
+́ ́
+Signature Scheme H thông kêt h p c thu t toán t o và xác minh ch ký.
+--- PAGE 72 ---
+Quy trình Ký & Xác thực
+ườ ử ự ệ ườ ậ ự ệ ự ể
+́
+Quy trình ký liên quan đên hai bên — ng i g i th c hi n ký và ng i nh n th c hi n xác th c. Ki m tra quan
+ọ ệ
+́
+tr ng nhât là li u MD1 = MD2 hay không.
+Người gửi (Ký) Người nhận (Xác thực)
+1. Tính message digest bằ ng hash algorithm 1. Tách message và signature
+ừ ậ
+2. Ký vào digest bằ ng private key + signature 2. Tính MD1 t message đã nh n (cùng hàm băm)
+algorithm 3. Khôi ph ụ c MD2 bằ ng cách gi ả i mã signature v ớ i
+ủ ườ ử
+3. Gửi thông điệp đã ký (message + digital public key c a ng i g i
+signature) → ✅ ợ ệ ❌
+4. So sánh: MD1 = MD2? H p l / Không
+ợ ệ
+h p l
+--- PAGE 73 ---
+Quá trình tạo chữ ký số và kiểm tra chữ ký số
+--- PAGE 74 ---
+"RSA cho mã hóa" so với "RSA cho chữ ký"
+M ộ t nguồ n gây nhầ m lẫ n ph ổ biế n: RSA s ử d ụ ng cùng m ộ t công th ứ c toán h ọ c cho c ả mã hóa và ký số , nh ư ng vai trò c ủ a khóa b ị hoán
+đ ổ i. Vi ệ c hi ể u rõ khóa nào th ự c hi ệ n nhi ệ m v ụ gì là vô cùng thiế t yế u.
+ạ ữ
+Khía c nh Mã hóa RSA Ch ký RSA
+ủ ở ữ ườ ậ ở ữ ặ ườ ử ở ữ ặ
+Ch s h u khóa Ng i nh n s h u c p khóa Ng i g i s h u c p khóa
+ườ ử ử ụ ủ ườ ậ ể ậ ủ ườ ử ể
+Ng i g i s d ng Khóa công khai c a ng i nh n đ mã hóa Khóa bí m t c a ng i g i đ ký
+ườ ậ ử ụ ậ ủ ườ ậ ể ả ủ ườ ử ể
+Ng i nh n s d ng Khóa bí m t c a ng i nh n đ gi i mã Khóa công khai c a ng i g i đ xác minh
+M ụ c đích Tính b ả o m ậ t Tính xác th ự c + Chố ng chố i b ỏ
+ọ
+Thông tin quan tr ng:
+ạ ả ệ ệ
+Trong mã hóa, b n b o v thông đi p.
+Trong ký số , b ạ n b ả o v ệ danh tính c ủ a ng ườ i g ử i.
+ệ ử ụ ậ ị ả ượ
+Vi c s d ng khóa công khai/bí m t hoàn toàn b đ o ng c.
+--- PAGE 75 ---
+ALGORITHMS
+Digital Signature Algorithm (DSA)
+DSA (Digital Signature Algorithm) là m ộ t thu ậ t toán ch ữ ký số khóa công khai bắ t nguồ n t ừ Thu ậ t toán Ch ữ ký ElGamal.
+Đ ượ c chu ẩ n hóa b ở i Vi ệ n Tiêu chu ẩ n và Công ngh ệ Quố c gia (NIST), Hoa Kỳ, vào năm 1991 đ ể s ử d ụ ng trong các ứ ng d ụ ng chính ph ủ .
+Đ ượ c s ử d ụ ng đ ể cung cấ p xác th ự c, tính toàn v ẹ n và chố ng chố i b ỏ cho các thông đi ệ p kỹ thu ậ t số .
+Quy trình DSA bao gồ m ba giai đo ạ n chính: T ạ o khóa, Ký thông đi ệ p, Xác minh ch ữ ký.
+Key Generation
+01 02
+Chọn khóa bí mật Tính giá trị công khai
+Ch ọ n m ộ t khóa bí m ậ t ngẫ u nhiên x sao cho 0 < x < q Tính: y = gˣ mod p
+03
+Cặp khóa
+Khóa công khai: (p, q, g, y)
+ậ
+Khóa bí m t: x
+Các tham số công khai toàn c ụ c (p, q, g) đ ượ c chia s ẻ gi ữ a tấ t c ả ng ườ i dùng. Khóa bí m ậ t x ph ả i đ ượ c gi ữ bí m ậ t; khóa công khai y đ ượ c phân phố i công khai.
+--- PAGE 76 ---
+Ậ
+CÁC THU T TOÁN
+Quy trình ký và xác thực DSA
+Ký tin nhắn Xác thực chữ ký
+01 01
+Băm tin nhắn Kiểm tra phạm vi
+Tính giá trị băm H(m) sử dụng hàm băm H. T ừ chố i nế u r ho ặ c s không th ỏ a mãn 0 < r, s < q.
+02 02
+Tạo số ngẫu nhiên k Tính giá trị băm
+Chọn k ngẫ u nhiên sao cho 0 < k < q. Tính H(m).
+03 03
+Tính r Tính w
+r = (gᵏ mod p) mod q. Nế u r = 0, hãy chọn k mới. w = s⁻¹ mod q.
+04 04
+Tính s Tính u₁, u₂
+s = k⁻¹(H(m) + xr) mod q. Nế u s = 0, hãy chọn k mới. u₁ = H(m)·w mod q và u₂ = r·w mod q.
+--- PAGE 77 ---
+ALGORITHMS
+Quy trình Ký và Xác thực DSA
+Ký tin nhắn Xác thực chữ ký
+5. Chữ ký 5. Tính v
+Chữ ký sô ́ là cặp (r, s). v = ((g^u₁ · y^u₂) mod p) mod q.
+6. Xác thực
+ữ ợ ệ
+́
+Ch ký h p l nêu v = r.
+--- PAGE 78 ---
+Chứng chỉ số
+--- PAGE 79 ---
+Chứng chỉ số
+M ộ t ch ứ ng ch ỉ số (digital certificate) liên kế t m ộ t khóa công khai (public key) v ớ i m ộ t đ ị nh danh (identity) bằ ng cách s ử d ụ ng
+ch ữ ký số c ủ a m ộ t C ơ quan cấ p ch ứ ng ch ỉ (Certificate Authority - CA) tin c ậ y. Đây là nề n t ả ng c ủ a s ự tin c ậ y trên internet.
+Ch ứ ng ch ỉ số = Ch ứ ng ch ỉ khóa công khai = Ch ứ ng ch ỉ đ ị nh danh
+Chữ ký CA Khóa công khai (Public Key) Thông tin định danh
+C ơ quan cấ p ch ứ ng ch ỉ (CA) ký vào Khóa công khai c ủ a đố i t ượ ng đ ượ c Thông tin đ ị nh danh nh ư tên miề n, t ổ
+ứ ỉ ả ả ự ứ ỉ ể ườ ứ ị
+ch ng ch , b o đ m tính xác th c nhúng trong ch ng ch đ ng i khác ch c và v trí
+ủ ử ụ
+c a nó s d ng
+ụ ự ừ ộ ứ ỉ ượ ở ộ
+Ví d th c tế t giáo trình: m t ch ng ch đ c cấ p cho tên miề n www.vietcombank.com.vn b i m t CA, liên kế t khóa công khai
+ủ ớ ượ ủ
+c a ngân hàng v i danh tính đã đ c xác minh c a nó.
+--- PAGE 80 ---
+Giao diện kiểm tra thông tin một chứng chỉ số
+--- PAGE 81 ---
+Các trường trong chứng chỉ X.509 + Ứng dụng thực tế
+Chu ẩ n X.509 xác đ ị nh các tr ườ ng c ụ th ể mà m ọ i ch ứ ng ch ỉ ph ả i có. Hi ể u rõ các tr ườ ng này là điề u cầ n thiế t đ ể đánh giá và qu ả n lý
+ch ứ ng ch ỉ trong th ự c tế .
+Các tr ườ ng chính trong X.509 Ứ ng d ụ ng th ự c tế
+ườ HTTPS
+Tr ng Ý ngh̃ıa
+B ả o m ậ t thông qua mã hóa đố i x ứ ng + tính toàn v ẹ n/xác
+Serial Number Đ ị nh danh duy nhấ t trong CA ự
+th c thông qua MAC
+ủ ườ ở ữ ứ ỉ
+Subject (CN, OU, O, L, S, Danh tính c a ng i s h u ch ng ch
+Email an toàn
+C)
+ượ
+ứ ỉ S/MIME cho các email đ c mã hóa và ký
+Issuer CA đã ký ch ng ch
+ờ ạ ệ ự ủ ứ ỉ Truyề n t ả i t ệ p
+Valid-From / Valid-To Th i h n hi u l c c a ch ng ch
+ự ứ ỉ
+ủ ủ ể Xác th c ch ng ch cho SFTP/FTPS
+Public Key Khóa công khai c a ch th
+ạ ộ ượ Chố ng MITM
+Key-Usage Các ho t đ ng đ c phép (ký, mã hóa)
+ậ ể Gi ả m thi ể u tấ n công man-in-the-middle thông qua xác
+Signature Algorithm Thu t toán CA dùng đ ký
+ự
+th c danh tính
+ị ủ ứ ỉ
+Thumbprint Giá tr hash c a chính ch ng ch
+--- PAGE 82 ---
+Cơ sở hạ tầng khóa công khai (PKI)
+--- PAGE 83 ---
+Ậ
+TIN C Y
+Public Key Infrastructure (PKI)
+Public Key Infrastructure (PKI) là m ộ t khuôn kh ổ bao gồ m phầ n c ứ ng, phầ n mề m, nhân s ự , chính sách và quy trình đ ượ c s ử d ụ ng đ ể
+t ạ o, qu ả n lý, phân phố i, s ử d ụ ng, l ư u tr ữ và thu hồ i các ch ứ ng ch ỉ số .
+PKI cung cấ p nề n t ả ng cho vi ệ c truyề n tin an toàn, xác th ự c và ch ữ ký số trong các h ệ thố ng thông tin hi ệ n đ ạ i.
+Các thành phần chính của PKI
+Certificate Authority (CA) Registration Authority (RA) Validation Authority (VA)
+Cấ p và xác minh các ch ứ ng ch ỉ số . Tiế p nh ậ n và xác minh thông tin đ ị nh Xác nh ậ n tính h ợ p l ệ c ủ a các ch ứ ng ch ỉ
+ườ ặ ị ườ
+danh ng i dùng thay m t cho CA. và thông tin đ nh danh cho ng i dùng.
+Central Directory (CD) Certificate Management System Certificate Policy
+ư ữ ậ ỉ ụ ả ờ ủ ứ ỉ ị ẩ
+L u tr và l p ch m c các khóa công Qu n lý vòng đ i c a các ch ng ch . Xác đ nh các quy tắ c và tiêu chu n cho
+khai và ch ứ ng ch ỉ . vi ệ c cấ p phát và s ử d ụ ng ch ứ ng ch ỉ .
+--- PAGE 84 ---
+Ậ
+TIN C Y
+Luồng kiến trúc PKI
+Người
+→
+RA Cơ quan
+→
+dùng Cơ Chứng chỉ đã Thông điệp đã
+Chứng thực Xác thực VA
+quan Đăng ký được Cấp ký
+(CA)
+(RA)
+--- PAGE 85 ---
+Ậ
+TIN C Y
+Quy trình Cấp phát và Sử dụng Chứng chỉ Số
+Đăng ký & Cấp phát Chứng chỉ Sử dụng & Xác minh Chứng chỉ
+01 01
+Tạo cặp khóa Ký tài liệu
+Người dùng tạo một khóa công khai và một khóa bí mật. Ng ườ i dùng ký m ộ t giao d ị ch ho ặ c tài li ệ u bằ ng khóa bí m ậ t c ủ a h ọ .
+02 02
+Tạo yêu cầu chứng chỉ Gửi tới nhà cung cấp
+Người dùng tạo một yêu cầ u chứa khóa công khai và thông tin định danh (định Tài li ệ u đã ký và ch ứ ng ch ỉ số đ ượ c g ử i t ớ i nhà cung cấ p d ị ch v ụ .
+dạng X.509).
+03
+03
+Xác thực VA
+Gửi tới RA
+Nhà cung cấ p g ử i ch ứ ng ch ỉ t ớ i C ơ quan Xác th ự c (VA) đ ể ki ể m tra.
+Người dùng gửi yêu cầ u tới Cơ quan Đăng ký (RA).
+04
+04
+Xác minh chữ ký
+RA chuyển tiếp tới CA
+Nế u h ợ p l ệ , nhà cung cấ p sẽ xác minh ch ữ ký số bằ ng cách s ử d ụ ng khóa công
+RA xác minh yêu cầ u và chuyển tiế p nó tới Cơ quan Chứng thực (CA). khai t ừ ch ứ ng ch ỉ .
+--- PAGE 86 ---
+Ậ
+TIN C Y
+Quy trình Cấp và Sử dụng Chứng thư Số
+Đăng ký & Cấp Chứng thư Sử dụng & Xác minh Chứng thư
+5. CA Cấp Chứng thư 5. Chấp nhận Giao dịch
+ị ượ ậ
+CA xác minh danh tính và cấ p một chứng thư số được ký Nế u xác minh thành công, giao d ch sẽ đ c chấ p nh n và
+ử
+bằ ng khóa bí mật của CA. x lý.
+6. Thông báo cho VA
+Thông tin chứng thư được gửi đế n Cơ quan Xác thực
+(Validation Authority - VA).
+7. Cài đặt & Sử dụng
+Người dùng cài đặt chứng thư và bắ t đầ u sử dụng nó
+trong các ứng dụng.
+--- PAGE 87 ---
+Phân phối khóa
+--- PAGE 88 ---
+KHÓA
+Mối quan hệ tạo khóa
+ộ ệ ạ ạ ặ ẻ ữ ệ ậ ể
+́ ̀ ̀ ́ ̀ ́ ́
+M t môi quan h t o khóa tôn t i khi hai ho c nhiêu bên chia s d li u liên quan đên m t mã cân thiêt đ giao tiêp
+ữ ệ ẻ ỉ
+̀
+an toàn. D li u chia s này không ch bao gôm các khóa.
+ụ ẻ ạ ả ậ
+̀
+M c chia s T i sao cân Ph i bí m t không?
+✅ ệ
+́
+Secret keys Cho phép encryption/decryption Có — tuy t đôi
+❌ ư ả
+Public keys Cho phép verification và key exchange Không — nh ng ph i
+authentic
+ở ạ ụ ⚠ ộ ộ
+́
+Initialization values Kh i t o cipher modes (ví d : IVs) Tùy thu c vào chê đ
+ị ậ ❌
+́
+Non-secret parameters Xác đ nh câu hình thu t toán Không
+--- PAGE 89 ---
+Quản lý khóa: Rủi ro + Yêu cầu chính sách
+ả ạ ả ữ ậ ạ ở ị ể ủ
+Khi key management (qu n lý khóa) thấ t b i, ngay c nh ng thu t toán m nh nhấ t cũ ng tr nên vô giá tr . Hi u rõ các r i ro — và
+ể ả ể ớ ậ
+các chính sách đ gi m thi u chúng — là yế u tố thiế t yế u đố i v i an ninh v n hành.
+ủ ộ ể
+R i ro Tác đ ng Ki m soát
+ỉ ậ ỏ ệ ữ ệ ượ ể
+Rò r khóa bí m t Th a hi p hoàn toàn d li u đ c mã Hardware security modules, ki m soát
+ậ
+hóa truy c p
+Tính xác th ự c b ị th ỏ a hi ệ p Lỗ i xác th ự c danh tính — các cu ộ c tấ n Xác th ự c d ự a trên ch ứ ng ch ỉ , PKI
+công MITM thành công
+ử ụ ạ ặ ụ ử ụ ườ
+S d ng khóa trái phép Khóa hế t h n ho c sai m c đích làm suy Các chính sách s d ng, các tr ng key-
+ả ậ
+yế u b o m t usage, logs và báo cáo
+ả ị ậ ệ
+Chính sách ph i xác đ nh: các procedures (quy trình) kỹ thu t và hành chính, responsibilities (trách nhi m) rõ ràng, và các logs
+ậ ể ượ
+(nh t ký) cùng báo cáo ki m toán đ c yêu cầ u.
+--- PAGE 90 ---
+Phân loại khóa: Theo mục đích sử dụng + Theo vòng đời
+Không ph ả i tấ t c ả các lo ạ i khóa đề u có vai trò nh ư nhau. Vi ệ c phân lo ạ i khóa theo m ụ c đích s ử d ụ ng và vòng đ ờ i giúp các t ổ ch ứ c áp d ụ ng m ứ c đ ộ b ả o v ệ phù
+ợ ừ ạ
+h p cho t ng lo i.
+Theo mục đích sử dụng (Phân cấp) Theo vòng đời
+ạ ụ ụ
+ủ Lo i Ví d + M c đích
+Khóa ch (Master Key)
+Cấ p đ ộ cao nhấ t; đ ượ c b ả o v ệ về m ặ t v ậ t lý Khóa dài h ạ n Khóa ch ủ , KEK, khóa th ỏ a thu ậ n khóa —
+(HSM, két sắ t) tồ n t ạ i qua nhiề u phiên làm vi ệ c
+Khóa ngắ n h ạ n Khóa phiên (Session keys), khóa d ữ li ệ u
+— s ử d ụ ng m ộ t lầ n ho ặ c trong m ộ t
+Khóa mã hóa khóa (Key-Encrypting
+ả ờ ớ ạ ị ủ
+kho ng th i gian gi i h n, sau đó b h y
+Key)
+B ả o v ệ các khóa khác trong quá trình Khóa nằ m ở v ị trí càng cao trong phân cấ p thì m ứ c đ ộ b ả o v ệ càng ph ả i ch ặ t
+truyề n t ả i và l ư u tr ữ chẽ , vì nế u khóa này b ị xâm ph ạ m sẽ làm l ộ tấ t c ả các khóa bên d ướ i.
+ữ ệ
+Khóa d li u (Data Keys)
+ữ ệ ườ
+Mã hóa d li u ng i dùng;
+th ườ ng có vòng đ ờ i ngắ n và ch ỉ
+dùng m ộ t lầ n
+--- PAGE 91 ---
+Phân phối Khóa Bí mật ở Quy mô Lớn (Vấn đề n²)
+ệ ứ ẻ ặ ụ
+Các h thố ng đố i x ng yêu cầ u các khóa chia s cho mỗ i c p truyề n tin. Ví d
+Tổng số khóa cần thiết
+500k
+→
+n = 10 45 khóa
+400k
+→
+n = 100 4.950 khóa
+300k
+→
+n = 1.000 499.500 khóa
+200k
+100k T ổ ng số khóa: n(n−1)/2 ≈ n²
+0
+0 50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1k
+Số lượng thực thể (n)
+ưở
+Phân phố i tăng tr ng khóa
+--- PAGE 92 ---
+Các mô hình phân phối khóa bí mật
+Bố n cách tiế p c ậ n đ ể phân phố i khóa đố i x ứ ng m ộ t cách an toàn:
+ứ ạ ộ Ư ể ượ ể
+Mô hình Cách th c ho t đ ng u đi m Nh c đi m
+Point-to-point kênh tin c ậ y phù h ợ p v ớ i các h ệ thố ng có th ể tố n kém/ch ậ m
+ỏ
+nh /đóng
+KDC (Key Distribution máy ch ủ tin c ậ y t ạ o/cung cấ p khóa K s ử d ụ ng các khóa dài
+ạ
+Center) h n KAT, KBT
+ạ ủ ị ộ
+KTC (Key Translation các bên t o khóa K, máy ch dch mã nó m t cách an toàn
+Center)
+Phân phố i khóa bí m ậ t bằ ng B g ử i khóa công khai Kp
+khóa công khai A mã hóa khóa phiên Ks bằ ng Kp
+B gi ả i mã bằ ng khóa cá nhân Kr
+Luồ ng KDC (Key Distribution Center) Luồ ng KTC (Key Translation Center)
+A tạo K A → KTC: EncK(pub_KTC)
+A ↔ B: Sử dụng K KTC → B: EncK(pub_B)
+KDC → A KDC → B
+Yêu cầu khóa A ↔ B (K)
+(KAT) (KBT)
+--- PAGE 93 ---
+Phân phối Khóa Công khai (Đảm bảo tính xác thực của Khóa Công
+khai)
+ể ượ ẻ ư ả ả ả ự
+Các khóa công khai có th đ c chia s công khai nh ng ph i đ m b o tính xác th c
+ươ ứ
+Các ph ng th c:
+ậ
+kênh point-to-point tin c y
+public-key registry
+online trusted server (các ph ả n hồ i đ ượ c ký)
+ượ ử ụ ộ
+offline server + certificates (đ c s d ng r ng rãi)
+Ph ươ ng th ứ c Yêu cầ u tin c ậ y tr ự c tuyế n? Kh ả năng m ở r ộ ng Ví d ụ đi ể n hình
+Trusted point-to-point channel ❌ Không (d ự a trên s ự tin c ậ y Thấ p Trao đ ổ i th ủ công, ổ đ̃ıa USB b ả o
+ngoài băng tầ n tr ướ c đó) m ậ t
+✅
+Public-key registry Có (chính registry đó) Trung bình PGP/GPG key servers, LDAP
+directories
+Online trusted server (signed ✅ Có (server cung cấ p các tuyên Cao DNSSEC, các key servers chuyên
+responses) bố đã ký) d ụ ng
+✅ ể ạ ứ ỉ
+Offline server + certificates Có (đ tìm n p ch ng ch ban Cao PKI (X.509 certificates cho
+(widely used) đầ u & ki ể m tra thu hồ i) SSL/TLS)
+--- PAGE 94 ---
+KHÓA
+Phân phối khóa bí mật
+Trong m ậ t mã đố i x ứ ng, mỗ i c ặ p giao tiế p yêu cầ u m ộ t khóa bí m ậ t dùng chung duy nhấ t.
+Đố i v ớ i n ng ườ i dùng, số l ượ ng khóa cầ n thiế t có th ể lên t ớ i n(n−1)/2 ≈ n² — làm cho vi ệ c qu ả n lý và phân phố i b ả o m ậ t tr ở nên ngày
+ứ ạ
+càng ph c t p.
+Các kỹ thuật phân phối khóa
+Point-to-Point (Đi ể m-đế n-đi ể m) Key Distribution Center (KDC)
+Khóa đ ượ c trao đ ổ i tr ự c tiế p gi ữ a hai bên thông qua m ộ t kênh M ộ t máy ch ủ trung tâm tin c ậ y t ạ o và phân phố i các session
+ậ
+tin c y. key.
+ậ
+Key Translation Center (KTC) Public-Key Cryptography (M t mã khóa công khai)
+Ng ườ i g ử i t ạ o khóa; m ộ t trung tâm tin c ậ y th ự c hi ệ n mã hóa l ạ i S ử d ụ ng các khóa bấ t đố i x ứ ng đ ể trao đ ổ i các session key đố i
+ườ ậ ứ ộ ả ậ
+khóa đó cho ng i nh n. x ng m t cách b o m t.
+--- PAGE 95 ---
+KHÓA
+Phân phối khóa Point-to-Point
+Phân phố i khóa diễ n ra tr ự c tiế p gi ữ a hai th ự c th ể giao tiế p. Khóa đ ượ c truyề n đi thông qua m ộ t kênh truyề n thông tin c ậ y — không cầ n s ự tham gia c ủ a máy ch ủ trung gian.
+Ví dụ về kênh tin cậy Ưu điểm
+Dedicated Line
+Dễ dàng tri ể n khai
+Một đường truyề n thông tin bảo mật chuyên dụng giữa các bên.
+Secure Courier
+Phù h ợ p cho các h ệ thố ng nh ỏ ho ặ c khép kín
+Chuyển phát vật lý qua thư bảo đảm hoặc chuyển phát nhanh tin cậy.
+Physical Handoff
+Ho ạ t đ ộ ng tố t cho vi ệ c giao tiế p không th ườ ng xuyên
+Trao đổi khóa trực tiế p giữa các nhân sự được ủy quyề n.
+Nhược điểm
+Đ ộ trễ cao, đ ặ c bi ệ t là v ớ i chuy ể n phát v ậ t lý
+Các kênh b ả o m ậ t có th ể tố n kém đ ể duy trì
+ả ở ộ ạ ớ
+Không kh năng m r ng cho các m ng l n
+--- PAGE 96 ---
+KHÓA
+Phân phối khóa điểm-điểm - Ví dụ
+Ví dụ
+↔
+Trao đổi khóa AES-128: A B Vấn đề về khả năng mở rộng
+Giả sử người dùng A và B muố n trao đổi dữ liệu được mã hóa bằ ng AES-128. Trước khi giao tiế p, Ph ươ ng th ứ c đi ể m-đi ể m ho ạ t đ ộ ng tố t trong các h ệ thố ng nh ỏ , nh ư ng sẽ b ị phá
+cả hai bên phải chia sẻ cùng một khóa bí mật K, được phân phố i thông qua một kênh tin cậy. v ỡ khi m ở r ộ ng quy mô:
+10 100
+K = 6F2A9C3E7B14D8A1C5E67F2341ABCD90
+01
+Người dùng Người dùng
+Mã hóa (A)
+45 lầ n trao đ ổ i khóa 4.950 lầ n trao đ ổ i khóa
+A mã hóa thông điệp: C = AES_K("Chuyển 10.000 USD")
+1K
+02
+Truyền tải
+Người dùng
+A gửi bản mã C đế n B qua mạng.
+499.500 lầ n trao đ ổ i khóa
+03
+Công th ứ c: n(n−1)/2 lầ n trao đ ổ i khóa đ ượ c yêu cầ u. Đố i v ớ i m ộ t công
+Giải mã (B) ty có 100 nhân viên, mỗ i ng ườ i ph ả i tr ự c tiế p trao đ ổ i khóa v ớ i 99
+B giải mã: M = AES_K⁻¹(C) → "Chuyển 10.000 USD" ng ườ i khác — t ổ ng c ộ ng 4.950 lầ n trao đ ổ i riêng bi ệ t.
+--- PAGE 97 ---
+Các bước vận hành KDC và giao tiếp sau khi
+thiết lập Session Key
+ủ ừ
+Ý ngh̃ıa c a t ng Key
+Key Vai trò
+ữ
+KAT = ATATAT Long-term key gi a A và KDC
+ữ
+KBT = BTBTBT Long-term key gi a B và KDC
+ượ ử ụ ể ả ậ
+́
+K = KKKKKK Session key đ c s d ng đ giao tiêp b o m t
+ữ
+gi a A và B
+--- PAGE 98 ---
+CÁC KHÓA
+Các bước vận hành KDC và giao tiếp sau khi thiết lập khóa phiên
+Bước Thực thể Thao tác Giải thích Ví dụ với giá trị
+1 A → KDC Request(A,B) A yêu câ u KDC thiê t lập một phiên Request(A,B) → "A muô n phiên với B"
+bảo mật với B
+2 KDC Generate session key K KDC tạo khóa phiên cho A và B K → KKKKKK
+3 KDC → A E_KAT(K) KDC mã hóa khóa phiên sử dụng E_KAT(K) → E_ATATAT(KKKKKK) → ENC_A(KKKKKK)
+khóa dài hạn của A
+4 KDC → A E_KBT(K) KDC mã hóa khóa phiên sử dụng E_KBT(K) → E_BTBTBT(KKKKKK) → ENC_B(KKKKKK)
+khóa của B
+5 A D_KAT(E_KAT(K)) A giải mã bản mã để lâ y khóa D_KAT(E_KAT(K)) → D_ATATAT(ENC_A(KKKKKK)) →
+phiên KKKKKK
+6 A → B E_KBT(K) A chuyển tiê p bản mã dành cho B E_KBT(K) → ENC_B(KKKKKK)
+7 B D_KBT(E_KBT(K)) B giải mã bản mã để lâ y khóa D_KBT(E_KBT(K)) → D_BTBTBT(ENC_B(KKKKKK)) →
+phiên KKKKKK
+--- PAGE 99 ---
+KHÓA
+Các bước vận hành KDC và giao tiếp sau khi thiết lập
+khóa phiên
+Bước Thực Thao tác Giải thích Ví dụ với các giá trị
+thể
+8 A C = E_K(M) A mã hóa một thông điệp E_K(M) → E_KKKKKK("Hello B") →
+sử dụng khóa phiên ENC_K(DATA)
+9 A → B C A gửi dữ liệu đã mã hóa C → ENC_K(DATA)
+cho B
+10 B M = D_K(C) B giải mã văn bản mã hóa D_K(C) → D_KKKKKK(ENC_K(DATA)) →
+bằ ng khóa phiên "Hello B"
+11 B → A E_K(M₂) B phản hồ i sử dụng cùng E_K(M₂) → E_KKKKKK("Hello A") →
+khóa phiên đó ENC_K(REPLY)
+--- PAGE 100 ---
+KHÓA
+KDC trong thực tế — Hệ thống xác thực Kerberos
+Tri ể n khai th ự c tế ph ổ biế n nhấ t c ủ a mô hình KDC là Kerberos — đ ượ c s ử d ụ ng trong m ạ ng doanh nghi ệ p, Active Directory và các h ệ thố ng đ ạ i h ọ c trên toàn thế gi ớ i.
+Kiến trúc Kerberos Luồng đăng nhập Kerberos
+01 02
+Client → AS: Yêu cầ u đăng
+Máy chủ xác thực (AS) Máy chủ cấ p vé (TGS) nh ậ p kèm tên ng ườ i dùng.
+Đóng vai trò là thành phầ n KDC đầ u tiên. Đóng vai trò là thành phầ n KDC thứ hai.
+Xác minh danh tính người dùng và cấ p Cấ p vé dịch vụ bằ ng cách sử dụng TGT.
+→ ượ
+AS Client: TGT đ c mã hóa
+Ticket Granting Ticket (TGT).
+bằ ng khóa c ủ a client (t ạ o ra t ừ
+ậ ẩ
+m t kh u).
+03 04
+Client → TGS: TGT + yêu cầ u
+Client Máy chủ dịch vụ (SS) ị ụ
+dch v .
+Người dùng hoặc máy trạm yêu cầ u Tài nguyên đích (máy chủ tệp, cơ sở dữ
+quyề n truy cập vào một dịch vụ. liệu, ứng dụng). → ị ụ ượ
+TGS Client: Vé dch v đ c
+mã hóa bằ ng khóa c ủ a máy
+ủ ị ụ
+AS + TGS cùng nhau tạo thành KDC. Client không bao giờ gửi mật khẩu ch dch v .
+của mình qua mạng — chỉ các vé đã mã hóa mới được trao đổi. → ị ụ→
+Client SS: Vé dch v
+quyề n truy c ậ p đ ượ c cấ p.
+--- PAGE 101 ---
+CÁC CHÌA KHÓA
+KDC trong Thực tiễn — Hệ thống Xác thực
+Kerberos
+Tại sao Kerberos sử dụng KDC
+Không truyền mật khẩu Xác thực lẫn nhau Thời hạn của vé (Ticket)
+qua mạng
+ả ờ ạ ử
+C máy khách (client) và máy Các vé (tickets) có th i h n s
+ậ ẩ ờ ượ ủ ụ ớ ạ ả ủ
+̀
+M t kh u không bao gi đ c ch (server) đêu xác minh d ng gi i h n — giúp gi m r i
+ả ỉ ử ụ ủ ạ
+̀ ́
+truyên t i — ch s d ng các danh tính c a nhau. ro tân công phát l i (replay
+khóa băm (hashed keys). attack).
+--- PAGE 102 ---
+KHÓA
+Ưu điểm về khả năng mở rộng & Hạn chế của KDC
+Khả năng mở rộng: KDC so với Điểm-tới-Điểm Hạn chế của KDC
+Nế u không có KDC, mỗ i cặp người dùng cầ n một khóa chia sẻ duy nhấ t. Với KDC, mỗ i
+người dùng chỉ cầ n duy trì một khóa dài hạn với trung tâm tin cậy. Điểm lỗi duy nhất
+12,497,500 5,000 Nế u KDC b ị xâm ph ạ m ho ặ c ngo ạ i tuyế n, toàn b ộ h ệ thố ng sẽ g ặ p r ủ i ro. Tấ t c ả
+các khóa phiên đề u b ị l ộ nế u khóa ch ủ c ủ a KDC b ị đánh cắ p.
+5.000 người dùng 5.000 người dùng
+Không có KDC: số khóa cầ n thiế t Với KDC: số khóa cầ n thiế t Nút thắt hiệu năng
+Mỗ i lầ n kh ở i t ạ o phiên yêu cầ u m ộ t vòng g ử i nh ậ n t ớ i KDC. Trong các m ạ ng l ớ n,
+~2,500x điề u này có th ể gây ra vấ n đề về đ ộ trễ và l ư u l ượ ng.
+Giảm
+Sự phụ thuộc vào tính sẵn sàng
+số khóa cầ n quản lý
+KDC ph ả i luôn tr ự c tuyế n và có th ể truy c ậ p đ ượ c. Th ờ i gian chế t đồ ng ngh̃ıa v ớ i
+Công thức: Không có KDC → n(n−1)/2 khóa. Với KDC → n khóa. Đố i với vi ệ c không th ể thiế t l ậ p phiên m ớ i.
+5.000 máy trạm: 12.497.500 so với 5.000 — giảm hơn 2.499 lầ n.
+Yêu cầu về sự tin cậy
+Tấ t c ả ng ườ i dùng ph ả i hoàn toàn tin t ưở ng ng ườ i v ậ n hành KDC. M ộ t KDC đ ộ c
+h ạ i ho ặ c b ị xâm ph ạ m có th ể m ạ o danh bấ t kỳ ng ườ i dùng nào.
+--- PAGE 103 ---
+Các bước của giao thức KTC và giao tiếp bảo mật
+Bước Thực thể Thông điệp / Thao tác Giải thích Ví dụ với giá trị
+1 A Tạo khóa phiên K A tạo một khóa phiên sẽ được sử dụng K → KKKKKK
+để giao tiê p với B
+2 A → KTC E_KAT(K) A mã hóa khóa phiên bă ng khóa dài hạn E_KAT(K) → E_ATATAT(KKKKKK) →
+được chia sẻ với KTC ENC_A(KKKKKK)
+3 KTC D_KAT(E_KAT(K)) KTC giải mã văn bản mã hóa để lâ y D_KAT(E_KAT(K)) →
+khóa phiên do A tạo ra D_ATATAT(ENC_A(KKKKKK)) → KKKKKK
+4 KTC E_KBT(K) KTC mã hóa khóa phiên bă ng khóa dài E_KBT(K) → E_BTBTBT(KKKKKK) →
+hạn của B ENC_B(KKKKKK)
+5 KTC → A E_KBT(K) KTC gửi lại khóa phiên đã mã hóa cho A E_KBT(K) → ENC_B(KKKKKK)
+để A có thể chuyển tiê p nó cho B
+6 A → B E_KBT(K) A chuyển tiê p khóa phiên đã mã hóa E_KBT(K) → ENC_B(KKKKKK)
+cho B
+7 B D_KBT(E_KBT(K)) B giải mã văn bản mã hóa bă ng khóa D_KBT(E_KBT(K)) →
+chia sẻ với KTC để lâ y khóa phiên D_BTBTBT(ENC_B(KKKKKK)) → KKKKKK
+--- PAGE 104 ---
+Giao thức KTC và các bước giao tiếp bảo mật
+B ước Thực Thông điệp / Giải thích Ví dụ với giá trị
+thể Thao tác
+8 A C = E_K(M) A mã hóa một thông điệp E_K(M) → E_KKKKKK("Hello B")
+bằ ng khóa phiên
+9 A → B C A gửi dữ liệu đã mã hóa cho B C → ENC_K(DATA)
+10 B M = D_K(C) B giải mã văn bản mã hóa D_K(C) → D_KKKKKK(ENC_K(DATA))
+bằ ng khóa phiên → "Hello B"
+11 B → A E_K(M₂) B phản hồ i bằ ng cách sử E_K(M₂) → E_KKKKKK("Hello A")
+dụng cùng khóa phiên đó
+--- PAGE 105 ---
+Sự khác biệt giữa KDC và KTC
+Đặc điểm KDC KTC
+Tạo khóa phiên (Session key) Đ ược tạo bởi KDC Đ ược tạo bởi bên tham gia
+(A)
+Vai trò của trung tâm Tạo và phân phô  i khóa Chỉ chuyển đổi khóa
+Kiểm soát khóa Tập trung Phân tán
+Ví dụ sử dụng Kerberos Một sô  cổng bảo mật truyê  n
+tin
+--- PAGE 106 ---
+Phân phối khóa bí mật dựa trên khóa công khai
+Ý nghĩa của các khóa
+Ký hiệu Mô tả
+Kp Khóa công khai cÿa B (có thể được phân phô i công khai)
+Kr Khóa riêng cÿa B (phải được giữ bí mật)
+Ks Khóa phiên bí mật được sử dụng để mã hóa đô i xāng
+Cs Văn bản mã hóa chāa khóa bí mật đã được mã hóa
+Các ứng dụng thực tế
+Phương pháp này được sử dụng rộng rãi trong các giao thāc truyê n thông bảo mật hiện đại:
+Giao thāc Āng dụng
+TLS / SSL Truyê n thông web bảo mật (HTTPS)
+PGP Mã hóa email bảo mật
+SSH Đăng nhập từ xa bảo mật
+--- PAGE 107 ---
+Phân phối khóa bí mật dựa trên khóa công khai
+Bước Thực thể Thông điệp / Thao tác Giải thích Ví dụ với giá trị
+1 B Tạo cặp khóa (Kp, Kr) B tạo một cặp khóa công khai/riêng tư (Kp, Kr) → (PUB_B, PRIV_B)
+cho mã hóa bâ t đô i xứng
+2 B → A Gửi Kp B gửi khóa công khai của mình cho A. Kp → PUB_B
+Tính xác thực và toàn vẹn phải được đảm
+bảo (ví dụ: chứng chỉ)
+3 A Tạo khóa bí mật Ks A tạo một khóa phiên bí mật sẽ được sử Ks → SSSSSS
+dụng sau này cho mã hóa đô i xứng
+4 A Cs = E_Kp(Ks) A mã hóa khóa bí mật bă ng khóa công E_Kp(Ks) → E_PUB_B(SSSSSS)
+khai của B
+5 A → B Cs A gửi khóa bí mật đã mã hóa cho B Cs → ENC_B(SSSSSS)
+6 B Ks = D_Kr(Cs) B giải mã văn bản mã hóa bă ng khóa D_Kr(Cs) → D_PRIV_B(ENC_B(SSSSSS))
+riêng tư của mình để khôi phục khóa bí → SSSSSS
+mật
+7 A B E_Ks(data) Sau khi có được Ks, cả hai bên sử dụng E_Ks("Hello")
+↔
+khóa bí mật để truyê n tin an toàn
+--- PAGE 108 ---
+KHÓA
+Phân phối khóa công khai
+Ý tưởng chính Ví dụ thực tế
+ệ ủ
+Khóa công khai (Public key) có thể được chia sẻ công khai, nhưng tính xác thực SSL/TLS: Các trình duy t xác minh danh tính máy ch thông qua
+ứ ỉ
+của chúng phải được kiểm chứng. ch ng ch do CA ký qua HTTPS.
+Hai yêu cầ u: Tính toàn vẹn (khóa không được bị sửa đổi) và Gắ n kế t danh tính Web PKI: H ệ thố ng phân cấ p CA toàn cầ u làm nề n t ả ng cho s ự
+(khóa phải thuộc về đúng chủ sở hữu). tin c ậ y trên internet.
+PGP: Ng ườ i dùng trao đ ổ i khóa công khai tr ự c tiế p ho ặ c thông
+Các phương thức phân phối
+ủ ể ả ậ
+qua các máy ch khóa đ b o m t email.
+1. Kênh tin cậy điểm-điểm (Point-to-Point) — Trao đổi trực tiế p qua một kênh an
+Quy trình phân phối
+toàn. Phù hợp cho các hệ thố ng nhỏ hoặc khép kín.
+2. Đăng ký khóa công khai (Public-Key Registry) — Cơ sở dữ liệu tin cậy về danh
+tính người dùng và khóa công khai. 1 2
+3. Máy chủ tin cậy trực tuyế n (Online Trusted Server) — Máy chủ ký và phân phố i
+các khóa; khách hàng xác minh bằ ng cách sử dụng khóa công khai của máy
+Chủ sở hữu khóa Kênh tin cậy / CA
+chủ.
+4. Dựa trên chứng chỉ (Certificate-Based / CA) — Các khóa được phân phố i thông
+qua chứng chỉ số do CA ký. Được sử dụng trong TLS/HTTPS. 3 4
+Khóa công khai Người nhận đã xác minh
+--- PAGE 109 ---
+Ứ
+GIAO TH C
+SSL/TLS (Mục đích + Vị trí + Các giao thức con)
+ạ → ừ ạ ộ
+SSL do Netscape t o ra (1993); SSL 1.0/2.0/3.0 sau đó đã ng ng ho t đ ng
+ượ ẩ ả
+TLS đ c IETF chu n hóa (1999); các phiên b n 1.0/1.1/1.2/1.3 (2017)
+Ho ạ t đ ộ ng gi ữ a l ớ p ứ ng d ụ ng và truyề n t ả i; hỗ tr ợ nhiề u ứ ng d ụ ng (ví d ụ : HTTPS = HTTP + SSL/TLS)
+Yêu cầ u ít nhấ t m ộ t bên (th ườ ng là máy ch ủ ) ph ả i có ch ứ ng ch ỉ khóa công khai
+Các giao thức con:
+Lớp Truyền tải
+TCP/UDP cung cấp truyền tải
+đầu-cuối
+Handshake
+Lớp SSL/TLS
+Mã hóa giữa ứng
+tr
+d
+u
+ụ
+yề
+n
+n
+g
+t
+vảà
+i
+Lớp Ứng dụng
+Hứn T
+g
+T P
+d
+,ụ S
+n
+M
+g
+T
+kh
+P
+á
+,
+c
+FTP, DNS và các
+ChangeCipherSpe
+Record
+c
+ị ị ượ ữ ớ Ứ ụ ớ
+SSL/TLS đ nh v chiế n l c gi a l p ng d ng và l p Truyề n
+ả ị ụ ả ậ ứ
+t i, cung cấ p các d ch v b o m t cho nhiề u giao th c khác
+nhau. Alert
+ứ ợ ớ ể ậ ả
+Các giao th c con này phố i h p v i nhau đ thiế t l p, qu n lý
+ứ ả ậ
+và chấ m d t các kế t nố i b o m t.
+--- PAGE 110 ---
+ứ ủ
+Các giao th c con c a SSL/TLS
+--- PAGE 111 ---
+TLS Handshake (Các bước khởi tạo phiên)
+ậ ộ ữ ủ
+Quá trình bắ t tay thiê ́ t l p m t phiên an toàn gi a máy khách (client) và máy ch (server):
+ClientKeyExch
+ClientHello ServerHello Finished
+ange
+--- PAGE 112 ---
+Khởi tạo phiên làm việc trong SSL/TLS
+--- PAGE 113 ---
+Giao thức TLS Record (Truyền dữ liệu an toàn)
+Giao th ứ c TLS Record cung cấ p tính b ả o m ậ t cho kế t nố i v ớ i hai d ị ch v ụ c ơ b ả n: tính b ả o m ậ t và tính toàn v ẹ n c ủ a thông báo. Nó lấ y các thông đi ệ p t ừ các l ớ p cao h ơ n, phân
+m ả nh chúng thành các khố i có th ể qu ả n lý, nén và mã hóa chúng, đồ ng th ờ i thêm m ộ t MAC.
+ử
+Quy trình g i:
+Phân mảnh Nén Thêm MAC Mã hóa Thêm Header
+ử
+Quy trình g i:
+ậ ượ
+Bên nh n (quy trình ng c):
+ạ ỏ
+lo i b header
+ả
+gi i mã
+ự
+xác th c MAC
+ả
+gi i nén
+ợ
+tái h p
+--- PAGE 114 ---
+Ứ
+GIAO TH C
+SET (Secure Electronic Transaction)
+SET hỗ tr ợ thanh toán th ẻ tín d ụ ng an toàn; đ ượ c phát tri ể n b ở i Visa và MasterCard
+ả ả ả ậ ẹ ự ủ ẻ ự ườ
+Đ m b o: tính b o m t, tính toàn v n, xác th c ch th , xác th c ng i bán
+Các tác nhân: Ch ủ th ẻ , Ng ườ i bán, C ổ ng thanh toán, Đ ơ n v ị chấ p nh ậ n thanh toán, T ổ ch ứ c phát hành, CA
+Tấ t c ả các bên tham gia giao d ị ch đề u đăng ký v ớ i CA và nh ậ n ch ứ ng ch ỉ khóa công khai
+Các bước giao dịch:
+ệ ọ ặ
+1. Duy t & ch n m t hàng
+ử ơ
+2. G i thông tin đ n hàng + thông tin thanh toán
+3. Ng ườ i bán chuy ể n tiế p thông tin thanh toán đế n c ổ ng thanh toán/đ ơ n v ị chấ p nh ậ n thanh toán
+4. Đ ơ n v ị chấ p nh ậ n thanh toán yêu cầ u cấ p phép t ừ t ổ ch ứ c phát hành
+ổ ứ ậ
+5. T ch c phát hành xác nh n
+6. Ng ườ i bán hoàn tấ t đ ơ n hàng & xác nh ậ n v ớ i khách hàng
+7. Ghi l ạ i giao d ị ch; vi ệ c l ậ p hóa đ ơ n diễ n ra
+--- PAGE 115 ---
+Ậ
+ÔN T P
+Câu hỏi ôn tập
+ả ủ
+1. Mã hóa thông tin là gì? Mô t vai trò c a mã hóa.
+ả ủ ộ ệ ậ
+̀ ́
+2. Mô t các thành phân c a m t h thông m t mã.
+ả ươ
+́
+3. Mô t các ph ng pháp mã hóa dòng (stream cipher) và mã hóa khôi (block cipher).
+ệ ứ ụ ủ
+4. Li t kê các ng d ng c a mã hóa.
+ả ươ
+́
+5. Mô t ph ng pháp mã hóa thay thê (substitution encryption).
+ả ươ ị
+6. Mô t ph ng pháp mã hóa hoán v (permutation/transposition encryption).
+ả ươ
+7. Mô t ph ng pháp mã hóa XOR.
+ơ ạ ộ ả ặ ể ủ ậ ứ
+̀ ́
+8. Vẽ s đô ho t đ ng và mô t các đ c đi m c a m t mã khóa đôi x ng (symmetric-key cryptography).
+ơ ạ ộ ả ặ ể ủ ậ ứ
+̀ ́ ́
+9. Vẽ s đô ho t đ ng và mô t các đ c đi m c a m t mã khóa bât đôi x ng (asymmetric-key cryptography).
+ả ặ ể ướ ử ữ ệ ủ ậ
+10. Mô t các đ c đi m và các b c x lý d li u c a thu t toán mã hóa DES.
+--- PAGE 116 ---
+Câu hỏi ôn tập
+ả ặ ể ướ ử ữ ệ ủ ậ
+1. Mô t các đ c đi m và các b c x lý d li u c a thu t toán mã hóa AES.
+ả ặ ể ạ ả ủ ậ
+2. Mô t các đ c đi m, quy trình t o khóa, quá trình mã hóa và gi i mã c a thu t toán mã hóa RSA.
+ả ậ ạ
+3. Nêu các yêu cầ u b o m t cho quá trình t o khóa RSA.
+ả ặ ể ướ ử ữ ệ ủ ậ
+4. Mô t các đ c đi m và các b c x lý d li u c a thu t toán băm MD5.
+ả ặ ể ướ ử ữ ệ ủ ậ
+5. Mô t các đ c đi m và các b c x lý d li u c a thu t toán băm SHA-1.
+ữ ả ạ ự ữ ộ ệ
+6. Ch ký số (digital signature) là gì? Mô t quá trình t o và xác th c ch ký số cho m t thông đi p.
+ứ ỉ ị ọ ủ ộ ứ ỉ
+7. Ch ng ch khóa công khai (public key certificate) là gì? Xác đ nh ba thành phầ n quan tr ng nhấ t c a m t ch ng ch khóa công
+ả ứ ụ ủ ứ ỉ
+khai và mô t các ng d ng c a ch ng ch khóa công khai.
+ạ ả ủ ả ử ụ ứ ỉ
+8. H tầ ng khóa công khai (PKI) là gì? Mô t các thành phầ n c a PKI và gi i thích quy trình cấ p phát và s d ng ch ng ch trong
+PKI.
+ả ơ ạ ộ ủ ươ ự
+9. Mô t c chế ho t đ ng c a ph ng pháp phân phố i khóa d a trên KDC và KTC.
+ả ở ạ ộ
+10.Mô t quá trình kh i t o m t phiên trong SSL/TLS.
+ả ữ ệ ượ ử ở ứ ạ ử ậ
+11.Mô t cách d li u đ c x lý b i Giao th c SSL Record t i phía g i và phía nh n.
+ả ạ ộ ủ ả ả ỉ ự ả ả ỉ ả ậ
+12.Mô t ho t đ ng c a mô hình PGP đ m b o ch xác th c và mô hình PGP đ m b o ch tính b o m t.

@@ -1,0 +1,1213 @@
+Chương 2
+1. Cặp nào sau đây phù hợp nhất giữa nguồn đe dọa → phương thức điển hình?
+
+Thảm họa thiên nhiên → SQL injection qua trường tìm kiếm
+
+Lỗi phần cứng → password spraying (phun mật khẩu) trên các nhà cung cấp danh tính đám mây
+
+[✓] Kẻ tấn công bên ngoài → quét các dịch vụ bị phơi bày để tìm các điểm yếu có thể khai thác
+
+Người dùng hợp lệ → giả mạo gói tin IP để thực hiện tấn công DDoS phản xạ
+
+2. Một kẻ tấn công làm quá tải một dịch vụ khiến người dùng hợp lệ không thể truy cập được. Điều này gần nhất với:
+
+Sửa đổi (Modification)
+
+Tạo giả (Fabrication)
+
+[✓] Gián đoạn (Interruption)
+
+Đánh chặn (Interception)
+
+3. Quét cổng (Port scanning) được sử dụng trực tiếp nhất để xác định:
+
+Liệu các trang bộ nhớ hệ thống có được đánh dấu là không thể thực thi theo mặc định hay không
+
+[✓] Các dịch vụ mạng nào có thể tiếp cận được và có khả năng phơi bày trước những kẻ tấn công
+
+Liệu người dùng đã chọn mật khẩu mạnh có khả năng chống lại các cuộc tấn công từ điển hay chưa
+
+Liệu các trang web có xác thực chứng chỉ chính xác trong quá trình đàm phán TLS hay không
+
+4. Một kẻ tấn công âm thầm đánh cắp các thông tin xác thực không được mã hóa trên một mạng dùng chung. Điều này gần nhất với:
+
+[✓] Đánh chặn (Interception)
+
+Tạo giả (Fabrication)
+
+Gián đoạn (Interruption)
+
+Sửa đổi (Modification)
+
+5. Một keylogger được mô tả chính xác nhất là:
+
+Một công cụ để liệt kê các cổng mở và lấy dấu vân tay (fingerprinting) các phiên bản dịch vụ
+
+[✓] Một thiết bị hoặc chương trình ghi lại các thao tác gõ phím và lưu trữ hoặc tuồn chúng ra ngoài
+
+Một trình quét xác định các bản vá còn thiếu và đề xuất các bước khắc phục
+
+Một tiện ích giám sát lưu lượng phát sóng (broadcast) ICMP để phát hiện các cuộc tấn công khuếch đại
+
+6. Phát biểu nào so sánh keylogger phần cứng và phần mềm chính xác nhất?
+
+[✓] Keylogger phần cứng chặn đầu vào vật lý; keylogger phần mềm ghi lại bên trong hệ điều hành
+
+Keylogger phần cứng yêu cầu truy cập internet; keylogger phần mềm không thể tuồn dữ liệu ra ngoài
+
+Keylogger phần cứng ngăn chặn lừa đảo (phishing); keylogger phần mềm ngăn chặn các cuộc tấn công vét cạn (brute-force)
+
+Keylogger phần cứng chỉ hoạt động trên máy tính xách tay; keylogger phần mềm chỉ hoạt động trên máy tính để bàn
+
+7. Biện pháp phòng thủ nào giải quyết trực tiếp nhất rủi ro do keylogger tại điểm cuối (endpoint)?
+
+[✓] Bảo vệ điểm cuối kết hợp với đặc quyền tối thiểu (least privilege) để giảm bớt các cài đặt trái phép
+
+Tăng kích thước SYN backlog để giảm thiểu tác động của các cuộc tấn công tràn ngập kết nối (connection floods)
+
+Vô hiệu hóa xác thực chứng chỉ để tránh làm người dùng bối rối khi có cảnh báo TLS
+
+Mở thêm các cổng để các công cụ quản lý từ xa luôn có thể kết nối
+
+8. Mục tiêu chính của các cuộc tấn công mật khẩu là:
+
+[✓] Lấy được thông tin xác thực hợp lệ để truy cập hệ thống giống như một người dùng hợp lệ
+
+Chuyển hướng lưu lượng truy cập bằng cách đầu độc bộ nhớ cache DNS trên nhiều cấp độ trình phân giải (resolver tiers)
+
+Ghi đè dữ liệu kiểm soát bộ nhớ để quá trình thực thi nhảy đến đoạn mã do kẻ tấn công kiểm soát
+
+Làm bão hòa băng thông liên kết khiến người dùng gặp tình trạng ngừng dịch vụ và hết thời gian chờ
+
+9. Điều nào phân biệt tốt nhất giữa các cuộc tấn công thụ động (passive) và chủ động (active)?
+
+Tấn công thụ động luôn yêu cầu quyền quản trị viên; tấn công chủ động thì không bao giờ
+
+[✓] Tấn công thụ động quan sát mà không làm thay đổi trạng thái; tấn công chủ động thay đổi hoặc phá vỡ trạng thái
+
+Tấn công thụ động luôn có thể bị phát hiện; tấn công chủ động luôn vô hình
+
+Tấn công thụ động nhắm vào tính sẵn sàng; tấn công chủ động chỉ nhắm vào tính bảo mật
+
+10. Một cuộc tấn công từ điển (dictionary attack) được mô tả chính xác nhất là:
+
+[✓] Thử các mật khẩu từ các danh sách từ vựng phổ biến và các mẫu thường được sử dụng
+
+Kiểm tra triệt để tất cả các tổ hợp ký tự có thể có cho đến một độ dài cố định
+
+Bắt các gói tin và trích xuất mật khẩu từ các phiên bản TLS đã được mã hóa
+
+Tiêm các từ khóa SQL vào các biểu mẫu web để vượt qua các bước kiểm tra xác thực
+
+11. Một người phòng thủ muốn "chủ động quét, phân tích kết quả, sau đó đề xuất các bản sửa lỗi." Điều này phù hợp nhất với:
+
+Điều tra sự cố (Incident forensics) sau khi đã xác nhận có vi phạm
+
+[✓] Quản lý lỗ hổng phòng ngừa và lập kế hoạch khắc phục
+
+Đánh chặn ngầm lưu lượng trên phân đoạn mạng cục bộ
+
+Đánh cắp thông tin xác thực thông qua keylogging tại điểm cuối và tuồn nhật ký ra ngoài
+
+12. Phát biểu nào mô tả chính xác nhất về "CIA" trong an toàn thông tin?
+
+Một mô hình để xác định việc tuân thủ cấp phép phần mềm trong các doanh nghiệp
+
+[✓] Một tập hợp các thuộc tính mô tả tính bảo mật (confidentiality), tính toàn vẹn (integrity) và tính sẵn sàng (availability)
+
+Một phương pháp mã hóa lưu lượng giữa các điểm cuối và máy chủ web
+
+Một khuôn khổ để xếp hạng những kẻ tấn công dựa trên khả năng và động cơ
+
+13. Một đội ngũ bảo mật muốn quét một trang web và đặc biệt phát hiện các vấn đề như XSS, SQL Injection, CSRF và các vấn đề bảo mật phiên. Danh mục công cụ nào là phù hợp nhất?
+
+Trình quét cổng (Port scanner)
+
+Trình quét lỗ hổng hệ thống (System vulnerability scanner)
+
+[✓] Trình quét lỗ hổng ứng dụng web (Web application vulnerability scanner)
+
+Tiện ích phát hiện keylogger (Keylogger detection utility)
+
+14. Kịch bản nào phù hợp nhất với "gián điệp công nghiệp" như một mối đe dọa?
+
+Một người dùng quên mật khẩu và yêu cầu bộ phận hỗ trợ (helpdesk) trợ giúp đặt lại
+
+[✓] Một đối thủ cạnh tranh đánh cắp các thiết kế sản phẩm bằng cách lén lút tuồn các tài liệu mật ra ngoài
+
+Một máy chủ gặp thời gian chết (downtime) do lỗi phần sụn (firmware) và tự động khởi động lại
+
+Một quản trị viên hệ thống cài đặt các bản vá hàng tháng theo quy trình kiểm soát thay đổi tiêu chuẩn
+
+15. Một kẻ tấn công thay đổi số dư tài khoản trong cơ sở dữ liệu mà không được phép. Điều này gần nhất với:
+
+[✓] Sửa đổi (Modification)
+
+Gián đoạn (Interruption)
+
+Đánh chặn (Interception)
+
+Tạo giả (Fabrication)
+
+16. Một nhà phân tích mạng muốn bắt và kiểm tra các gói tin theo thời gian thực trên một máy Linux bằng cách sử dụng một trình bắt gói tin qua dòng lệnh. Công cụ nào phù hợp nhất với trường hợp sử dụng này?
+
+Trình quét lỗ hổng Nessus (Nessus Vulnerability Scanner)
+
+[✓] Tcpdump
+
+Trình quét lỗ hổng Web Acunetix (Acunetix Web Vulnerability Scanner)
+
+Trình phân tích bảo mật nền tảng Microsoft (Microsoft Baseline Security Analyzer - MBSA)
+
+17. Một lỗ hổng bảo mật (vulnerability) khác với một điểm yếu (weakness) chung chung vì nó:
+
+[✓] Có thể bị khai thác để gây tổn hại đến tính bảo mật, tính toàn vẹn hoặc tính sẵn sàng
+
+Chỉ tồn tại trong các hệ điều hành, không tồn tại trong các ứng dụng hoặc phần cứng
+
+Luôn do những kẻ nội gián độc hại gây ra chứ không phải do nhà phát triển hay quản trị viên
+
+Chỉ liên quan khi hệ thống có thể bị kẻ tấn công tiếp cận vật lý
+
+18. Tại sao "phần mềm độc hại" (malware) được liệt kê là một danh mục mối đe dọa trong chương này?
+
+Phần mềm độc hại chỉ là một khái niệm lý thuyết và không thể ảnh hưởng đến các hệ thống thực tế
+
+[✓] Phần mềm độc hại có thể chủ động gây hại cho các thuộc tính CIA một khi được thực thi hoặc cài đặt
+
+Phần mềm độc hại là một công cụ phòng thủ được sử dụng để xác định lỗ hổng trước những kẻ tấn công
+
+Phần mềm độc hại chủ yếu cải thiện tính sẵn sàng của hệ thống bằng cách khởi động lại các dịch vụ bị lỗi
+
+19. Đâu là điểm khác biệt rõ ràng nhất giữa trình quét hệ thống và trình quét web?
+
+[✓] Trình quét hệ thống tập trung vào cấu hình OS/dịch vụ; trình quét web tập trung vào các khiếm khuyết web
+
+Trình quét hệ thống yêu cầu quyền truy cập vật lý; trình quét web chỉ có thể chạy cục bộ
+
+Trình quét hệ thống chỉ phát hiện SQL injection; trình quét web chỉ phát hiện các bản vá còn thiếu
+
+Trình quét hệ thống là các công cụ thụ động; trình quét web luôn là các công cụ khai thác chủ động
+
+20. Một trình quét lỗ hổng hệ thống có mục đích chính là:
+
+Mã hóa lưu lượng truy cập để ngăn chặn nghe trộm trên các mạng không an toàn
+
+[✓] Xác định các điểm yếu, lỗ hổng và đề xuất các hành động khắc phục
+
+Bắt các gói tin và tái tạo các phiên để phân tích giao thức ngoại tuyến
+
+Ghi lại các thao tác gõ phím cục bộ và truyền chúng đến một máy chủ điều khiển
+
+21. Kịch bản nào minh họa rõ nhất lý do tại sao các trình bắt gói tin (sniffers) lại nguy hiểm?
+
+Các giao thức mã hóa che giấu dữ liệu, vì vậy trình bắt gói tin tự động vô hiệu hóa tính năng mã hóa
+
+[✓] Các thông tin xác thực dạng bản rõ (plaintext) có thể bị bắt và tái sử dụng nếu không áp dụng mã hóa
+
+Trình bắt gói tin có thể cài đặt trực tiếp rootkit mà không cần bất kỳ sự tương tác hay khai thác nào từ người dùng
+
+Trình bắt gói tin ghi đè các địa chỉ trả về và buộc thực thi mã thông qua ngăn xếp (stack)
+
+22. Phát biểu nào giải thích tốt nhất lý do kẻ tấn công sử dụng trình quét lỗ hổng?
+
+Trình quét tự động sửa chữa các vấn đề, nên kẻ tấn công dùng chúng để củng cố hệ thống nạn nhân
+
+[✓] Trình quét tiết lộ các điểm có khả năng là điểm yếu, hướng dẫn kẻ tấn công đến các con đường có tỷ lệ thành công cao
+
+Trình quét gỡ bỏ các khóa mã hóa, cho phép giải mã dữ liệu được bảo vệ đã lưu trữ
+
+Trình quét vô hiệu hóa việc ghi nhật ký, ngăn chặn người phòng thủ phát hiện bất kỳ sự xâm nhập nào
+
+23. Một kẻ tấn công chèn các hồ sơ giao dịch bị làm giả để đánh lừa người dùng. Điều này gần nhất với:
+
+Đánh chặn (Interception)
+
+[✓] Tạo giả (Fabrication)
+
+Gián đoạn (Interruption)
+
+Sửa đổi (Modification)
+
+24. Tấn công vét cạn (brute force) khác với tấn công từ điển chủ yếu vì vét cạn:
+
+Phụ thuộc vào các danh sách mật khẩu bị rò rỉ và loại trừ các tổ hợp được tạo ra
+
+[✓] Thử nghiệm các tổ hợp một cách có hệ thống bất kể "khả năng" nó có phải là một mật khẩu thực sự hay không
+
+Yêu cầu cài đặt phần mềm độc hại trên máy nạn nhân trước khi có thể thực hiện bất kỳ nỗ lực đăng nhập nào
+
+Chỉ hoạt động khi các máy chủ xác thực phơi bày công khai các nhật ký gỡ lỗi
+
+25. Ví dụ nào thể hiện rõ ràng nhất một lỗ hổng thay vì chỉ là một điểm yếu đơn thuần?
+
+Một hàm gỡ lỗi hiếm khi được sử dụng vẫn nằm trong mã nguồn nhưng không thể tiếp cận được từ bên ngoài
+
+Một chính sách mật khẩu cho phép mật khẩu ngắn, nhưng MFA (Xác thực đa yếu tố) là bắt buộc đối với tất cả các lần đăng nhập
+
+[✓] Một biểu mẫu web công khai nối chuỗi đầu vào của người dùng vào các truy vấn SQL mà không qua quá trình xác thực
+
+Một máy chủ thiếu tài liệu hướng dẫn, gây ra phản ứng chậm trễ khi xử lý sự cố trong thời gian ngừng hoạt động
+
+26. Một điểm yếu có thể vẫn ở trạng thái "không phải là lỗ hổng" nếu:
+
+Nó chỉ tồn tại trong phần cứng và không có trong bất kỳ thành phần phần mềm nào
+
+[✓] Kẻ tấn công trên thực tế không thể tiếp cận hoặc khai thác nó trong các điều kiện hiện tại
+
+Nó ảnh hưởng đến tính sẵn sàng nhưng không ảnh hưởng đến tính bảo mật hoặc tính toàn vẹn
+
+Điểm yếu được liệt kê trong một báo cáo nhưng không được gán điểm mức độ nghiêm trọng
+
+27. Cặp nào phù hợp nhất giữa loại trình quét với mục tiêu có khả năng xảy ra?
+
+Trình quét web → chính sách ký phần sụn BIOS và chuỗi cấu hình khởi động
+
+[✓] Trình quét hệ thống → các bản vá hệ điều hành bị thiếu và các cài đặt cấu hình máy chủ không an toàn
+
+Trình quét web → tinh chỉnh TCP backlog và các thông số kích hoạt SYN cookie
+
+Trình quét hệ thống → XSS phản xạ và thiếu mã thông báo (token) CSRF khi gửi biểu mẫu
+
+28. Biện pháp phòng thủ nào làm giảm trực tiếp nhất sự thành công của tấn công vét cạn (brute force) trực tuyến?
+
+Truy vấn tham số hóa và các thủ tục lưu trữ (stored procedures) cho truy cập cơ sở dữ liệu
+
+[✓] Giới hạn tốc độ, ngưỡng khóa tài khoản và phát hiện sự bất thường tại các điểm cuối đăng nhập
+
+Vô hiệu hóa mã hóa để cho phép kiểm tra sâu các gói tin đối với lưu lượng đăng nhập
+
+Cho phép nỗ lực đăng nhập không giới hạn để tránh các phiếu yêu cầu hỗ trợ do tài khoản bị khóa
+
+29. Cặp nào phù hợp nhất giữa loại trình quét với các ví dụ công cụ được đề cập?
+
+Trình quét lỗ hổng hệ thống → Acunetix; Trình quét lỗ hổng Web → MBSA
+
+[✓] Trình quét lỗ hổng hệ thống → Nessus/MBSA; Trình quét lỗ hổng Web → Acunetix/AppScan
+
+Trình quét lỗ hổng hệ thống → Nmap/Zenmap; Trình quét lỗ hổng Web → Nessus/MBSA
+
+Trình quét lỗ hổng hệ thống → SQLmap; Trình quét lỗ hổng Web → Angry IP Scanner
+
+30. Mối đe dọa nào bản chất không có tính ác ý nhưng vẫn có thể gây ra tác hại lớn?
+
+Một chiến dịch lừa đảo (phishing) mạo danh đội ngũ hỗ trợ khách hàng của ngân hàng
+
+[✓] Một trận lũ lụt làm hỏng thiết bị điện và mạng trong một trung tâm dữ liệu
+
+Một nhà điều hành botnet điều phối một chiến dịch tràn ngập HTTP phân tán
+
+Một con giun (worm) quét các địa chỉ IP ngẫu nhiên để khai thác một dịch vụ chưa được vá
+
+31. Đầu ra nào là điển hình nhất của một báo cáo quét lỗ hổng hệ thống?
+
+Các cổng mở cùng với các phỏng đoán về dịch vụ và mức độ tin cậy của việc nhận dạng hệ điều hành
+
+[✓] Danh sách lỗ hổng với xếp hạng mức độ nghiêm trọng và các khuyến nghị vá lỗi/củng cố
+
+Các bản chụp gói tin thô chứa các luồng TCP và các tải trọng của tầng ứng dụng
+
+Nhật ký thao tác gõ phím kèm dấu thời gian và tiêu đề cửa sổ đang hoạt động cho mỗi lần nhập liệu
+
+32. Tùy chọn nào mô tả chính xác nhất một "cuộc tấn công"?
+
+Một sự cố sập hệ thống ngẫu nhiên không có hành vi vi phạm chính sách hay ý định thù địch nào
+
+[✓] Một hoặc nhiều hành động vi phạm chính sách bảo mật và làm hỏng các thuộc tính CIA
+
+Bất kỳ thay đổi quản trị nào được thực hiện trên một máy chủ, ngay cả khi được ủy quyền và có ghi nhật ký
+
+Bất kỳ sự thay đổi nào trong các mẫu lưu lượng mạng, ngay cả trong thời gian nhu cầu cao điểm hợp lệ
+
+33. Nếu cổng 80 và 443 đang mở, suy luận hợp lý nhất là:
+
+Một trình phân giải DNS đang cung cấp dịch vụ đệ quy cho internet công cộng
+
+[✓] Một dịch vụ web có khả năng tiếp cận được qua HTTP/HTTPS trên máy chủ mục tiêu
+
+Một máy chủ thư đang chấp nhận các thông điệp SMTP cho việc chuyển phát tin nhắn đến
+
+Một hệ quản trị cơ sở dữ liệu có thể truy cập được và đang xử lý các truy vấn SQL từ xa
+
+34. Phát biểu nào phản ánh tốt nhất về các mối đe dọa so với các lỗ hổng?
+
+Việc loại bỏ các lỗ hổng là không thể, nhưng các mối đe dọa có thể bị loại trừ hoàn toàn
+
+[✓] Nói chung các mối đe dọa là không thể kiểm soát được; việc giảm thiểu các lỗ hổng sẽ làm giảm rủi ro
+
+Mối đe dọa chỉ tồn tại sau khi một cuộc tấn công đã diễn ra thành công
+
+Lỗ hổng chỉ tồn tại khi có các mối đe dọa trong môi trường
+
+35. Lựa chọn nào phù hợp nhất với ý nghĩa của "Cuộc tấn công = Mối đe dọa + Lỗ hổng"?
+
+Các cuộc tấn công chỉ xảy ra khi người dùng cài đặt phần mềm độc hại
+
+Các cuộc tấn công sẽ bị ngăn chặn nếu các mối đe dọa bị loại bỏ hoàn toàn khỏi môi trường
+
+[✓] Các cuộc tấn công trở nên khả thi khi một mối đe dọa có thể khai thác một lỗ hổng đang tồn tại
+
+Các cuộc tấn công xảy ra bất cứ khi nào có sự hiện diện của một lỗ hổng, bất kể có mối đe dọa hay không
+
+36. Trong thuật ngữ bảo mật, một điểm yếu của hệ thống được mô tả chính xác nhất là:
+
+Một điểm yếu luôn gây ra sự mất mát ngay lập tức về tính bảo mật
+
+[✓] Một khuyết điểm hoặc thiếu sót có thể tồn tại trong thiết kế, mã nguồn, cài đặt hoặc cấu hình
+
+Hành động của kẻ tấn công vi phạm một chính sách bảo mật và làm gián đoạn các dịch vụ
+
+Một mã khai thác đã được chứng minh đảm bảo sẽ thỏa hiệp một nền tảng cụ thể
+
+37. Tại sao các cuộc tấn công thụ động lại có thể nguy hiểm ngay cả khi không có thiệt hại ngay lập tức?
+
+Chúng trực tiếp vá các lỗ hổng, khiến các cuộc tấn công sau này dễ bị phát hiện hơn
+
+[✓] Chúng thu thập thông tin làm tăng xác suất thành công của các cuộc tấn công sau này
+
+Chúng gỡ bỏ phần mềm độc hại khỏi bộ nhớ, buộc kẻ tấn công phải thay đổi chiến thuật
+
+Chúng tự động mã hóa lưu lượng truy cập nên những người phòng thủ không thể kiểm tra các thông tin liên lạc
+
+38. Ví dụ nào minh họa tốt nhất cho kịch bản về một mối đe dọa nội gián (insider threat)?
+
+Một đối thủ cạnh tranh phát động cuộc tấn công DDoS bằng cách sử dụng khả năng của một botnet đi thuê
+
+[✓] Một nhà thầu sao chép các tệp nhạy cảm vào bộ nhớ lưu trữ cá nhân mà không được ủy quyền
+
+Một kẻ gửi thư rác gửi các email tiếp thị hàng loạt thông qua các trạm chuyển tiếp SMTP bị cấu hình sai
+
+Một hacker khai thác lỗ hổng SQL injection trong một biểu mẫu đăng nhập của một ứng dụng web công khai
+
+39. Một công cụ bắt gói tin (sniffer) được mô tả chính xác nhất là một công cụ để:
+
+Ghi đè các phản hồi DNS để chuyển hướng nạn nhân đến các tên miền do kẻ tấn công kiểm soát
+
+[✓] Bắt các gói tin trên một phân đoạn mạng phục vụ cho việc phân tích và kiểm tra lưu lượng
+
+Liệt kê các lỗ hổng và xuất ra hướng dẫn vá lỗi cho từng phát hiện
+
+Vét cạn (Brute force) quá trình xác thực bằng cách thử một số lượng lớn các mật khẩu
+
+40. Tùy chọn nào mô tả chính xác nhất về mức độ nghiêm trọng (severity) của các lỗ hổng?
+
+Thước đo về số lượng hệ thống trên thế giới chứa cùng một lỗi đó
+
+[✓] Thước đo kết hợp giữa khả năng bị khai thác và tác động tiềm tàng đối với các thuộc tính CIA
+
+Thước đo về khoảng thời gian một máy hệ thống đã chạy mà không cần khởi động lại
+
+Thước đo xem liệu lỗi đó tồn tại ở phần cứng thay vì phần mềm hay không
+Chào bạn, đây là bản dịch và trình bày lại toàn bộ các câu hỏi trắc nghiệm bạn vừa cung cấp. Mình đã định dạng sẵn để bạn dễ dàng sao chép vào Word, với các đáp án đúng được in đậm và đánh dấu [✓].
+
+1. Pharming được định nghĩa chính xác nhất là:
+
+Làm quá tải các dịch vụ bằng lưu lượng truy cập khiến người dùng hợp lệ không thể truy cập
+
+Cài đặt một rootkit để che giấu hoạt động của kẻ tấn công bằng cách thay đổi các cấu trúc nhân hệ điều hành (OS kernel)
+
+Thử các mật khẩu phổ biến lặp đi lặp lại cho đến khi đăng nhập thành công
+
+[✓] Chuyển hướng người dùng đến các trang web giả mạo ngay cả khi họ nhập đúng tên miền/URL
+
+2. Tấn công DDoS phản xạ (gián tiếp) có đặc điểm là:
+
+Chỉ sử dụng các máy chủ tấn công trực tiếp với địa chỉ IP nguồn thực và không có trung gian
+
+Sử dụng tràn bộ đệm để thực thi các tải trọng (payloads) làm vô hiệu hóa vĩnh viễn các bộ định tuyến
+
+[✓] Sử dụng các bộ phản xạ (reflectors) của bên thứ ba, chúng trả lời các yêu cầu bị giả mạo được nhắm vào nạn nhân
+
+Sử dụng keylogger để thu thập thông tin xác thực và khóa người dùng khỏi hệ thống
+
+3. Một APT (Mối đe dọa dai dẳng có chủ đích) được mô tả chính xác nhất bởi:
+
+[✓] Các hoạt động có mục tiêu, nhiều giai đoạn, lén lút với sự dai dẳng lâu dài
+
+Các cuộc tấn công ngắn, ồn ào nhằm tối đa hóa sự gián đoạn ngay lập tức rồi dừng lại
+
+Các loại sâu (worm) quét ngẫu nhiên lây lan rộng rãi mà không chọn mục tiêu cụ thể
+
+Các cuộc tấn công vét cạn thuần túy kết thúc sau một số lượng nhỏ các lần đăng nhập thất bại
+
+4. Một máy tính phòng lab bị nhiễm mã độc ngay cả trước khi hệ điều hành tải hoàn toàn. Sau khi khởi động lại, sự lây nhiễm xuất hiện lại ngay lập tức và ổ đĩa đôi khi không thể khởi động được. Loại virus nào phù hợp nhất với hành vi này?
+
+Virus tệp (File virus), vì nó chỉ kích hoạt khi các chương trình bị nhiễm được thực thi
+
+[✓] Virus khởi động (Boot virus), vì nó lây nhiễm vào khu vực khởi động (boot sector)/MBR và tải trong quá trình khởi động
+
+Virus macro, vì nó dựa vào các macro của tài liệu Office để chạy mã VBA
+
+Virus email, vì nó lây lan qua các tệp đính kèm đến các địa chỉ trong danh bạ
+
+5. Trình tự nào phù hợp nhất với vòng đời điển hình của một cuộc tấn công APT?
+
+[✓] Xâm nhập ban đầu → tạo chỗ đứng → di chuyển ngang → thu thập dữ liệu → tuồn dữ liệu (exfiltration) → duy trì sự hiện diện (persistence)
+
+Ping phát sóng → khuếch đại ICMP → quá tải dịch vụ → thông báo tống tiền → yêu cầu thanh toán
+
+Ping phát sóng → tạo chỗ đứng → di chuyển ngang → thu thập dữ liệu → tuồn dữ liệu → duy trì sự hiện diện
+
+Quét cổng → danh sách cổng mở → đóng tất cả các cổng → xác nhận an toàn → vô hiệu hóa ghi nhật ký
+
+6. Phần mềm gián điệp (Spyware) được mô tả chính xác nhất là:
+
+Phần mềm độc hại chỉ mã hóa các tệp và yêu cầu thanh toán để lấy khóa giải mã
+
+[✓] Phần mềm độc hại giám sát hoạt động và đánh cắp thông tin nhạy cảm một cách lén lút
+
+Phần mềm độc hại chỉ thao túng các bản ghi DNS tại các máy chủ có thẩm quyền
+
+Phần mềm độc hại chỉ cải thiện hiệu suất hệ thống bằng cách vô hiệu hóa nhật ký bảo mật
+
+7. Các cuộc tấn công nghe lén (Eavesdropping) thường được phân loại là:
+
+[✓] Tấn công thụ động tập trung vào việc đánh chặn mà không làm thay đổi trạng thái hệ thống
+
+Tấn công chủ động tập trung vào việc sửa đổi dữ liệu để làm hỏng các kiểm soát tính toàn vẹn
+
+Tấn công gián đoạn tập trung vào việc làm cạn kiệt tài nguyên cho đến khi các dịch vụ ngừng hoạt động
+
+Tấn công tạo giả tập trung vào việc chèn dữ liệu giả mạo vào các giao dịch kinh doanh
+
+8. Tại sao việc giảm thiểu DDoS thường là một vấn đề "nhiều bên" (multi-party)?
+
+[✓] Việc lọc hiệu quả có thể yêu cầu sự phối hợp với các ISP/CDN và các mạng ngược dòng (upstream networks)
+
+Có thể ngăn chặn DDoS chỉ bằng phần mềm diệt virus cục bộ mà không cần thay đổi mạng
+
+DDoS chỉ xảy ra bên trong một mạng LAN duy nhất và không bao giờ vượt qua các ranh giới quản trị
+
+DDoS dựa trên SQL injection và có thể được khắc phục hoàn toàn bằng các truy vấn tham số hóa
+
+9. Tài liệu khuyến nghị một quy tắc chống giả mạo: "Các gói tin đến từ bên ngoài vào mạng LAN mà có địa chỉ IP nguồn thuộc về mạng LAN nội bộ thì phải bị chặn." Chính sách tường lửa/bộ định tuyến nào phù hợp nhất với quy tắc này?
+
+Cho phép các gói tin đến nếu IP đích của chúng là nội bộ, bất kể IP nguồn
+
+[✓] Loại bỏ các gói tin đến trên giao diện WAN khi IP nguồn khớp với dải mạng con LAN (bộ lọc chống giả mạo chiều vào - ingress filter)
+
+Loại bỏ các gói tin đi ra trên giao diện LAN khi IP đích khớp với dải mạng con LAN (ngăn chặn nội bộ)
+
+Chỉ cho phép các gói tin đến nếu tải trọng chứa thông tin xác thực tầng ứng dụng và mã thông báo phiên hợp lệ
+
+10. Phát biểu nào phản ánh tốt nhất ý tưởng "thứ tự ưu tiên" trong phòng thủ phần mềm độc hại?
+
+Vô hiệu hóa tất cả việc giám sát trước, sau đó dựa vào phản ứng sự cố sau khi sự thỏa hiệp xảy ra
+
+Giữ phần mềm không được vá để ổn định, sau đó dựa vào các bản sao lưu để khôi phục các máy chủ bị xâm phạm
+
+Cho phép các đặc quyền quản trị viên cho việc sử dụng hàng ngày để đơn giản hóa cài đặt và giảm chi phí hỗ trợ
+
+[✓] Giảm phơi bày bên ngoài trước, sau đó thêm các kiểm soát điểm cuối, rồi tăng cường hành vi của người dùng
+
+11. Một công ty báo cáo rằng hầu hết các ca lây nhiễm bắt nguồn từ các tài liệu Word/Excel, và sự lây nhiễm lan truyền bằng cách làm nhiễm độc các mẫu Office mặc định (ví dụ: các tệp template), khiến các tài liệu mới mở tự động bị nhiễm. Loại virus nào phù hợp nhất với kịch bản này?
+
+Virus khởi động, vì nó lây nhiễm vào khu vực khởi động đĩa và chạy khi hệ thống khởi động
+
+Virus email, vì nó nhân bản bằng cách tự gửi email đến tất cả các địa chỉ trong danh bạ Outlook
+
+[✓] Virus macro, vì nó tận dụng việc thực thi macro của Office (VBA) và lây nhiễm các mẫu (template)
+
+Virus tệp, vì nó chỉ nhắm mục tiêu vào các tệp chương trình thực thi và không bao giờ nhắm vào tài liệu
+
+12. Một bản quét tìm thấy "các bản vá hệ điều hành bị thiếu" và "cấu hình dịch vụ yếu". Danh mục công cụ tốt nhất là:
+
+Trình quét lỗ hổng ứng dụng web (Web application vulnerability scanner)
+
+[✓] Trình quét lỗ hổng hệ thống (System vulnerability scanner)
+
+Trình bắt gói tin (Packet sniffer)
+
+Trình ghi thao tác gõ phím (Keystroke logger)
+
+13. Một đội ngũ bảo mật vô hiệu hóa tính năng tự động thực thi macro theo mặc định trên Microsoft Office (tương tự như hành vi mặc định sau Office 2010). Kiểm soát này trực tiếp nhất nhằm mục đích giảm thiểu mối đe dọa nào?
+
+Phần mềm độc hại lây lan bằng cách gửi các yêu cầu phản hồi ICMP đến các địa chỉ phát sóng
+
+[✓] Phần mềm độc hại phụ thuộc vào các macro tự động thực thi (ví dụ: AutoExecute/Automacro) để chạy mà không cần ý định của người dùng
+
+Phần mềm độc hại dựa vào việc ghi đè các địa chỉ trả về bằng cách sử dụng tràn bộ đệm ngăn xếp
+
+Phần mềm độc hại lây lan bằng cách quét các cổng mở như 80/443 và khai thác các máy chủ web
+
+14. Một Trojan horse (Ngựa chiến thành Troy) được mô tả chính xác nhất là:
+
+Một trình quét tự động liệt kê các cổng mở và các phiên bản dịch vụ
+
+Một luồng mạng tiêu tốn băng thông cho đến khi một dịch vụ không có sẵn
+
+Một cuộc tấn công DNS thay đổi quá trình phân giải tên để chuyển hướng người dùng đến các trang web giả mạo
+
+[✓] Phần mềm độc hại được ngụy trang thành phần mềm hợp pháp để lừa người dùng thực thi
+
+15. Phân loại nào phù hợp nhất với "yêu cầu máy chủ/chương trình lưu trữ (requires host)" so với "không yêu cầu máy chủ/chương trình lưu trữ (does not require host)"?
+
+[✓] Một số phần mềm độc hại bám vào các chương trình/tệp máy chủ; những phần mềm khác tự lan truyền một cách độc lập
+
+Một số phần mềm độc hại được mã hóa ở trạng thái nghỉ; những phần mềm khác chỉ được lưu trữ ở định dạng bản rõ
+
+Một số phần mềm độc hại chạy trên máy tính xách tay; những phần mềm khác chỉ chạy trên máy chủ và bộ định tuyến
+
+Một số phần mềm độc hại tấn công tính toàn vẹn; những phần mềm khác tấn công tính bảo mật nhưng không bao giờ tấn công tính sẵn sàng
+
+16. Một cửa hậu (backdoor) được mô tả chính xác nhất là:
+
+Một công cụ ghi lại thao tác gõ phím để nắm bắt đầu vào và gửi nhật ký đến một máy chủ từ xa
+
+Một công cụ bắt gói tin ghi lại lưu lượng truy cập mà không thay đổi hành vi của mạng
+
+[✓] Một cơ chế truy cập ẩn vượt qua các kiểm soát bảo mật và xác thực thông thường
+
+Một công cụ vét cạn thử tất cả các tổ hợp ký tự cho một mật khẩu
+
+17. Máy trạm của một người dùng cho thấy sự gia tăng đột biến các email gửi đi với các tệp đính kèm giống hệt nhau được gửi đến tất cả các liên hệ trong sổ địa chỉ của người dùng. Phần mềm độc hại kích hoạt khi người nhận mở email hoặc tệp đính kèm. Loại virus nào phù hợp nhất với mô hình lan truyền này?
+
+[✓] Virus email, vì nó tự động gửi các bản sao đến các liên hệ trong sổ địa chỉ và kích hoạt khi mở
+
+Virus khởi động, vì nó lây nhiễm MBR và được tải vào bộ nhớ mỗi khi khởi động lại
+
+Virus macro, vì nó chỉ có thể thực thi bên trong các tài liệu Office bằng cách sử dụng các macro VBA
+
+Virus tệp, vì nó chỉ lây lan khi các tệp thực thi cục bộ được sao chép giữa các thư mục
+
+18. Kết quả nào là hợp lý nhất nếu tấn công MITM (Người đứng giữa) có thể sửa đổi tin nhắn mà không bị phát hiện?
+
+Ngăn chặn DDoS được đảm bảo vì lưu lượng được định tuyến qua một rơle duy nhất
+
+Tự động loại bỏ rủi ro SQL injection do can thiệp kết nối
+
+[✓] Các lỗi tính toàn vẹn như các giao dịch bị thay đổi hoặc các lệnh bị chèn vào trong quá trình truyền tải
+
+Tỷ lệ lừa đảo (phishing) thành công thấp hơn vì kẻ tấn công đã kiểm soát đường dẫn mạng
+
+19. Đánh bom thư (Mail bombing) chủ yếu nhằm mục đích:
+
+[✓] Làm quá tải hộp thư hoặc máy chủ thư để làm giảm tính sẵn sàng của dịch vụ email
+
+Sửa đổi các phản hồi DNS để người dùng bị chuyển hướng một cách âm thầm đến các trang web giả mạo
+
+Thực thi các tải trọng bằng cách ghi đè các địa chỉ trả về trong một ngăn xếp bộ nhớ tiến trình
+
+Nắm bắt thao tác gõ phím bằng cách cài đặt phần mềm ghi lại đầu vào cục bộ của người dùng
+
+20. Biện pháp kiểm soát nào phù hợp nhất với việc giảm thiểu hiệu quả của DDoS phản xạ?
+
+[✓] Các bộ lọc chống giả mạo (chiều vào/chiều ra) + củng cố bộ phản xạ (reflector) ở những nơi có thể
+
+Vô hiệu hóa các bản vá để tránh gián đoạn dịch vụ trong các cửa sổ bảo trì
+
+Lưu trữ mật khẩu ở dạng bản rõ để nhanh chóng xác định các tài khoản bị xâm phạm
+
+Kích hoạt chuyển tiếp phát sóng có hướng để tăng khả năng tiếp cận mạng
+
+21. Phần mềm độc hại (Malware) được định nghĩa chính xác nhất là:
+
+[✓] Phần mềm được thiết kế cố ý để gây hại, phá vỡ, theo dõi hoặc giành quyền kiểm soát trái phép
+
+Bất kỳ lỗi phần mềm nào gây ra sự cố bất kể ý định hoặc sự khai thác
+
+Bất kỳ sự gia tăng đột biến lưu lượng truy cập nào làm giảm tạm thời tốc độ phản hồi của dịch vụ
+
+Bất kỳ công cụ quản trị nào được sử dụng để quét hệ thống tìm các bản vá bị thiếu và cấu hình sai
+
+22. Các cuộc tấn công kỹ nghệ xã hội (Social engineering) chủ yếu nhắm vào:
+
+[✓] Các yếu tố con người như sự tin tưởng, tính cấp bách, các dấu hiệu về thẩm quyền, sự tò mò và nỗi sợ hãi
+
+Trạng thái kết nối TCP để tạo các phiên mở một nửa và làm cạn kiệt hàng đợi (backlog)
+
+Trình phân tích cú pháp truy vấn SQL bằng cách chèn dấu chấm phẩy để thực thi các câu lệnh hàng loạt
+
+Siêu dữ liệu phân bổ bộ nhớ để ghi đè các con trỏ và chuyển hướng quá trình thực thi
+
+23. Một kịch bản pharming dựa trên DNS liên quan trực tiếp nhất đến việc:
+
+[✓] Thao túng việc phân giải tên miền để một tên miền hợp pháp phân giải thành một IP của kẻ tấn công
+
+Nắm bắt các gói tin trong quá trình truyền tải để khôi phục mật khẩu từ các phiên TLS được mã hóa
+
+Ghi đè các địa chỉ trả về để thực thi mã tải trọng từ bộ nhớ ngăn xếp
+
+Lấp đầy các hàng đợi TCP backlog để chặn các kết nối đến một máy chủ
+
+24. Tập hợp nào phù hợp nhất với các ví dụ về phần mềm độc hại phụ thuộc vào máy chủ/chương trình lưu trữ (host-dependent malware)?
+
+Sâu (Worm), bot/zombie, bộ phản xạ DDoS (DDoS reflectors), và trình quét cổng (port scanners)
+
+[✓] Trojan, virus, cửa hậu (backdoor), rootkit, phần mềm gián điệp (spyware), phần mềm quảng cáo (adware), bom logic (logic bomb)
+
+Các công cụ SYN flood, bộ khuếch đại Smurf, và trình bắt gói tin (sniffers) trên các mạng dùng chung
+
+Trình phân giải DNS, tổ chức chứng thực (certificate authorities), và hệ thống phát hiện xâm nhập
+
+25. Một tổ chức thường xuyên bị tấn công bởi các làn sóng thư rác và thỉnh thoảng bị đánh bom email. Họ muốn có một kiểm soát giúp xác thực tên miền gửi để giảm bớt các địa chỉ "From" bị giả mạo, đồng thời cũng muốn lọc ở cả phía máy chủ và phía máy khách như mô tả. Lựa chọn nào phù hợp nhất với phương pháp được khuyến nghị?
+
+[✓] Kích hoạt SPF/DKIM/S/MIME trên máy chủ SMTP để xác thực người gửi/máy chủ, đồng thời triển khai tính năng lọc thư rác tập trung phía máy chủ cộng với các bộ lọc thư rác phía điểm cuối/máy khách
+
+Vô hiệu hóa hoàn toàn xác thực SMTP để ngăn kẻ tấn công tìm hiểu danh tính người gửi hợp lệ, và chỉ dựa vào các bộ lọc phía máy khách để giảm tải cho máy chủ
+
+Tăng hạn mức lưu trữ hộp thư và loại bỏ các giới hạn tỷ lệ để đánh bom email không thể lấp đầy hàng đợi thư, và sử dụng trình bắt gói tin để xác định các mẫu tải trọng thư rác
+
+Chặn cổng 80/443 trên máy chủ email để giảm lưu lượng thư rác dựa trên web, và sử dụng các trình quét SQL injection để phát hiện nội dung email độc hại
+
+26. Trò lừa đảo Nigeria 4-1-9 được tóm tắt chính xác nhất là:
+
+Khuếch đại phát sóng ICMP nơi nhiều máy chủ trả lời các yêu cầu giả mạo
+
+[✓] Hứa hẹn những phần thưởng lớn, sau đó yêu cầu phí trả trước, dẫn đến tổn thất cho nạn nhân
+
+SQL injection xóa các bảng bằng cách nối thêm các câu lệnh truy vấn mang tính phá hoại
+
+Đầu độc bộ nhớ cache DNS (DNS cache poisoning) chuyển hướng các tên miền chính xác đến các địa chỉ IP độc hại
+
+27. Một mục đích phổ biến của việc giả mạo IP (IP spoofing) trong các cuộc tấn công là để:
+
+[✓] Hỗ trợ sự phản xạ/khuếch đại (reflection/amplification) hoặc vượt qua các quy tắc tin cậy ngây thơ dựa trên IP nguồn
+
+Đảm bảo cơ sở dữ liệu luôn ghi nhật ký tất cả các truy vấn phục vụ cho việc phân tích pháp y sau này
+
+Tăng số lượng các cuộc bắt tay TLS an toàn mỗi giây trên các máy chủ bận rộn
+
+Cải thiện tốc độ băm mật khẩu cho các dịch vụ xác thực dưới tải trọng lớn
+
+28. Biện pháp phòng thủ nào phù hợp nhất với việc ngăn chặn MITM trong các giao tiếp an toàn?
+
+[✓] Sử dụng TLS đúng cách với các chứng chỉ đáng tin cậy và các cơ chế bảo vệ tính toàn vẹn
+
+Vô hiệu hóa mã hóa để các thiết bị trung gian có thể đọc và ghi lại lưu lượng
+
+Mở các chương trình phát sóng có hướng để nhiều máy chủ có thể phản hồi các yêu cầu ICMP
+
+Tăng cường các quy tắc về độ phức tạp của mật khẩu mà không thay đổi bất kỳ biện pháp bảo vệ mạng nào
+
+29. Một rootkit được mô tả chính xác nhất là:
+
+[✓] Một bộ công cụ cho phép kiểm soát đặc quyền trong khi che giấu sự hiện diện của nó trong hệ thống
+
+Một chương trình hỗ trợ quảng cáo chỉ hiển thị các cửa sổ bật lên (pop-ups) với sự đồng ý của người dùng
+
+Một loại sâu chỉ lây lan qua danh bạ email và các tệp đính kèm
+
+Một kỹ thuật DoS lạm dụng trạng thái TCP backlog bằng các kết nối mở một nửa
+
+30. Biện pháp kiểm soát nào làm giảm trực tiếp nhất việc giả mạo (spoofing) từ góc độ biên mạng (network edge)?
+
+[✓] Các chính sách lọc chiều vào/chiều ra (Ingress/egress) nhằm chặn các gói tin không hợp lệ hoặc các gói tin có nguồn nội bộ từ bên ngoài
+
+Vô hiệu hóa TLS để những người phòng thủ có thể kiểm tra và ghi lại các tải trọng gói tin
+
+Tăng số lượng cổng mở để cho phép nhiều công cụ giám sát kết nối từ xa hơn
+
+Kích hoạt định tuyến phát sóng để các mạng có thể phản hồi lưu lượng chẩn đoán
+
+31. Một nhà phân tích quan sát thấy rằng một tệp thực thi bị nhiễm dường như vẫn hoạt động bình thường, nhưng phần mềm độc hại luôn chạy trước logic của chương trình hợp pháp, và các tệp thực thi mới sau đó cũng bị nhiễm. Cơ chế nào giải thích tốt nhất điều này?
+
+[✓] Virus gắn thêm mã vào chương trình máy chủ và sửa đổi luồng thực thi để virus chạy trước
+
+Virus dựa vào khuếch đại phát sóng ICMP để lây lan sang các phân đoạn mạng lân cận
+
+Virus yêu cầu SQL injection vào một biểu mẫu web để sao chép chính nó vào các tệp nhị phân hệ thống
+
+Virus khai thác trạng thái bắt tay TCP để duy trì các kết nối mở một nửa và làm cạn kiệt tài nguyên
+
+32. "Phòng thủ chiều sâu" (Defense in depth) để ngăn ngừa phần mềm độc hại bao gồm những yếu tố nào hợp lý nhất?
+
+[✓] Tường lửa + bảo vệ điểm cuối + vá lỗi + đặc quyền tối thiểu + nhận thức của người dùng
+
+Chỉ quét dựa trên chữ ký, vì nó ngăn chặn một cách đáng tin cậy tất cả các biến thể phần mềm độc hại mới
+
+Chỉ mã hóa, vì các tệp được mã hóa không thể bị phần mềm độc hại xóa hoặc thay đổi
+
+Chỉ quét cổng, vì các cổng đóng ngăn chặn mọi đường dẫn thực thi của phần mềm độc hại
+
+33. Một báo cáo tìm thấy "XSS phản xạ" (reflected XSS) và "thiếu mã thông báo CSRF". Danh mục công cụ tốt nhất là:
+
+[✓] Trình quét lỗ hổng ứng dụng web (Web application vulnerability scanner)
+
+Trình quét lỗ hổng hệ thống (System vulnerability scanner)
+
+Trình quét cổng (Port scanner)
+
+Tiện ích bẻ khóa mật khẩu (Password cracking utility)
+
+34. Đâu là biện pháp phòng thủ trực tiếp nhất chống lại việc nghe lén trên các mạng không đáng tin cậy?
+
+[✓] Mã hóa lưu lượng truy cập bằng xác thực (ví dụ: TLS) để bảo vệ tính bảo mật và tính toàn vẹn
+
+Tăng kích thước hàng đợi (backlog) để các kết nối TCP có thể duy trì trạng thái mở một nửa lâu hơn
+
+Lưu trữ thông tin xác thực ở dạng bản rõ để có thể kiểm toán chúng mà không cần giải mã
+
+Vô hiệu hóa xác thực chứng chỉ để giảm sự ma sát (khó chịu) của người dùng trong quá trình truy cập từ xa
+
+35. Trong kịch bản: kẻ tấn công là 192.168.0.25, nạn nhân là 100.0.0.75, và kẻ tấn công giả mạo IP nguồn thành 100.0.0.80 (cùng mạng LAN với nạn nhân). Giả định bảo mật nào đang bị kẻ tấn công trực tiếp lạm dụng nhất?
+
+Tường lửa mạng LAN luôn chặn lưu lượng truy cập từ nội bộ sang nội bộ theo mặc định trừ khi được cho phép rõ ràng
+
+[✓] Các hệ thống thường áp dụng các quy tắc tin cậy yếu hơn cho lưu lượng truy cập dường như bắt nguồn từ mạng con LAN cục bộ
+
+TCP tự động xác minh tính xác thực của IP nguồn trong quá trình bắt tay ba bước (three-way handshake)
+
+Các máy chủ DNS từ chối phân giải tên máy chủ cho các dải IP riêng, ngăn chặn việc giả mạo cục bộ
+
+36. Phát biểu nào phản ánh tốt nhất "các danh mục phần mềm độc hại có thể trùng lặp"?
+
+[✓] Phần mềm độc hại hiện đại có thể kết hợp nhiều hành vi (ví dụ: lây lan giống như sâu + phần mềm gián điệp)
+
+Các loại phần mềm độc hại loại trừ lẫn nhau và không thể chia sẻ bất kỳ đặc điểm nào
+
+Phần mềm độc hại luôn yêu cầu cài đặt của người dùng và không bao giờ lây lan tự động
+
+Phần mềm độc hại chỉ tấn công tính sẵn sàng và không ảnh hưởng đến tính bảo mật hoặc tính toàn vẹn
+
+37. Điều kiện nào tạo điều kiện mạnh mẽ nhất cho sự thành công của tấn công MITM trong thực tế?
+
+Xác thực TLS hai chiều (mutual TLS) mạnh mẽ và ghim chứng chỉ nghiêm ngặt ở mọi nơi
+
+[✓] Xác minh danh tính yếu, xác minh chứng chỉ kém hoặc thiếu các kiểm tra tính toàn vẹn
+
+Các truy vấn cơ sở dữ liệu được tham số hóa nhằm tách biệt mã khỏi dữ liệu do người dùng cung cấp
+
+Giới hạn tốc độ mạnh mẽ và khóa (lockout) trên các điểm cuối xác thực
+
+38. Một cuộc tấn công MITM được mô tả chính xác nhất là một cuộc tấn công trong đó kẻ tấn công:
+
+Làm quá tải băng thông với khối lượng truy cập lớn khiến các dịch vụ không khả dụng
+
+Làm lây nhiễm các tệp thực thi để phần mềm độc hại chỉ chạy khi chương trình máy chủ thực thi
+
+Ghi lại các thao tác gõ phím cục bộ và lưu trữ chúng để lấy lại sau này
+
+[✓] Đánh chặn và chuyển tiếp các tin nhắn giữa hai bên trong khi mạo danh từng bên
+
+39. Một bom logic (logic bomb) được mô tả chính xác nhất là:
+
+[✓] Mã độc hại được nhúng trong phần mềm hợp pháp, được kích hoạt bởi thời gian hoặc các điều kiện
+
+Một chương trình mạng tự lây lan quét các IP ngẫu nhiên tìm các dịch vụ dễ bị tấn công
+
+Một công cụ nắm bắt các gói tin và tái tạo các phiên để khôi phục thông tin xác thực
+
+Một khuôn khổ liệt kê các bản vá hệ điều hành bị thiếu và đề xuất các bước khắc phục
+
+40. Tập hợp nào phù hợp nhất với phần mềm độc hại có thể lây lan mà không cần chương trình máy chủ (host program)?
+
+Virus macro và virus khởi động
+
+Bom logic và Trojan
+
+[✓] Sâu (Worm) và bot/zombie
+
+Phần mềm quảng cáo (Adware) và phần mềm gián điệp (Spyware)
+
+
+
+
+Chương 3
+1. Sự khác biệt cơ bản nhất giữa Mã xác thực thông điệp (Message Authentication Code - MAC) và Mã phát hiện sửa đổi (Modification Detection Code - MDC) là gì?
+
+MDC chỉ nén dữ liệu thành một chuỗi ngắn, trong khi MAC giải nén chuỗi đó trở lại thành bản rõ.
+
+[✓] MDC đảm bảo tính toàn vẹn, trong khi MAC đảm bảo cả tính toàn vẹn và xác thực nguồn gốc.
+
+MDC được sử dụng cho dữ liệu lưu trữ cục bộ, trong khi MAC là bắt buộc đối với dữ liệu đám mây.
+
+MDC xử lý nhanh hơn MAC hàng nghìn lần vì nó không sử dụng các hàm toán học.
+
+2. Trong số các thuật toán mã hóa khóa đối xứng phổ biến, kích thước khối dữ liệu đầu vào mặc định của Tiêu chuẩn Mã hóa Tiên tiến (Advanced Encryption Standard - AES) là bao nhiêu?
+
+Khối dữ liệu 64-bit, tương tự như kiến trúc của thuật toán DES truyền thống.
+
+[✓] Khối dữ liệu 128-bit, được áp dụng cố định bất kể kích thước khóa.
+
+Khối dữ liệu 192-bit, cung cấp mức độ phân tán bit cao hơn cho các hệ thống mở.
+
+Khối dữ liệu 256-bit, được sử dụng riêng cho các giao dịch tài chính yêu cầu bảo mật cao.
+
+3. Trong thực tế, Mật mã dòng (Stream Cipher) xử lý luồng dữ liệu đầu vào như thế nào so với Mật mã khối (Block Cipher)?
+
+Nó xử lý các khối dữ liệu cố định (ví dụ: 64-bit) trong một lần thực thi thuật toán.
+
+Nó xử lý đồng thời các tệp dữ liệu lớn bằng cách nén chúng trước khi mã hóa.
+
+[✓] Nó liên tục xử lý dữ liệu từng bit hoặc từng byte một theo thời gian thực rất nhanh.
+
+Nó xử lý kết hợp cả khối và dòng bằng cách liên tục hoán vị các vị trí bit.
+
+4. Giao thức SET (Secure Electronic Transaction) được Visa và MasterCard phát triển đặc biệt để bảo vệ thông tin gì trong các giao dịch trực tuyến?
+
+Bảo vệ lịch sử duyệt web của khách hàng khỏi các hệ thống theo dõi quảng cáo của bên thứ ba.
+
+[✓] Mã hóa thông tin thẻ tín dụng để người bán (merchant) không thể nhìn thấy dữ liệu nhạy cảm.
+
+Đảm bảo tốc độ truyền tải nhanh khi tải xuống các hóa đơn điện tử lớn.
+
+Cấp phát địa chỉ IP động an toàn cho khách hàng khi họ kết nối với các cổng thanh toán quốc tế.
+
+5. Tại sao phương pháp One-Time Pad (Vernam) được coi là một hệ thống mã hóa an toàn vô điều kiện về mặt toán học?
+
+Bởi vì thuật toán sử dụng các phép toán số học mô-đun trên một tập hợp các số nguyên tố cực lớn.
+
+[✓] Bởi vì phần đệm (khóa) hoàn toàn ngẫu nhiên, dài bằng bản rõ và chỉ được sử dụng một lần.
+
+Bởi vì quá trình giải mã yêu cầu mật khẩu sinh trắc học song song với khóa phần cứng.
+
+Bởi vì tốc độ tạo khóa của nó vượt quá khả năng xử lý của các hệ thống máy tính lượng tử.
+
+6. Trong kiến trúc AES, hàm MixColumns đóng vai trò gì trong việc tăng cường tính bảo mật của khối dữ liệu?
+
+Thay thế độc lập từng byte bằng cách tra bảng S-box để tạo sự xáo trộn (confusion).
+
+Dịch vòng các hàng của ma trận trạng thái để phân tán dữ liệu qua các cột khác nhau.
+
+[✓] Trộn 4 byte trong cùng một cột thông qua phép nhân đa thức để tạo sự khuếch tán (diffusion).
+
+XOR trạng thái hiện tại với Round Key (Khóa vòng) để nhúng bí mật vào dữ liệu.
+
+7. Trong mô hình trao đổi khóa Điểm-Điểm (Point-to-Point) sử dụng mật mã đối xứng, nếu một hệ thống có 100 người dùng muốn giao tiếp với nhau, tổng cộng cần chia sẻ bao nhiêu khóa?
+
+Chỉ cần 100 khóa, mỗi người dùng quản lý một khóa để mã hóa và giải mã dữ liệu.
+
+Cần 200 khóa, vì mỗi cuộc trò chuyện yêu cầu một khóa mã hóa và một khóa giải mã.
+
+[✓] Cần 4.950 khóa, theo công thức n(n-1)/2 cho các cặp giao tiếp trực tiếp.
+
+Cần 10.000 khóa, vì mỗi người phải thiết lập một kênh kết nối riêng vào mạng.
+
+8. Trung tâm Phân phối Khóa (Key Distribution Center - KDC) giải quyết vấn đề quản lý khóa trong một mạng lớn như thế nào?
+
+KDC yêu cầu tất cả người dùng phải gặp mặt trực tiếp để trao đổi khóa bằng ổ USB.
+
+KDC loại bỏ hoàn toàn các khóa đối xứng và buộc tất cả các máy khách phải sử dụng khóa công khai.
+
+[✓] KDC tạo một khóa phiên (session key) và gửi nó cho các bên thông qua các kênh đã được mã hóa trước đó.
+
+KDC cho phép các bên tự tạo khóa riêng và đóng vai trò dịch khóa sang các tiêu chuẩn khác.
+
+9. Trong thuật toán mã hóa RSA, giá trị 'e' (số mũ công khai) phải thỏa mãn điều kiện toán học nào liên quan đến hàm phi Euler (phi(n))?
+
+'e' phải là số chẵn và lớn hơn giá trị của phi(n) để đảm bảo an toàn chống lại việc đoán khóa.
+
+'e' phải là ước chung lớn nhất của 'p' và 'q' để quá trình mã hóa diễn ra nhanh chóng.
+
+[✓] 'e' và phi(n) phải là hai số nguyên tố cùng nhau, nghĩa là ước chung lớn nhất của chúng bằng 1.
+
+'e' phải bằng chính xác phi(n) trừ đi 1 để đảm bảo tính thuận nghịch trong quá trình giải mã.
+
+10. Thành phần cốt lõi nào sau đây trong Cơ sở hạ tầng Khóa công khai (Public Key Infrastructure - PKI) chịu trách nhiệm cấp phát và xác minh chứng chỉ số?
+
+Cơ quan Đăng ký (Registration Authority - RA) tiếp nhận yêu cầu từ người dùng.
+
+Cơ quan Xác minh (Validation Authority - VA) kiểm tra tính hợp lệ của chứng chỉ.
+
+Thư mục Trung tâm (Central Directory - CD) lưu trữ danh sách các khóa công khai.
+
+[✓] Tổ chức Chứng thực (Certificate Authority - CA) ký và cấp chứng chỉ bằng khóa riêng của mình.
+
+11. Tổ chức Đăng ký (Registration Authority - RA) đóng vai trò quan trọng nào trong mô hình PKI để hỗ trợ Tổ chức Chứng thực (Certificate Authority - CA)?
+
+Trực tiếp đặt chữ ký điện tử lên chứng chỉ số bằng cặp khóa riêng của chính RA.
+
+Cung cấp dịch vụ kiểm tra trạng thái Danh sách Thu hồi Chứng chỉ (CRL) theo thời gian thực cho máy khách.
+
+[✓] Xác minh danh tính của thực thể yêu cầu chứng chỉ trước khi chuyển thông tin đến CA để phê duyệt.
+
+Lưu trữ một bản sao dự phòng toàn bộ khóa riêng của người dùng để khôi phục khi cần thiết.
+
+12. Trong thuật toán mã hóa RSA, quá trình tạo khóa tạo ra giá trị 'n' bằng cách nhân hai số nguyên tố lớn 'p' và 'q'. Vai trò của 'n' là gì?
+
+'n' là khóa riêng duy nhất mà người nhận sử dụng để giải mã các thông điệp đến.
+
+'n' là giá trị băm của thông điệp, được sử dụng để đính kèm vào chữ ký số xác thực.
+
+[✓] 'n' là mô-đun (modulus) được sử dụng công khai trong cả khóa công khai và khóa riêng.
+
+'n' là chỉ số vòng lặp xác định thời gian thực thi của các thuật toán mã hóa và giải mã.
+
+13. Cơ chế "Padding" (Đệm) đóng vai trò gì trong mã hóa khối khi kích thước thông điệp gốc không chia hết cho kích thước khối mã hóa?
+
+Xóa các byte thừa ở cuối thông điệp để làm tròn kích thước sao cho vừa vặn với một khối.
+
+Tự động nén thông điệp bằng thuật toán ZIP để giảm kích thước thay vì thêm dữ liệu.
+
+[✓] Thêm các bit hoặc byte giả (dummy) vào cuối thông điệp để lấp đầy khối dữ liệu cuối cùng.
+
+Báo lỗi và từ chối mã hóa cho đến khi người dùng tự căn chỉnh file đầu vào một cách chính xác.
+
+14. Hệ thống Kerberos sử dụng cơ chế KDC để thực hiện xác thực và phân phối khóa. Thành phần Máy chủ Cấp vé (Ticket Granting Server - TGS) thực hiện nhiệm vụ gì?
+
+Xác minh danh tính ban đầu của người dùng thông qua tên người dùng và mật khẩu đã băm.
+
+[✓] Cấp Vé Dịch vụ (Service Ticket) cho máy khách để truy cập vào một máy chủ ứng dụng cụ thể.
+
+Trực tiếp cung cấp các tệp dữ liệu và tài nguyên máy chủ mà người dùng đang cố gắng truy cập.
+
+Quản lý việc cấp phát và thu hồi chứng chỉ số X.509 cho toàn bộ mạng doanh nghiệp.
+
+15. Nếu một Trung tâm Dịch Khóa (Key Translation Center - KTC) hoàn toàn bị kẻ tấn công chiếm quyền điều khiển, rủi ro bảo mật nào sẽ xảy ra đối với các phiên kết nối?
+
+[✓] Kẻ tấn công có thể nghe trộm nội dung vì KTC nắm giữ các khóa phiên do các máy khách tạo ra.
+
+Kẻ tấn công chỉ có thể gây ra Tấn công Từ chối Dịch vụ (DoS) nhưng không thể đọc nội dung của các thông điệp bí mật.
+
+Hệ thống tự động chuyển sang cấu hình Điểm-Điểm (Point-to-Point), vì vậy không có rủi ro nào.
+
+Kẻ tấn công sẽ lấy được tất cả mật khẩu của người dùng vì KTC quản lý hệ thống danh tính.
+
+16. Theo Lịch trình Khóa (Key Schedule) của DES, từ khóa 64-bit ban đầu, thao tác Permitted Choice 1 (PC-1) sẽ loại bỏ bao nhiêu bit trước khi chia đôi nó?
+
+Loại bỏ 4 bit, vì đây là các bit dự phòng được sử dụng cho mục đích đồng bộ hóa luồng dữ liệu mạng.
+
+[✓] Loại bỏ 8 bit chẵn lẻ (parity bits), chỉ giữ lại 56 bit thực sự tham gia vào việc tạo các khóa con (subkeys).
+
+Loại bỏ 16 bit, để tạo ra một không gian khóa nhỏ gọn phù hợp với các vi điều khiển có bộ nhớ thấp.
+
+Loại bỏ 32 bit, cắt đôi khóa ban đầu để giảm tải tính toán cho các thiết bị phần cứng cũ.
+
+17. Tính chất toán học nào làm cho phương pháp mã hóa XOR được sử dụng rộng rãi trong các thuật toán hiện đại?
+
+Phép toán XOR chỉ có thể được đảo ngược bằng cách áp dụng một phép hoán vị vị trí phức tạp.
+
+[✓] Áp dụng phép toán XOR hai lần với cùng một khóa sẽ khôi phục lại giá trị ban đầu.
+
+Phép toán XOR tự động loại bỏ các bit thừa trong luồng dữ liệu để giảm băng thông mạng.
+
+Phép toán XOR hoàn toàn thay thế nhu cầu sử dụng các hàm băm khi tính toán tính toàn vẹn của dữ liệu.
+
+18. Quá trình giải mã của AES (Advanced Encryption Standard) thực thi các hàm ngược của quá trình mã hóa. Hàm nào sau đây KHÔNG CÓ hàm ngược vì cơ chế của nó vốn dĩ là đối xứng?
+
+SubBytes, vì phép thay thế S-box áp dụng chung cho cả mã hóa và giải mã mà không cần hàm ngược.
+
+MixColumns, vì phép nhân đa thức tự động triệt tiêu các giá trị phần dư trong quá trình thực hiện.
+
+[✓] AddRoundKey, vì XOR một giá trị hai lần với cùng một khóa sẽ trả về kết quả ban đầu.
+
+ShiftRows, vì dịch trái hoặc dịch phải mang lại kết quả mảng y hệt nhau.
+
+19. Trong số các thuộc tính của an toàn thông tin, thuộc tính nào đảm bảo rằng dữ liệu không bị thay đổi một cách trái phép trong quá trình lưu trữ hoặc truyền tải qua mạng?
+
+Tính bảo mật (Confidentiality) giúp ngăn chặn rò rỉ dữ liệu cho những người không được phép.
+
+[✓] Tính toàn vẹn (Integrity) đảm bảo dữ liệu luôn ở trạng thái gốc và không bị sửa đổi.
+
+Tính xác thực (Authentication) giúp hệ thống nhận dạng chính xác danh tính của người dùng.
+
+Tính chống chối bỏ (Non-repudiation) ngăn người gửi phủ nhận việc đã gửi thông điệp.
+
+20. Giao thức con nào trong bộ giao thức SSL/TLS chịu trách nhiệm đàm phán các thuật toán mã hóa và trao đổi khóa ban đầu giữa máy khách và máy chủ?
+
+[✓] Giao thức Bắt tay (Handshake Protocol) để thiết lập các tham số bảo mật cho phiên làm việc.
+
+Giao thức Bản ghi (Record Protocol) để đóng gói và bảo vệ dữ liệu truyền tải thực tế.
+
+Giao thức Cảnh báo (Alert Protocol) để gửi thông báo lỗi nếu quá trình đàm phán thất bại.
+
+Giao thức ChangeCipherSpec để kích hoạt thuật toán đã chọn.
+
+21. Trong lịch sử mật mã học, việc phát hành phần mềm PGP (Pretty Good Privacy) đã mang lại ý nghĩa to lớn nào cho an toàn thông tin?
+
+Nó đặt nền móng toán học đầu tiên cho các phương pháp phân tích tần suất trong mật mã học cổ điển.
+
+Nó trở thành tiêu chuẩn mã hóa đối xứng mặc định của chính phủ để thay thế thuật toán DES.
+
+Nó làm cho công nghệ mã hóa khóa công khai (vốn phức tạp) trở nên dễ tiếp cận đối với người dùng thông thường.
+
+[✓] Nó giải quyết triệt để rủi ro của các cuộc tấn công vét cạn (brute-force) lần đầu tiên bằng cách áp dụng lý thuyết one-time pad.
+
+22. Thuật toán 3DES (Triple DES) cải thiện tính bảo mật so với DES truyền thống thông qua cơ chế nào sau đây?
+
+Tăng kích thước khối dữ liệu từ 64-bit lên 128-bit để phù hợp với tiêu chuẩn mới.
+
+[✓] Chạy thuật toán DES ba lần liên tiếp với các khóa khác nhau trên cùng một khối.
+
+Thay thế các hộp S-box của DES bằng các ma trận toán học phức tạp và an toàn hơn.
+
+Áp dụng thuật toán băm SHA-1 trước khi đưa dữ liệu vào quá trình mã hóa DES.
+
+23. Điểm yếu chí mạng nào của Phép thay thế Đơn giản (Simple Substitution) khiến nó dễ bị bẻ khóa trong thực tế?
+
+Khóa mã hóa quá dài và khó để con người ghi nhớ khi yêu cầu trao đổi thủ công.
+
+Thuật toán đòi hỏi sức mạnh tính toán khổng lồ mà các máy tính cũ không thể đáp ứng.
+
+[✓] Tần suất xuất hiện của các chữ cái trong ngôn ngữ tự nhiên bị lộ trong bản mã (ciphertext).
+
+Nó không thể mã hóa các số hoặc ký tự đặc biệt ngoài bảng chữ cái thông thường.
+
+24. Chức năng chính của Hàm Băm (Hash Function) trong an toàn thông tin là gì?
+
+Để chuyển đổi dữ liệu có kích thước cố định thành một bản mã có thể giải mã được.
+
+Để tạo ra một cặp khóa công khai và khóa riêng cho các quá trình trao đổi an toàn.
+
+[✓] Để ánh xạ dữ liệu có độ dài tùy ý thành một chuỗi đầu ra có kích thước cố định.
+
+Để mã hóa các tệp lớn nhằm tiết kiệm băng thông mạng trong quá trình truyền tải.
+
+25. Bước tiền xử lý của thuật toán băm SHA-1 yêu cầu độ dài thông điệp phải được đệm sao cho độ dài của nó chia hết cho bao nhiêu?
+
+Chia hết cho 128 bit, để tương thích với các thuật toán mã hóa khóa đối xứng như AES.
+
+Chia hết cho 256 bit, để tối ưu hóa bộ nhớ cache trên các bộ vi xử lý hiện đại.
+
+[✓] Chia hết cho 512 bit, vì thuật toán xử lý lặp chia dữ liệu đầu vào thành các khối 512-bit.
+
+Chia hết cho 1024 bit, để tăng cường khả năng chống lại các cuộc tấn công ngày sinh (birthday attacks).
+
+26. Thuộc tính "Hiệu ứng tuyết lở" (Avalanche effect) trong các hàm băm mật mã cung cấp lợi ích bảo mật nào?
+
+Đảm bảo rằng hàm băm chạy cực kỳ nhanh khi xử lý các tệp có dung lượng lớn.
+
+[✓] Một thay đổi nhỏ (thậm chí chỉ 1 bit) ở đầu vào sẽ làm thay đổi hoàn toàn giá trị băm đầu ra.
+
+Tự động nén dữ liệu lớn thành các chuỗi đầu ra ngày càng nhỏ hơn qua nhiều lần lặp.
+
+Cho phép khôi phục một phần dữ liệu gốc nếu kẻ tấn công biết giá trị băm đầu ra.
+
+27. Trong một hệ thống mã hóa, thuật ngữ nào được sử dụng để chỉ thông tin gốc, có thể đọc và hiểu được trước khi áp dụng bất kỳ phép biến đổi toán học nào?
+
+Bản mã (Ciphertext) chứa các ký tự đã bị xáo trộn để không ai có thể đọc được.
+
+[✓] Bản rõ (Plaintext) là thông điệp gốc chưa trải qua quá trình mã hóa.
+
+Khóa (Key) là một chuỗi bí mật được sử dụng để điều khiển thuật toán mã hóa.
+
+Không gian khóa (Keyspace) là tổng số khóa có thể được sử dụng.
+
+28. Trong hệ thống Cơ sở hạ tầng Khóa công khai (PKI), tại sao các chứng chỉ số cần có thời hạn hiệu lực (Valid-From / Valid-To)?
+
+Để giới hạn số lượng giao dịch tối đa mà người dùng được phép thực hiện trong một khung thời gian nhất định.
+
+[✓] Để giảm thiểu rủi ro khi một khóa bị xâm phạm, giới hạn thời gian tin tặc có thể lạm dụng một chứng chỉ cũ.
+
+Để hệ điều hành có thể tự động xóa tệp chứng chỉ nhằm giải phóng dung lượng ổ cứng thiết bị.
+
+Để tương thích với các múi giờ khác nhau giữa máy chủ cấp phát và máy khách nhận.
+
+29. Bản tóm tắt (digest) được tạo bởi thuật toán băm MD5 (Message Digest 5) có bao nhiêu bit?
+
+[✓] 128 bit, thường được biểu diễn dưới dạng 32 ký tự thập lục phân (hexadecimal).
+
+160 bit, thường được biểu diễn dưới dạng 40 ký tự thập lục phân.
+
+256 bit, cung cấp khả năng chống va chạm mạnh mẽ hơn.
+
+512 bit, thường được sử dụng trong các hệ thống chữ ký số hiện đại.
+
+30. Chức năng chính của hộp thay thế S-box trong cấu trúc Feistel của thuật toán DES là gì?
+
+S-box thực hiện một phép hoán vị tuyến tính để xáo trộn vị trí của các bit đầu ra một cách an toàn.
+
+S-box mở rộng khối dữ liệu 32-bit thành 48-bit để chuẩn bị cho phép toán XOR với khóa.
+
+[✓] S-box cung cấp một phép biến đổi phi tuyến tính, là yếu tố cốt lõi chống lại các kỹ thuật thám mã (cryptanalysis).
+
+S-box kiểm tra tính toàn vẹn của dữ liệu bằng cách tính toán mã Kiểm tra Dự phòng Vòng (CRC).
+
+31. So sánh MD5 và SHA-1, phát biểu nào sau đây phản ánh chính xác sự khác biệt về cấu trúc xử lý giữa hai thuật toán này?
+
+[✓] MD5 thực hiện 64 phép toán chia thành 4 vòng, trong khi SHA-1 thực hiện 80 phép toán chia thành 4 vòng.
+
+MD5 xử lý các khối 128-bit, trong khi SHA-1 xử lý các khối dữ liệu đầu vào lớn lên đến 1024-bit.
+
+MD5 sử dụng cấu trúc Mạng Thay thế-Hoán vị (SPN), trong khi SHA-1 sử dụng cấu trúc Feistel truyền thống.
+
+MD5 an toàn hơn SHA-1 và hiện tại vẫn được chính phủ Hoa Kỳ khuyên dùng cho chữ ký số.
+
+32. Thuật toán Chữ ký số (DSA - Digital Signature Algorithm) sử dụng một tham số ngẫu nhiên 'k' cho mỗi chữ ký. Nếu một người dùng sử dụng cùng một giá trị 'k' để ký hai thông điệp khác nhau, hậu quả sẽ là gì?
+
+Chữ ký thứ hai sẽ bị hệ thống từ chối vì không khớp với cấu trúc băm của thông điệp mới.
+
+[✓] Kẻ tấn công có thể sử dụng hai chữ ký này để tính toán ngược lại khóa riêng của người dùng.
+
+Quá trình xác minh sẽ diễn ra nhanh gấp đôi vì máy chủ đã lưu trữ (cache) giá trị 'k'.
+
+Thuật toán băm sẽ tạo ra cùng một bản tóm tắt, gây ra lỗi xung đột tệp hệ thống.
+
+33. Tại sao các hệ thống mã hóa khóa bất đối xứng lại được thiết kế chậm hơn từ 100 đến 1000 lần so với các hệ thống mã hóa khóa đối xứng?
+
+Bởi vì chúng phải sử dụng các phép hoán vị và thay thế cực kỳ phức tạp trên các khối nhỏ.
+
+[✓] Bởi vì chúng dựa vào các phép toán đắt đỏ về mặt tính toán với các số nguyên tố cực lớn.
+
+Bởi vì chúng yêu cầu một kết nối mạng liên tục với máy chủ CA để xác minh từng bit dữ liệu.
+
+Bởi vì bộ nhớ cache của CPU không thể lưu trữ đồng thời cả khóa công khai và khóa riêng.
+
+34. Mục đích của bước Mở rộng khóa (Key Expansion) trong AES sử dụng lịch trình khóa Rijndael là gì?
+
+Để giảm kích thước khóa gốc từ 256-bit xuống 128-bit nhằm tối ưu hóa hiệu suất vi xử lý.
+
+[✓] Để tạo ra nhiều khóa vòng (round keys) duy nhất từ khóa ban đầu để sử dụng cho mỗi vòng mã hóa.
+
+Để trực tiếp mã hóa khóa riêng bằng khóa công khai trước khi truyền nó qua môi trường mạng.
+
+Để tính toán chữ ký số của khóa nhằm đảm bảo nó không bị thay đổi trong RAM.
+
+35. Sự khác biệt giữa việc sử dụng thuật toán RSA để mã hóa an toàn (Encryption) và sử dụng RSA để tạo chữ ký số (Signatures) là gì?
+
+Mã hóa sử dụng khóa riêng của người nhận, ký sử dụng khóa công khai của người gửi.
+
+[✓] Mã hóa sử dụng khóa công khai của người nhận, ký sử dụng khóa riêng của người gửi.
+
+Mã hóa sử dụng khóa riêng của người gửi, ký sử dụng khóa công khai của người nhận.
+
+Mã hóa sử dụng khóa công khai của người gửi, ký sử dụng khóa riêng của người nhận.
+
+36. Trong quá trình tạo chữ ký số, điều gì giải thích lý do tại sao người gửi mã hóa giá trị băm (hash value) thay vì mã hóa toàn bộ thông điệp?
+
+Bởi vì việc mã hóa toàn bộ thông điệp sẽ làm thay đổi định dạng văn bản, khiến người nhận không thể đọc được.
+
+[✓] Bởi vì các thuật toán khóa bất đối xứng chạy rất chậm, việc mã hóa một chuỗi băm ngắn sẽ tăng tốc quá trình lên đáng kể.
+
+Bởi vì một hàm băm tự động nén thông điệp để tiết kiệm dung lượng ổ cứng trong quá trình lưu trữ.
+
+Bởi vì giá trị băm không chứa thông tin nhạy cảm, làm cho nó an toàn hơn khi truyền qua các mạng công cộng.
+
+37. Tại tầng nào trong mô hình mạng (ví dụ: OSI hoặc TCP/IP), giao thức SSL/TLS hoạt động?
+
+[✓] Giữa Tầng Ứng dụng (Application Layer) và Tầng Giao vận (Transport Layer).
+
+Giữa Tầng Giao vận (Transport Layer) và Tầng Mạng/Internet (Internet/Network Layer).
+
+Tích hợp trực tiếp vào giao thức IP của Tầng Mạng để mã hóa các gói tin.
+
+Tại Tầng Truy cập Mạng (Network Access Layer) để bảo vệ các đường truyền vật lý.
+
+38. Những trường thông tin bắt buộc nào phải được bao gồm trong một chứng chỉ số theo quy định của tiêu chuẩn X.509?
+
+Khóa riêng của người dùng, thuật toán băm và địa chỉ IP của máy chủ CA.
+
+Tên miền trang web, mật khẩu quản trị trị và chữ ký số của chính người dùng.
+
+[✓] Số sê-ri, thông tin nhận dạng chủ sở hữu, khóa công khai và chữ ký của CA.
+
+Giao thức mạng, kích thước tệp chứng chỉ và số lượng phiên bản đã phát hành.
+
+39. Trong môi trường doanh nghiệp, Khóa Mã hóa Khóa (Key-Encrypting Key - KEK) thường được lưu trữ ở đâu để đảm bảo bảo mật tối đa?
+
+Trong các tệp cấu hình văn bản thuần túy (plain text) trên máy chủ để ứng dụng có thể dễ dàng tải nó.
+
+Tích hợp trực tiếp vào mã nguồn của phần mềm máy khách để thuận tiện cho việc phân phối.
+
+[✓] Trong các Mô-đun Bảo mật Phần cứng (Hardware Security Modules - HSM) chuyên dụng hoặc két sắt vật lý cách ly.
+
+Gửi đính kèm qua email cho các quản trị viên mạng dưới dạng tệp nén có mật khẩu bảo vệ.
+
+40. Một hacker đánh chặn được một bản mã và biết thuật toán mã hóa đang được sử dụng, nhưng không có khóa. Khi hacker cố gắng thử mọi khóa có thể trong không gian khóa (keyspace) để tìm ra bản rõ, kỹ thuật này được gọi là gì?
+
+Tấn công phân tích tần suất (Frequency analysis attack).
+
+[✓] Tấn công vét cạn (Brute-force attack).
+
+Tấn công người đứng giữa (Man-in-the-middle attack).
+
+Tấn công từ điển (Dictionary attack).
+
+
+
+
+
+
+
+

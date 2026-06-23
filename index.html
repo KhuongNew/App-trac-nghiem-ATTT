@@ -4382,20 +4382,41 @@ function renderMenu() {
 }
 
 function shuffleCopy(list) {
-  return [...list].sort(() => Math.random() - 0.5);
+  const copy = [...list];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function withShuffledOptions(question) {
+  const shuffled = shuffleCopy(question.options.map((option, index) => ({
+    option,
+    correct: index === question.answer
+  })));
+  return {
+    ...question,
+    options: shuffled.map(item => item.option),
+    answer: shuffled.findIndex(item => item.correct)
+  };
+}
+
+function prepareQuizList(questions) {
+  return shuffleCopy(questions).map(withShuffledOptions);
 }
 
 function startChapter(chapter) {
   mode = "chapter";
   currentChapter = chapter;
-  currentList = shuffleCopy(examData[chapter].map(q => ({ ...q, chapter })));
+  currentList = prepareQuizList(examData[chapter].map(q => ({ ...q, chapter })));
   currentIndex = 0;
   renderQuestion();
 }
 
 function startWrongReview() {
   const wrong = new Set(getWrongIds());
-  currentList = allQuestions().filter(q => wrong.has(q.id));
+  currentList = prepareQuizList(allQuestions().filter(q => wrong.has(q.id)));
   if (!currentList.length) return renderMenu();
   mode = "wrong";
   currentChapter = "Ôn tập câu làm sai";
